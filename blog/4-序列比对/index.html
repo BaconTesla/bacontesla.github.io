@@ -27,7 +27,7 @@
 <meta property="og:description" content="一、记分矩阵 核苷酸替换矩阵     类型 描述 效果     等价矩阵 相同核苷酸之间得1分，不同得0分 一般用于理论计算，实际使用效果差   转换-颠换矩阵 转换即嘌呤(A&#x2F;G)之间替换和嘧啶(T&#x2F;C)之间替换、颠换即嘌呤与嘧啶之间替换 一般转换频率高于颠换，因此转换得-1分 ，颠换得-5分   BLAST矩阵 相同得5分，不同得-4分 实践经验所得，没有理论依据，效果最好    蛋白质的替换">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-23T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-11-13T06:09:57.768Z">
+<meta property="article:modified_time" content="2024-11-13T06:52:02.386Z">
 <meta property="article:author" content="Bacon Tesla">
 <meta property="article:tag" content="生物信息学原理">
 <meta property="article:tag" content="基础知识">
@@ -893,6 +893,12 @@ class="math inline">\(O(mn)\)</span>。如果两条序列等长，则时间和�
   
 
 
+  
+  
+
+
+
+
 
 
 
@@ -1084,6 +1090,49 @@ class="math inline">\(O(mn)\)</span>。如果两条序列等长，则时间和�
 
   <script>Fluid.plugins.imageCaption();</script>
 
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
   <script  src="/js/local-search.js" ></script>
 
 
@@ -1100,20 +1149,5 @@ class="math inline">\(O(mn)\)</span>。如果两条序列等长，则时间和�
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
