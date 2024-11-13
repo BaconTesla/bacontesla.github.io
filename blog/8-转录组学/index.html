@@ -1,0 +1,812 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bacon.png">
+  <link rel="icon" href="/img/bacon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Bacon Tesla">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="定义：  狭义上：转录组即特定环境下一个细胞或一群细胞的基因组转录出来的所有mRNA的总和； 广义上：转录组是特定组织或细胞在某一发育阶段或功能状态下的转录出来的所有RNA的总和，主要包括mRNA和非编码RNA（ncRNA）  一、非编码RNA数据分析1. miRNA（1）miRNA的主要特征参考：中国科技大学章张教授的基因组学第9章RNA与转录组_哔哩哔哩_bilibili （2）miRNA的计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="转录组学">
+<meta property="og:url" content="https://bacontesla.github.io/blog/8-%E8%BD%AC%E5%BD%95%E7%BB%84%E5%AD%A6/index.html">
+<meta property="og:site_name" content="Meditation">
+<meta property="og:description" content="定义：  狭义上：转录组即特定环境下一个细胞或一群细胞的基因组转录出来的所有mRNA的总和； 广义上：转录组是特定组织或细胞在某一发育阶段或功能状态下的转录出来的所有RNA的总和，主要包括mRNA和非编码RNA（ncRNA）  一、非编码RNA数据分析1. miRNA（1）miRNA的主要特征参考：中国科技大学章张教授的基因组学第9章RNA与转录组_哔哩哔哩_bilibili （2）miRNA的计">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230809091750.png">
+<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230809093853.png">
+<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230809105842.png">
+<meta property="article:published_time" content="2023-09-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-11-13T06:09:45.734Z">
+<meta property="article:author" content="Bacon Tesla">
+<meta property="article:tag" content="生物信息学原理">
+<meta property="article:tag" content="基础知识">
+<meta property="article:tag" content="考研">
+<meta property="article:tag" content="转录组学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230809091750.png">
+  
+  
+  
+  <title>转录组学 - Meditation</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"bacontesla.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Bacon Tesla</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="转录组学"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-09-02 00:00" pubdate>
+          2023年9月2日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          29 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">转录组学</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>定义：</p>
+<ul>
+<li>狭义上：转录组即特定环境下一个细胞或一群细胞的基因组转录出来的所有mRNA的总和；</li>
+<li>广义上：转录组是特定组织或细胞在某一发育阶段或功能状态下的转录出来的所有RNA的总和，主要包括mRNA和非编码RNA（ncRNA）</li>
+</ul>
+<h1 id="一、非编码RNA数据分析"><a href="#一、非编码RNA数据分析" class="headerlink" title="一、非编码RNA数据分析"></a>一、非编码RNA数据分析</h1><h2 id="1-miRNA"><a href="#1-miRNA" class="headerlink" title="1. miRNA"></a>1. miRNA</h2><h3 id="（1）miRNA的主要特征"><a href="#（1）miRNA的主要特征" class="headerlink" title="（1）miRNA的主要特征"></a>（1）miRNA的主要特征</h3><p><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230809091750.png" srcset="/img/loading.gif" lazyload alt="image.png|400"><br>参考：中国科技大学章张教授的基因组学<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Qx4y1K7pi?p=10&vd_source=0edbd7c9d8e9794c657c6aeedea34e83">第9章RNA与转录组_哔哩哔哩_bilibili</a></p>
+<h3 id="（2）miRNA的计算识别"><a href="#（2）miRNA的计算识别" class="headerlink" title="（2）miRNA的计算识别"></a>（2）miRNA的计算识别</h3><ol>
+<li>同源比对，通过保守miRNA在不同物种间的序列相似性，进行同源序列搜索预测</li>
+<li>邻近茎环结构搜索，通过对已知miRNA附近区域进行<strong>茎环结构预测</strong>来发现成簇存在的miRNA</li>
+<li>基于比较基因组学的算法，根据物种之间的亲缘关系来确定基因组上的共线性，从而查找物种之间的保守miRNA</li>
+<li>基于高通量miRNA测序数据的挖掘方法 ，对一个物种的miRNA进行从头预测</li>
+</ol>
+<h2 id="2-LncRNA"><a href="#2-LncRNA" class="headerlink" title="2. LncRNA"></a>2. LncRNA</h2><h3 id="（1）LncRNA的主要特征"><a href="#（1）LncRNA的主要特征" class="headerlink" title="（1）LncRNA的主要特征"></a>（1）LncRNA的主要特征</h3><p><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230809093853.png" srcset="/img/loading.gif" lazyload alt="image.png|400"></p>
+<h3 id="（2）LncRNA的鉴定方法和功能预测"><a href="#（2）LncRNA的鉴定方法和功能预测" class="headerlink" title="（2）LncRNA的鉴定方法和功能预测"></a>（2）LncRNA的鉴定方法和功能预测</h3><p>鉴定：</p>
+<ul>
+<li>获取链特异性RNA数据</li>
+<li>通过fastQC进行数据质控</li>
+<li>使用TopHat、HISAT进行读段比对，使用Stringtie、Cufflink进行转录本拼接，获取具有正负链信息的总转录本</li>
+<li>LncRNA采取一定的过滤手段：<ul>
+<li>与已注释基因无重叠</li>
+<li>有单个外显子的转录本，与已知基因不能靠太近</li>
+<li>转录本长度$\ge 200nt$ </li>
+<li>表达量FPKM$\ge 0.5$</li>
+<li>翻译潜能CPC score$\le 0$</li>
+<li>不具有已知功能域（从Pfam中查询）</li>
+</ul>
+</li>
+<li>过滤获得LncRNA</li>
+</ul>
+<p>功能预测：</p>
+<ol>
+<li>lncRNA与RNA分子互作预测<ol>
+<li>lncRNA作为miRNA的诱捕靶标</li>
+<li>lncRNA与其他RNA分子互作预测，计算RNA分子之间碱基配对时的结合能</li>
+</ol>
+</li>
+<li>lncRNA与蛋白质分子互作预测：机器学习方法（Fisher线性判别关系、支持向量模型和随机森林）</li>
+<li>lncRNA功能注释平台：AnnoLnc，通过提交序列，选择物种即可预测LncRNA结构、表达、功能、进化</li>
+</ol>
+<hr>
+<h1 id="二、编码mRNA数据分析"><a href="#二、编码mRNA数据分析" class="headerlink" title="二、编码mRNA数据分析"></a>二、编码mRNA数据分析</h1><p>RNA-seq与基因芯片的优缺点；RNA-seq转录组分析流程等，已经在考研资料中<strong>p54</strong>中做较为详细的阐述。<br>下面介绍在RNA-seq功能分析中，差异表达</p>
+<p>RNA-seq的应用：</p>
+<ul>
+<li>检测在特定情况下所有基因的表达量（如发育阶段、不同的组织、正常 vs 患病、药物处理、基因扰动）</li>
+<li>找到新基因或转录本</li>
+<li>建模可变剪接</li>
+<li>发现基因突变或基因融合（translocation染色体易位导致）</li>
+<li>无需知道基因组序列或被预测的基因</li>
+<li>通过数字来代表基因的表达量</li>
+<li>有很好的检测范围，对于低表达和高表达水平相差5个数量级$&gt;10^{5}$</li>
+</ul>
+<p><strong>1. RNA 质量检测</strong><br>通过跑胶来测定所获得的RNA分子量，最常用的指标是DV200（指RNA长度&gt;200nt）。一般情况下DV200&gt;30%认为RNA质量较高，基本上是全长RNA<br><strong>2. 实验设计</strong></p>
+<ul>
+<li>去除核糖体RNA，因为冗余的r&#x2F;tRNA占总RNA大多数，都是RNA-seq所不需要的</li>
+<li>PloyA尾巴识别，PloyA适合用于鉴定经过剪接的mRNA，也正是实验所关注的</li>
+<li>链特异性识别方向性RNA，对于新LncRNA的鉴定很有用</li>
+<li>评估所需要的生物学重复<ul>
+<li>1个实验组和对照组，可以作为是探索性实验，但不适合发表文献</li>
+<li>$\ge 2$ 对于细胞系样本来说是OK的，因为细胞系样本都是单克隆出来的样本，差异性不算很大</li>
+<li>$\ge 3$ 就适合动物样本，因为动物样本间的差异性就很大了，需要较多的生物学重复</li>
+<li>对于人类那就需要更多的生物学重复样本了</li>
+</ul>
+</li>
+</ul>
+<p><strong>3. RNA-seq 测序方案的设置</strong><br>RNA-seq 的测序方案主要关注<strong>测序深度</strong>和<strong>测序读长</strong><br><strong>1）测序深度要多深？</strong><br>测序读长至少要有 15X 的测序深度<br>人类编码区总长：$3Gb\times 3%&#x3D;0.1Gb$ 或 $3kb\times 30K&#x3D;0.1Gb$<br>RNA-seq 所需要的 15X 能用的碱基数为 $0.1Gb\times 15&#x3D;1.5Gb$<br>由于只有 70%的 clean reads 可以匹配到基因组上，RNA-seq 的总测序碱基为 $1.5Gb&#x2F;70%&#x3D;2.14Gb$<br>假设 reads 的平均长度为 50bp，则需要的 reads 数为 $2.14Gb&#x2F;50bp&#x3D;42.8Mb$</p>
+<blockquote>
+<p>clean reads：1）去掉接头 adaptor；2）去除 N 的比例&gt;10%的 reads；3）去除低质量 reads（质量值 Q&lt;5 的碱基数占整个 read 50%以上）</p>
+</blockquote>
+<p><strong>2）测序读长要多长？</strong><br>测序读长的设置，有 3 种情况</p>
+<ol>
+<li>研究基因表达水平或鉴定差异表达基因：无需确定整个基因的全长序列，只需要有 read 准确定位到某个基因上即可，这样 read 不需要很长，对于酵母菌而言设置 20 bp 即可，对于人类设置 100 bp 即可</li>
+<li>研究可变剪切：跨越多个剪切位点或外显子的 read 越多越好，即读长越长越好。如某一基因由于可变剪切存在多个转录本，跨越剪切位点的 read 可以归为特定的转录本</li>
+<li>denovo 拼接：为防止来自不同基因的高度相似的序列错误的组装到一个转录本上，需要 reads 越长越好</li>
+</ol>
+<h2 id="RPKM、FPKM-和-TPM"><a href="#RPKM、FPKM-和-TPM" class="headerlink" title="RPKM、FPKM 和 TPM"></a>RPKM、FPKM 和 TPM</h2><p>RPKM的全称为Reads Per Kilobase Million，中文翻译就是每千个碱基的转录每百万映射读取的reads数。<br>计算公式：<br>$$<br>RPKM&#x3D;\frac{落在该基因上的总reads数}{\frac{样本中所有的reads数}{1000000} \times \frac{该基因的长度}{1000}}<br>$$<br>计算顺序是：先对reads的测序深度均一化，再对基因长度均一化</p>
+<p>FPKM和RPKM类似，只不过FPKM把reads换成了fragment，即把读序换成了片段。</p>
+<ul>
+<li>在单端测序中，读序就是片段，所以RPKM和FPKM一致；</li>
+<li>在双端测序中，一个DNA片段对应两条读序，此时FPKM就更合适了，一条fragment的两条reads不会被统计2次。</li>
+</ul>
+<p>TPM：每百万条reads的转录本。<br>计算公式：<br>$$<br>\begin{array}{l}<br>A&#x3D;\frac{该基因上的reads数}{该基因的长度}\<br>TPM&#x3D;A\times \frac{1}{\sum A}\times 10^{6}<br>\end{array}<br>$$<br>计算顺序是：先对基因长度均一化，再对reads的测序深度均一化</p>
+<p>可见，当我们把每个样本的各个基因的RPKM、TPM求和发现：每个样本的$\sum\limits RPKM$不相等，但是每个样本的$\sum\limits TPM$相等。<br>这也说明了RPKM和FPKM是无法比较同一基因在样本间的差异，（总的大小都不一致，更别谈单个基因比较）；但TPM是可以比较同一基因在样本间的差异（总大小一致）</p>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2cce4376be48">StatQuest学习笔记24——RPKM FPKM TPM - 简书 (jianshu.com)</a> &amp; <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=TTUrtCY2k-w&ab_channel=StatQuestwithJoshStarmer">RPKM, FPKM and TPM, Clearly Explained!!! - YouTube</a></p>
+</blockquote>
+<h2 id="多重假设检验"><a href="#多重假设检验" class="headerlink" title="多重假设检验"></a>多重假设检验</h2><p>在RNA-seq中鉴定差异表达基因，会存在多重假设检验问题。对于一次检验认为假阳性的概率为0.05，但经过10000次假设检验后，可能会得到500个假阳性。<br>在多重假设检验中，主要有两种检验方法：</p>
+<ol>
+<li>Bonferroni 校正，就是将每次得到的 p 值除以总的检验次数。<br>这样的校正很严格，拒绝的不仅是假阳性，一些真阳性也会被拒绝</li>
+<li>Benjamini-Hochberg，BH 校正。其就是将假阳性与真阳性之间的比例控制在一定范围内<br>使用q-value来代替原始的p-value<br>$$q&#x3D;p\times \frac{m}{k}$$<br>计算方法首先要把p值进行从小到大排序，m表示p值总数，k表示当前p值所处位置。<br>校正之后的q值会比原来的p值大，且当q值大于p值中的最大值时还需要将该q值设置为最大的p值</li>
+</ol>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/51546651">[统计] 多重假设检验：Bonferroni 和 FDR</a></p>
+<h2 id="可变剪接识别"><a href="#可变剪接识别" class="headerlink" title="可变剪接识别"></a>可变剪接识别</h2><p>来源：</p>
+<ul>
+<li>大部分基因含有内含子，在编码的过程中，内含子的信息不需要传递给蛋白质。在转录完成后形成的初始 mRNA 后，所有的内含子都切掉，这是一种正常的剪接方式，即组成型剪接 (constitutive splicing)。</li>
+<li>可变剪接 (alternative splicing) 跟它有一定区别，例如在正常情况下，三个外显子在一起；如果发生了可变剪接，由于某些原因中间的外显子被跳过，形成的 mRNA 不一样，这种序列的不一样可能使蛋白质中间少了一段，或者中间的外显子不是 3 的倍数的话，那么它会使得后面的蛋白质完全不一样了，改变了蛋白质的组成。</li>
+</ul>
+<p>可变剪接的类型按复杂可分为8中，简单可分为5种</p>
+<ol>
+<li>外显子跳跃（exon skipping），中间的外显子被跳过</li>
+<li>内含子保留（intron retention），外显子之间的内含子被保留</li>
+<li>5’端可变剪接（A5SS），剪接时3’端剪接位点相同，但是在5’端剪接位点不同</li>
+<li>3’端可变剪接（A3SS），剪接时5’端剪接位点相同，但是在3’端剪接位点不同</li>
+<li>外显子排除（MEE），采取不同的外显子组合方式，可以是124或134</li>
+<li>额外，第一外显子可变剪接（AFE），基因的第一个外显子被跳过，使得前一基因的外显子可以和随后的基因剪接在一起</li>
+<li>额外，最末外显子可变剪接（ALE），基因的最后一个外显子被跳过，使得先前的外显子可以个下一个基因的外显子剪接在一起<br><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230809105842.png" srcset="/img/loading.gif" lazyload alt="image.png|400"></li>
+</ol>
+<p>RNA-seq可变剪切一般分析过程：</p>
+<ul>
+<li>比对软件：hisat2、 star、 tophat<br>AS识别软件:</li>
+<li>依赖已有的gtf文件，Asprofile、rmats、cash，不依赖的有leafcutter<br>AS差异分析：</li>
+<li>定量再进行差异表达分析</li>
+<li>推荐软件：cash&#x2F;rMATS<br>参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d52f1d2aee89">RNA-seq 可变剪切 - 简书 (jianshu.com)</a></li>
+</ul>
+<h2 id="基因融合"><a href="#基因融合" class="headerlink" title="基因融合"></a>基因融合</h2><p>基因融合一共有5种类型</p>
+<ol>
+<li>染色体<strong>间</strong>的<strong>易位融合</strong>：融合的基因位于不同的染色体</li>
+<li>染色体<strong>间</strong>的<strong>复杂重拍融合</strong>：两个在不同染色体上的基因融合后，第三个基因随之被激活</li>
+<li>染色体<strong>内</strong>的<strong>缺失融合</strong>：在一个缺失片段两侧的基因融合</li>
+<li>染色体<strong>内</strong>的<strong>复杂重排融合</strong>：同一染色体多个区域进行基因融合</li>
+<li><strong>嵌合体</strong>融合：由相邻的基因形成转录本嵌合体</li>
+</ol>
+<p>融合基因的鉴定：<br>使用一些能够鉴定融合基因的比对软件（如TopHat-Fusion）将RNAseq序列比对到参考基因组上，然后通过BLAST将比对的结果与对应的基因组注释文件进行比对，找到融合基因位点。</p>
+<hr>
+<h1 id="GO-基因本体论"><a href="#GO-基因本体论" class="headerlink" title="GO 基因本体论"></a>GO 基因本体论</h1><p><strong>1. 什么是本体论，有哪些公开的生物医药本体论？</strong><br><strong>本体论</strong>的定义：在所研究概念的领域中，使用统一的术语来定义各个实体的类型、特点以及实体之间的关系</p>
+<p><strong>2. 什么是基因本体论GO，GO由哪三种类型组成？</strong><br><strong>GO</strong>的定义：按照严格的生物学背景、采取统一的术语结构注释基因及其产物的数据库，包含几千个术语。<br>GO分为三大类型：细胞组分（Cell Component,CC）、分子功能（Moluecular  Function,MF）、生物学过程（Biological Process,BP）</p>
+<p><strong>3. GO的结构以及GO中的关系</strong><br>GO的结构是包含三个分支的树，每一个分支是一副有向无环图（DAG），含有大量的节点和分支。越高层的节点代表的意义越广泛，越低层的节点代表的意义越具体。<br>GO主要用两种方式进行存储</p>
+<ul>
+<li>OBO file<ul>
+<li>由[term]为一个术语的开始</li>
+<li>然后是GO的ID——名称name——属于哪一种分支namespace——定义def——同义词synonym——与其他term的关系</li>
+<li>最后以空行结尾</li>
+</ul>
+</li>
+<li>XML file：类似于HTML语言的结构</li>
+</ul>
+<p>GO中的关系，主要有</p>
+<ul>
+<li><code>A is a B</code>：代表A属于B的子类型，如有丝分裂周期<code>is a</code>细胞周期</li>
+<li><code>A part of B</code>：代表A是B的一部分，如线粒体内膜<code>part of</code>线粒体</li>
+<li><code>A regulates B</code>：代表A调节B，有两种分别是<code>positive regulates</code>和<code>negative regulates</code>：代表正调节和负调节</li>
+</ul>
+<p>对于关系之间的推断<br><code>is a</code>和<code>part of</code>合并，结果仍然是<code>part of</code><br><code>is a</code>或<code>part of</code>与<code>regulates</code>合并，则结果仍然是<code>regulates</code><br>小技巧：<code>is a</code> &lt; <code>part of</code> &lt; <code>regulates</code></p>
+<hr>
+<h1 id="KEGG-代谢通路"><a href="#KEGG-代谢通路" class="headerlink" title="KEGG 代谢通路"></a>KEGG 代谢通路</h1><p>KEGG 全称为 Kyoto Encyclopedia of Genes and Genomes （京都基因与基因组百科全书）是关于基因、蛋白质、生化反应及代谢通路的综合生物信息学数据库。</p>
+<p>在存储内容上，KEGG 一共有 19 个子库，分类系统信息、基因组信息和化学信息三类</p>
+<ul>
+<li>基因组信息存储在 KEGG GENES 数据库中，包含完整和部分测序的基因组序列</li>
+<li>KEGG PATHWAY 数据库存储图解的细胞生化过程如代谢、膜转运、信号传递、细胞周期和同系保守的子通路信息。</li>
+<li>KEGG BRITE 数据库存储包含多个生物学对象的基于功能进行等级划分的本体论数据库，包括分子、细胞、物种、疾病、药物以及他们之间的关系。</li>
+<li>KEGG DRUG 存储日本所有非处方药和美国大部分处方药</li>
+<li>KEGG DISEASE 存储疾病基因、通路、药物以及疾病诊断标记</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" class="category-chain-item">生物信息学</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E5%8E%9F%E7%90%86/" class="print-no-link">#生物信息学原理</a>
+      
+        <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="print-no-link">#基础知识</a>
+      
+        <a href="/tags/%E8%80%83%E7%A0%94/" class="print-no-link">#考研</a>
+      
+        <a href="/tags/%E8%BD%AC%E5%BD%95%E7%BB%84%E5%AD%A6/" class="print-no-link">#转录组学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>转录组学</div>
+      <div>https://bacontesla.github.io/blog/8-转录组学/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Bacon Tesla</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年9月2日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/9-%E8%9B%8B%E7%99%BD%E8%B4%A8%E7%BB%84%E5%AD%A6%E4%BB%A5%E5%8F%8A%E7%BB%93%E6%9E%84%E9%A2%84%E6%B5%8B/" title="蛋白质组学">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">蛋白质组学</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/7-%E5%9F%BA%E5%9B%A0%E7%BB%84%E6%B3%A8%E9%87%8A/" title="基因组注释">
+                        <span class="hidden-mobile">基因组注释</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
