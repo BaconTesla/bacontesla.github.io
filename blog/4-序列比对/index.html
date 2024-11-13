@@ -19,20 +19,13 @@
   <meta name="author" content="Bacon Tesla">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、记分矩阵核苷酸替换矩阵    类型 描述 效果    等价矩阵 相同核苷酸之间得1分，不同得0分 一般用于理论计算，实际使用效果差   转换-颠换矩阵 转换即嘌呤(A&#x2F;G)之间替换和嘧啶(T&#x2F;C)之间替换、颠换即嘌呤与嘧啶之间替换 一般转换频率高于颠换，因此转换得-1分 ，颠换得-5分   BLAST矩阵 相同得5分，不同得-4分 实践经验所得，没有理论依据，效果最好">
+    <meta name="description" content="一、记分矩阵 核苷酸替换矩阵     类型 描述 效果     等价矩阵 相同核苷酸之间得1分，不同得0分 一般用于理论计算，实际使用效果差   转换-颠换矩阵 转换即嘌呤(A&#x2F;G)之间替换和嘧啶(T&#x2F;C)之间替换、颠换即嘌呤与嘧啶之间替换 一般转换频率高于颠换，因此转换得-1分 ，颠换得-5分   BLAST矩阵 相同得5分，不同得-4分 实践经验所得，没有理论依据，效果最好    蛋白质的替换">
 <meta property="og:type" content="article">
 <meta property="og:title" content="序列比对">
 <meta property="og:url" content="https://bacontesla.github.io/blog/4-%E5%BA%8F%E5%88%97%E6%AF%94%E5%AF%B9/index.html">
 <meta property="og:site_name" content="Meditation">
-<meta property="og:description" content="一、记分矩阵核苷酸替换矩阵    类型 描述 效果    等价矩阵 相同核苷酸之间得1分，不同得0分 一般用于理论计算，实际使用效果差   转换-颠换矩阵 转换即嘌呤(A&#x2F;G)之间替换和嘧啶(T&#x2F;C)之间替换、颠换即嘌呤与嘧啶之间替换 一般转换频率高于颠换，因此转换得-1分 ，颠换得-5分   BLAST矩阵 相同得5分，不同得-4分 实践经验所得，没有理论依据，效果最好">
+<meta property="og:description" content="一、记分矩阵 核苷酸替换矩阵     类型 描述 效果     等价矩阵 相同核苷酸之间得1分，不同得0分 一般用于理论计算，实际使用效果差   转换-颠换矩阵 转换即嘌呤(A&#x2F;G)之间替换和嘧啶(T&#x2F;C)之间替换、颠换即嘌呤与嘧啶之间替换 一般转换频率高于颠换，因此转换得-1分 ，颠换得-5分   BLAST矩阵 相同得5分，不同得-4分 实践经验所得，没有理论依据，效果最好    蛋白质的替换">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230824101444.png">
-<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230916105928.png">
-<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230916110006.png">
-<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230824093122.png">
-<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230824093533.png">
-<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230824095201.png">
-<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230916124531.png">
 <meta property="article:published_time" content="2023-08-23T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-11-13T06:09:57.768Z">
 <meta property="article:author" content="Bacon Tesla">
@@ -40,7 +33,6 @@
 <meta property="article:tag" content="基础知识">
 <meta property="article:tag" content="考研">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230824101444.png">
   
   
   
@@ -286,8 +278,10 @@
             
               <div class="markdown-body">
                 
-                <h1 id="一、记分矩阵"><a href="#一、记分矩阵" class="headerlink" title="一、记分矩阵"></a>一、记分矩阵</h1><p><strong>核苷酸替换矩阵</strong></p>
+                <h1 id="一记分矩阵">一、记分矩阵</h1>
+<p><strong>核苷酸替换矩阵</strong></p>
 <table>
+
 <thead>
 <tr>
 <th>类型</th>
@@ -295,14 +289,15 @@
 <th>效果</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>等价矩阵</strong></td>
 <td>相同核苷酸之间得1分，不同得0分</td>
 <td>一般用于理论计算，实际使用效果差</td>
 </tr>
 <tr>
 <td><strong>转换-颠换矩阵</strong></td>
-<td>转换即嘌呤(A&#x2F;G)之间替换和嘧啶(T&#x2F;C)之间替换、颠换即嘌呤与嘧啶之间替换</td>
+<td>转换即嘌呤(A/G)之间替换和嘧啶(T/C)之间替换、颠换即嘌呤与嘧啶之间替换</td>
 <td>一般转换频率高于颠换，因此转换得-1分 ，颠换得-5分</td>
 </tr>
 <tr>
@@ -310,9 +305,11 @@
 <td>相同得5分，不同得-4分</td>
 <td>实践经验所得，没有理论依据，效果最好</td>
 </tr>
-</tbody></table>
-<p><strong>蛋白质的替换矩阵</strong>  </p>
+</tbody>
+</table>
+<p><strong>蛋白质的替换矩阵</strong></p>
 <table>
+
 <thead>
 <tr>
 <th>类型</th>
@@ -320,7 +317,8 @@
 <th>效果</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>等价矩阵</td>
 <td>相同得 1 分，不相同得 0 分</td>
 <td>一般用于理论计算，实际不适用</td>
@@ -345,12 +343,22 @@
 <td></td>
 <td></td>
 </tr>
-</tbody></table>
-<p>回答几个问题<br>1.记分矩阵的一般原理？<br>构建记分矩阵，需要找到一个可以估计任何联配的统计数，使生物学关系最显著的联配统计数最大。</p>
-<p>2.为什么记分矩阵的打分值会有所差别？尤其是氨基酸矩阵<br>氨基酸的种类共20种，其中有一些为相对常见的残基（如A、P、S和T），也有一些相对稀有的残基（如W和Y）。为了反映匹配氨基酸间的生物学和化学关系，对于相对常见的残基匹配得分要低于相对稀有的残基匹配得分<br>，同时具有相似性质氨基酸的错配得分设置 <strong>+</strong> 值，毫不相似的错配取 <strong>-</strong> 值</p>
-<hr>
-<h1 id="二、仿射空位罚分"><a href="#二、仿射空位罚分" class="headerlink" title="二、仿射空位罚分"></a>二、仿射空位罚分</h1><p>公式：<br>$$<br>w_{k}&#x3D;a+bk<br>$$<br>1.空位设置罚分<em>a</em>和空位扩展罚分<em>b</em>参数的变化会导致哪些影响？</p>
+</tbody>
+</table>
+<p>回答几个问题 1.记分矩阵的一般原理？
+构建记分矩阵，需要找到一个可以估计任何联配的统计数，使生物学关系最显著的联配统计数最大。</p>
+<p>2.为什么记分矩阵的打分值会有所差别？尤其是氨基酸矩阵
+氨基酸的种类共20种，其中有一些为相对常见的残基（如A、P、S和T），也有一些相对稀有的残基（如W和Y）。为了反映匹配氨基酸间的生物学和化学关系，对于相对常见的残基匹配得分要低于相对稀有的残基匹配得分
+，同时具有相似性质氨基酸的错配得分设置 <strong>+</strong>
+值，毫不相似的错配取 <strong>-</strong> 值</p>
+<hr />
+<h1 id="二仿射空位罚分">二、仿射空位罚分</h1>
+<p>公式： <span class="math display">\[
+w_{k}=a+bk
+\]</span>
+1.空位设置罚分<em>a</em>和空位扩展罚分<em>b</em>参数的变化会导致哪些影响？</p>
 <table>
+
 <thead>
 <tr>
 <th>a</th>
@@ -359,7 +367,8 @@
 <th>适用范围</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>大</td>
 <td>大</td>
 <td>极少插入或缺失</td>
@@ -377,241 +386,349 @@
 <td>大量的小块插入 Gap分散</td>
 <td>适用于亲缘关系较远的蛋白质同源性分析此时打分值主要与b相关，重点在于每次插入的长度）</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <blockquote>
 <p>参考：《生物信息学》樊龙江第二版，P83</p>
 </blockquote>
-<p>2.对于实际情况，如何选择空位罚分（介绍两种例子）<br>1）有两条相似的待比对序列，是同源序列，因此它们的功能和结构也相似。其中一条序列结构已知，而另一条未知。想通过序列比对，用已知结构序列作为模版，预测另一个序列的结构。（分散，就要用<strong>小</strong>的空位设置罚分<strong>a</strong>和<strong>大</strong>的空位延伸罚分<strong>b</strong>）<br>2）有两条待比对序列，且已知它们大部分区域都是非常相似的，但其中一个序列的功能区，在另一个序列中是缺失的。想要通过序列比对，将另一个序列的功能区找出来。（集中，就要用<strong>大</strong>的空位设置罚分<strong>a</strong>和<strong>小</strong>的空位延伸罚分<strong>b</strong>）</p>
-<blockquote>
-<p>参考：山东大学《生物信息学MOOC》</p>
-</blockquote>
-<hr>
-<h1 id="三、PAM矩阵、BLOSUM矩阵"><a href="#三、PAM矩阵、BLOSUM矩阵" class="headerlink" title="三、PAM矩阵、BLOSUM矩阵"></a>三、PAM矩阵、BLOSUM矩阵</h1><p><strong>PAM矩阵小细节</strong>：<br><strong>1. PAM1和PAM100</strong><br>PAM1代表100个氨基酸残基中有1个可接受单点突变，但PAM100不代表100个氨基酸残基都发生了替换，因为100次突变中可能有一个氨基酸残基发生了多次突变又突变回了原来的氨基酸残基，即有些突变是可以相互抵消的。<br><strong>2. PAM矩阵中最不容易突变的氨基酸</strong><br>一种氨基酸向其他氨基酸突变是存在难易条件的。取决于残基的化学性质和空间位阻。如Trp(W)<strong>色氨酸</strong>存在吲哚环结构（空间位阻大）以及Cys(C)<strong>半胱氨酸</strong>存在巯基（形成硫醚环，共价键强度大）<br><strong>3. PAM250</strong><br>PAM250并不是有250%的氨基酸发生突变，氨基酸残基差异并不是随着PAM矩阵后面数字增大而线性变化，虽然PAM1的残基差异为1%，PAM23的残基差异为20%；但PAM80的残基差异为50%，PAM250的残基差异为80%<br><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230824101444.png" srcset="/img/loading.gif" lazyload alt="image.png|250"></p>
-<p><strong>PAM矩阵和BLOSUM矩阵的异同点</strong><br><strong>相同点</strong><br>PAM和BLOSUM都是使用了对数概率矩阵来作为最后的打分值<br>公式为：<br>$$<br>S^{n}[j,k]&#x3D;clog_{2}\frac{q_{jk}^{n}}{p_{j}p_{k}}<br>$$</p>
-<p><strong>不同点</strong></p>
-<ol>
-<li><em>模型方法</em>：PAM矩阵基于马尔科夫链进行建模，显式地模拟了氨基酸替代过程。而BLOSUM矩阵没有底层的数学模型。</li>
-<li><em>数据来源</em>：PAM矩阵使用全长对齐的相似序列构建，这些序列具有至少85%的相似度，并且被假设在任何位置上仅发生了单个替代。而BLOSUM矩阵使用多个序列的局部保守区域（无间隔的块）构建，这些序列在整个长度上并没有高度保守的特征。（<em>PAM250</em>在检测进化距离较远的序列之间是否具有同源性上准确度受限（<em>PAM250</em>是从初始模型中<strong>推算</strong>而来并<strong>不是直接计算</strong>），而<em>BLOSUM62</em>是由真实数据产生的（在面对进化距离较远的序列比对中准确率较好））</li>
-<li><em>数据处理</em>：PAM矩阵通过使用最大简约树上的分支来校正样本偏差，避免频率偏差。而BLOSUM矩阵则通过聚类方法处理样本偏差并获得不同程度的进化差异。</li>
-<li><em>进化差异参数</em>：在PAM矩阵中，随着进化差异的增加，进化差异参数也增加。而在BLOSUM矩阵中，进化差异参数随着进化差异的增加而减小。（PAM矩阵后面的数字越大，表示序列之间的进化距离越远，而BLOSUM矩阵后面的数字越大，表示序列之间的进化距离越近）</li>
-<li><em>氨基酸性质</em>：PAM矩阵和BLOSUM矩阵对于某些氨基酸之间的相似性和可能引起的替换的处理不同（PAM250认为赖氨酸K与谷氨酸E不太可能发生替换而打分为0；BLOSUM62认为K和E可以发生替换而打分为1）</li>
-<li><em>应用范围</em>：PAM矩阵用于比对和序列相似性评估，而BLOSUM矩阵通常用于蛋白质家族的保守区域分析。</li>
-</ol>
-<hr>
-<h1 id="四、最长公共子串与编辑距离"><a href="#四、最长公共子串与编辑距离" class="headerlink" title="四、最长公共子串与编辑距离"></a>四、最长公共子串与编辑距离</h1><p>最长公共子串：LCS 是一个在序列集合（通常是两条序列）中找到所有序列中最长的子序列, 通常在全局序列比对结果中去除插入和缺失后的字符串</p>
-<p><strong>编辑距离</strong>（editing distance）：指的是通过三种编辑操作（插入、缺失和替换）将一条序列转化为另一条序列的最小编辑次数</p>
-<p>在只允许插入和缺失而不允许错配的情况下两个字符串的编辑距离可以通过最长公共子序列的长度求的<br>假定两个字符串 v 和 w，长度分别为 m 和 n。将最长公共子序列记为 $LC(v,w)$，而将编辑距离记为 $DE(v,w)$<br>$$<br>DE(v,w)&#x3D;m+n-2\times LC(v,w)<br>$$<br>还有一个距离叫<strong>汉明距离</strong>（hamming distance）：指两个字符串对应位置的不同字符的个数。没有编辑距离的插入缺失和替换的操作，有些时候汉明距离大的序列之间可能具有很高的相似度。</p>
-<p><strong>提问：相似性得分和编辑距离的区别与联系？</strong><br><em><strong>区别:</strong></em> <strong>相似性得分</strong>是以某种计分规则计算两个序列相似性所得的分值，是为了使得最后打分值最大，在适当的位置插入空位使序列中相同字符对齐，来获得序列之间最大相似度；<strong>编辑距离</strong>是用来描述两个序列对应位置上差异字符的个数，是为了使得最后编辑次数最少，通过字符替换或插入删除空格将一个序列转变为另一个序列，来获得序列之间最大相似度。<br><em><strong>联系:</strong></em> 相似性得分和编辑距离是一对相反的定量描述序列相似性的度量。</p>
-<hr>
-<h1 id="五、序列比对算法"><a href="#五、序列比对算法" class="headerlink" title="五、序列比对算法"></a>五、序列比对算法</h1><p>Dotlet打点法：大致了解两条序列之间的相似程度，也可以研所某条序列自身可能存在的重复片段<br><strong>序列之间的打点</strong>比较相程度<br><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230916105928.png" srcset="/img/loading.gif" lazyload alt="image.png|300"></p>
-<p><strong>序列自身打点</strong>探索自身的重复片段<br><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230916110006.png" srcset="/img/loading.gif" lazyload alt="image.png|300"></p>
-<p>将两条序列进行横竖比较，比较的次数为两条序列长度之积，<strong>即序列m和序列n，比较m×n次</strong></p>
-<ul>
-<li>连续的对角线和对角线的平行线代表两条序列的相同区域。</li>
-<li>打点法可以快捷的发现序列中的串联重复序列以及重复次数<ul>
-<li>只需要将一条序列自身横竖比较</li>
-<li>首先必然会有一条主对角线完全匹配</li>
-<li>然后通过主对角线一侧且与之平行的片段就是重复区域，长度最小的就是重复序列单元，通过等距平行线的个数可得重复的次数N，（因此，串联重复序列有N+1条，含本身）</li>
-</ul>
-</li>
-<li>短的重复序列具有高度多态性，且遵循孟德尔共线性遗传规律，所以快速查找某些特定的短的串联重复序列的重复次数可以用于法医学的个体识别或亲子鉴定</li>
-</ul>
-<hr>
-<h1 id="六、一致度、相似度和同源性"><a href="#六、一致度、相似度和同源性" class="headerlink" title="六、一致度、相似度和同源性"></a>六、一致度、相似度和同源性</h1><p>^3ba492</p>
-<p><strong>Identity</strong>：两条序列在同一位点上的核苷酸或氨基酸残基完全相同<br>$$Identity&#x3D;\frac{相同的碱基或氨基酸}{序列长度}$$<br>**Similarity (positive)**：两条序列在同一位点上的氨基酸残基的化学性质相似包括相同（计分矩阵中分值&gt;0）<br>$$Similarity&#x3D;\frac{相同的氨基酸+性质相似的氨基酸}{序列长度}$$<br><strong>Homology</strong>可以说A与B的相似性是80%，但不能说A与B有80%同源，因为“同源”是性质，不能量化。</p>
-<p><strong>注意！！！</strong><br>在进行一致度和相似度的计算时，无论两条序列长度是否相同，都需要先做全局比对，然后根据比对结果及比对长度再计算一致度和相似度 </p>
-<hr>
-<h1 id="七、BLAST"><a href="#七、BLAST" class="headerlink" title="七、BLAST"></a>七、BLAST</h1><p><strong>原理</strong>：</p>
-<ul>
-<li>对于待比对或检索的序列，建立词列表或哈希表（word, K-tupple, K-mer）</li>
-<li>确定搜索目标数据库中所有包含与上述词列表中词完全一样的序列（hit） </li>
-<li>对第二步中得到的每一条序列，在匹配区域（hit）向两端以动态规划算法向外延伸，扩展比对区域；得到高得分联配对(HSP)，根据设定的临界比对打分值或E值，列出所有HSP</li>
-</ul>
-<p><strong>应用</strong>：</p>
-<ul>
-<li>序列比对，例如两序列比对，序列数据库检索</li>
-<li>推断未知序列功能</li>
-<li>寻找某个物种同一家族的蛋白质序列</li>
-<li>寻找物种之间的同源基因&#x2F;蛋白</li>
-</ul>
-<p>基于BLAST算法的工具<br><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230824093122.png" srcset="/img/loading.gif" lazyload alt="image.png|400"><br><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230824093533.png" srcset="/img/loading.gif" lazyload alt="image.png|550"></p>
-<p>参考：<a target="_blank" rel="noopener" href="https://ftp.ncbi.nlm.nih.gov/pub/factsheets/HowTo_BLASTGuide.pdf">HowTo_BLASTGuide.pdf (nih.gov)</a></p>
-<p><strong>提问</strong><br><strong>1.为什么在blastx中要对需要查询的核酸序列按照6种开放阅读框翻译？</strong><br>答：因为在无法得知翻译起始位点的情况下，核酸翻译的起始位点可能是第1个位点、第2个位点或第3个位点，还有可能在核酸的互补链翻译，这样就有$2\times 3&#x3D;6$种可能的ORF</p>
-<p><strong>2.为什么核酸数据库本来就已有注释的信息，在tblastn中还要对核酸数据库进行翻译？</strong><br>答：因为核酸数据库中的注释信息并非完全，对于数据库中的核酸序列可能还存在一些未被注释的gene。有些时候，正是这些没有被注释的gene的蛋白质产物与需要查询的蛋白质序列具有相似性</p>
-<p>对于蛋白质序列blast，使用的程序有blastp、PSI-BLAST、DELTA-BLAST<br>对于核酸序列blast，使用的程序有megablast、blastn</p>
-<h2 id="1-PSI-BLAST"><a href="#1-PSI-BLAST" class="headerlink" title="1.PSI-BLAST"></a>1.PSI-BLAST</h2><p>利用blastp在蛋白质数据库中循环搜索查询蛋白质，所有前一次被psi-blast发现的统计显著蛋白质序列将整合成新记分矩阵（PSSM, Position-Specific Scoring Matrix），通过多次迭代比对，直到不再发现统计显著的新蛋白质。能够寻找到蛋白质家族保守序列，最大限度的找到和查询序列具有同源性的序列（虽然序列相似度很低，但有潜在的同源蛋白质序列）</p>
-<h2 id="2-PHI-BLAST"><a href="#2-PHI-BLAST" class="headerlink" title="2.PHI-BLAST"></a>2.PHI-BLAST</h2><p>PSI-BLAST属于撒大网搜索，而PHI-BLAST就是精准搜索<br>PHI-BLAST通过正则表达式的特定模式来进行搜索<br>例如<code>N&#123;P&#125;[ST]&#123;P&#125;</code>就是查找以N天冬酰胺开头，连接一个不是P脯氨酸的氨基酸，再连接S丝氨酸或T苏氨酸中任意一个，最后再连接一个不是P脯氨酸的氨基酸<br>正则表达式中</p>
-<ul>
-<li><code>&#123;&#125;</code>表示除什么以外</li>
-<li><code>[]</code>表示其中之一</li>
-<li><code>x</code>表示任意字符</li>
-<li><code>(3,7)</code>表示3到7个某字符</li>
-</ul>
-<p>总结：如何选择合适的blast工具<br>当想要查找亲缘关系较近的序列时，直接使用balstp；<br>当想要查找亲缘关系较远的序列时，选择PSI-BLAST；<br>当想要查找符合某一精确模式的序列时，选择PHI-BLAST</p>
-<h2 id="3-BLAST数据库选取"><a href="#3-BLAST数据库选取" class="headerlink" title="3.BLAST数据库选取"></a>3.BLAST数据库选取</h2><p><strong>核酸数据库</strong>，<br><strong>1. 默认default</strong>的是**Nucleotide collection(nt)**，包含所有来自GeneBank+EMBL+DDBJ+PDB序列，但是排除PAT+EST+STS+WGS+TSA以及phase 0, 1 or 2 HTGS sequences （人类基因组计划(Human Genome Project)早期阶段的未完成和未注释的基因组序列）。是非冗余的，将一致性序列归为一个entry。<br><strong>2. refseq_rna</strong>，包含RefSeq数据库中经过人工审查和校正（NM_, NR_）+ 基因组中预测（XM_,XR）的序列[[3-生物信息学数据库#^969454|NM, NR, XM, XR解释]]</p>
-<p><strong>蛋白质数据库</strong><br><strong>1. 默认default</strong>的是**Nucleotide collection(nr)**，包含非冗余的GeneBank CDS翻译的蛋白质序列+RefSeq+PDB+SwissProt+PIR+PRF，不包括PAT，TSA和env_nr（来自环境样本中未知的微生物序列）序列。<br><strong>2. refseq_protein</strong>，包含来自Refseq数据库的蛋白质序列。<br><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230824095201.png" srcset="/img/loading.gif" lazyload alt="image.png|550"> ^5c3b9e</p>
-<p>对于BLAST搜索结果</p>
-<ol>
-<li>从Graphic Summary图形化搜索部分，可以知道balst搜索到了多少个hit（注意，<strong>hit不是搜索到的数据库序列，而是高联配得分片段</strong>，可能是全长序列也就是全局联配、也可能是某条序列的一部分也就是局部联配）</li>
-<li>从Descriptions详细信息列表，可以知道每个高联配得分所在的序列信息，按照E值排序，其中得分值与E值成反比，而一致性与E值无明确的相关性（因为 blast并没有做双序列全局比对，因此一致度是通过搜索到的每条序列与查询序列进行双序列比对得到的）</li>
-<li>blast对于亲缘关系较近的序列搜索效果好，但对于亲源关系较远的序列则可能会漏去<br><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230916124531.png" srcset="/img/loading.gif" lazyload alt="image.png|525"></li>
-</ol>
-<p>blast搜索结果分为三大板块</p>
-<ol>
-<li>blast任务信息：包括Job Title（任务标题）、RID（blast请求ID）、Program（使用的程序）、Database（查询的数据库）、Query ID（查询ID）、Description（通常是fasta文件的&gt;部分）、Molecule  type（分子类型）、Query Length（查询序列长度）、Other report（其他报告，如结果的距离树、多序列比对可视化）</li>
-<li>结果筛选：包括Organism物种的筛选（可筛选出包含或排除的物种）、Percent Identity（一致性的百分比）、E value（E值）、Query Coverage（数据库中序列与查询序列的覆盖范围）</li>
-<li>结果详细信息：包括Max Score（最大得分）、Total Score(总得分）、Query Cover（覆盖度）、E value（E值）、Per. Ident（一致性百分比）、Acc. Len（该高联配得分对应的数据库中序列的长度）、Accession（序列登录号）</li>
-</ol>
-<h2 id="4-其他双序列比对算法"><a href="#4-其他双序列比对算法" class="headerlink" title="4.其他双序列比对算法"></a>4.其他双序列比对算法</h2><h3 id="1-BLAT"><a href="#1-BLAT" class="headerlink" title="(1) BLAT"></a>(1) BLAT</h3><p>BLAT相比于BLAST的优势：</p>
-<ul>
-<li>速度快。BLAT是将庞大的目标数据库索引化，并写入内存可以反复高速调用，时间和空间的数据相关性高，且查询数量越大，BLAT的优势越大</li>
-<li>可以发现包含内含子的基因位置信息。BLAT不像BLAST将每个同源区域作为单独的比对结果返回，而是将比对结果缝合在一起形成大的联配结果，同时BLAT通过自身算法可以从大联配结果中给出正确的剪切位点，即外显子和内含子的基因位置信息。</li>
-</ul>
-<h3 id="2-HMMER"><a href="#2-HMMER" class="headerlink" title="(2) HMMER"></a>(2) HMMER</h3><p>基于隐马尔可夫模型的概型的同源蛋白或核苷酸序列比对和搜索工具。不同于其他的搜索工具，其是以一个HMM概型作为递交序列。例如多序列联配结果可构建HMM概型，单条序列也可通过自身状态和基于标准的氨基酸替换矩阵构建HMM概型</p>
-<hr>
-<h1 id="八、双序列比对工具"><a href="#八、双序列比对工具" class="headerlink" title="八、双序列比对工具"></a>八、双序列比对工具</h1><h2 id="EMBL全局双序列比对工具PSA"><a href="#EMBL全局双序列比对工具PSA" class="headerlink" title="EMBL全局双序列比对工具PSA"></a>EMBL全局双序列比对工具PSA</h2><p>工具介绍：首页包含三个选择，分别是全局比对、局部比对和基因组比对<br>使用方法（全局比对蛋白质序列）：</p>
-<ol>
-<li>输入需要比对的两条序列</li>
-<li>More Option设置比对参数，比如可以选择替换矩阵、空位罚分、输出格式</li>
-<li>提交Submit</li>
-<li>比对结果 <code>|</code>表示上下一致、<code>:</code>表示上下相似、<code>.</code>表示上下不相似</li>
-</ol>
-<hr>
-<h1 id="九、比对的统计学显著性"><a href="#九、比对的统计学显著性" class="headerlink" title="九、比对的统计学显著性"></a>九、比对的统计学显著性</h1><h2 id="1-典型方法"><a href="#1-典型方法" class="headerlink" title="1.典型方法"></a>1.典型方法</h2><p>将两条待比较的序列分别随机打乱，再使用相同的程序与打分函数（或打分矩阵）进行比对，计算这些随机序列的相似性得分。重复这一过程，用$\mu$和$\delta$分别表示其平均值与标准差。 然后对于原序列比对的得分x，计算$z&#x3D;(x-\mu)&#x2F;\delta$，z值越小越显著。 </p>
-<h2 id="2-Karlin-Altschul"><a href="#2-Karlin-Altschul" class="headerlink" title="2.Karlin-Altschul"></a>2.Karlin-Altschul</h2><p><strong>Karlin-Altschul</strong>的计算公式<br>$$<br>E&#x3D;kmne^{-\lambda S}<br>$$<br>其中，k为搜索空间，m、n为两条序列的长度，$\lambda$为计分系统的特征数，S为设定的联配值</p>
-<ul>
-<li>E值的含义：E值表示不小于比值为S的HSP个数的期望值，反映了在给定数据库大小下,随机得到比对高级别分值至少为S的可能性。</li>
-<li>序列长度加倍，E值加倍</li>
-<li>E随S变化而显著变化，S增大，E急剧减少</li>
-<li>搜索不到比值$\ge S$的HSP的概率为$e^{-E}$，则至少发现一个HSP的概率为$p&#x3D;1-e^{-E}$</li>
-<li>在可能搜索到三个HSP比值$\ge S$的情况下，至少发现一个HSP的概率p为0.95（$E&#x3D;3,p&#x3D;1-e^{-3}&#x3D;0.95$）</li>
-</ul>
-<h2 id="3-经验方法"><a href="#3-经验方法" class="headerlink" title="3.经验方法"></a>3.经验方法</h2><ol>
+<p>2.对于实际情况，如何选择空位罚分（介绍两种例子）
+1）有两条相似的待比对序列，是同源序列，因此它们的功能和结构也相似。其中一条序列结构已知，而另一条未知。想通过序列比对，用已知结构序列作为模版，预测另一个序列的结构。（分散，就要用<strong>小</strong>的空位设置罚分<strong>a</strong>和<strong>大</strong>的空位延伸罚分<strong>b</strong>）<br />
+2）有两条待比对序列，且已知它们大部分区域都是非常相似的，但其中一个序列的功能区，在另一个序列中是缺失的。想要通过序列比对，将另一个序列的功能区找出来。（集中，就要用<strong>大</strong>的空位设置罚分<strong>a</strong>和<strong>小</strong>的空位延伸罚分<strong>b</strong>）
+&gt;参考：山东大学《生物信息学MOOC》</p>
+<hr />
+<h1 id="三pam矩阵blosum矩阵">三、PAM矩阵、BLOSUM矩阵</h1>
+<p><strong>PAM矩阵小细节</strong>： <strong>1. PAM1和PAM100</strong>
+PAM1代表100个氨基酸残基中有1个可接受单点突变，但PAM100不代表100个氨基酸残基都发生了替换，因为100次突变中可能有一个氨基酸残基发生了多次突变又突变回了原来的氨基酸残基，即有些突变是可以相互抵消的。
+<strong>2. PAM矩阵中最不容易突变的氨基酸</strong>
+一种氨基酸向其他氨基酸突变是存在难易条件的。取决于残基的化学性质和空间位阻。如Trp(W)<strong>色氨酸</strong>存在吲哚环结构（空间位阻大）以及Cys(C)<strong>半胱氨酸</strong>存在巯基（形成硫醚环，共价键强度大）
+<strong>3. PAM250</strong>
+PAM250并不是有250%的氨基酸发生突变，氨基酸残基差异并不是随着PAM矩阵后面数字增大而线性变化，虽然PAM1的残基差异为1%，PAM23的残基差异为20%；但PAM80的残基差异为50%，PAM250的残基差异为80%
+<img
+src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230824101444.png" srcset="/img/loading.gif" lazyload
+alt="image.png|250" /></p>
+<p><strong>PAM矩阵和BLOSUM矩阵的异同点</strong> <strong>相同点</strong>
+PAM和BLOSUM都是使用了对数概率矩阵来作为最后的打分值 公式为： <span
+class="math display">\[
+S^{n}[j,k]=clog_{2}\frac{q_{jk}^{n}}{p_{j}p_{k}}
+\]</span></p>
+<p><strong>不同点</strong> 1.
+<em>模型方法</em>：PAM矩阵基于马尔科夫链进行建模，显式地模拟了氨基酸替代过程。而BLOSUM矩阵没有底层的数学模型。
+2.
+<em>数据来源</em>：PAM矩阵使用全长对齐的相似序列构建，这些序列具有至少85%的相似度，并且被假设在任何位置上仅发生了单个替代。而BLOSUM矩阵使用多个序列的局部保守区域（无间隔的块）构建，这些序列在整个长度上并没有高度保守的特征。（<em>PAM250</em>在检测进化距离较远的序列之间是否具有同源性上准确度受限（<em>PAM250</em>是从初始模型中<strong>推算</strong>而来并<strong>不是直接计算</strong>），而<em>BLOSUM62</em>是由真实数据产生的（在面对进化距离较远的序列比对中准确率较好））
+3.
+<em>数据处理</em>：PAM矩阵通过使用最大简约树上的分支来校正样本偏差，避免频率偏差。而BLOSUM矩阵则通过聚类方法处理样本偏差并获得不同程度的进化差异。
+4.
+<em>进化差异参数</em>：在PAM矩阵中，随着进化差异的增加，进化差异参数也增加。而在BLOSUM矩阵中，进化差异参数随着进化差异的增加而减小。（PAM矩阵后面的数字越大，表示序列之间的进化距离越远，而BLOSUM矩阵后面的数字越大，表示序列之间的进化距离越近）
+5.
+<em>氨基酸性质</em>：PAM矩阵和BLOSUM矩阵对于某些氨基酸之间的相似性和可能引起的替换的处理不同（PAM250认为赖氨酸K与谷氨酸E不太可能发生替换而打分为0；BLOSUM62认为K和E可以发生替换而打分为1）
+6.
+<em>应用范围</em>：PAM矩阵用于比对和序列相似性评估，而BLOSUM矩阵通常用于蛋白质家族的保守区域分析。</p>
+<hr />
+<h1 id="四最长公共子串与编辑距离">四、最长公共子串与编辑距离</h1>
+<p>最长公共子串：LCS
+是一个在序列集合（通常是两条序列）中找到所有序列中最长的子序列,
+通常在全局序列比对结果中去除插入和缺失后的字符串</p>
+<p><strong>编辑距离</strong>（editing
+distance）：指的是通过三种编辑操作（插入、缺失和替换）将一条序列转化为另一条序列的最小编辑次数</p>
+<p>在只允许插入和缺失而不允许错配的情况下两个字符串的编辑距离可以通过最长公共子序列的长度求的
+假定两个字符串 v 和 w，长度分别为 m 和 n。将最长公共子序列记为 <span
+class="math inline">\(LC(v,w)\)</span>，而将编辑距离记为 <span
+class="math inline">\(DE(v,w)\)</span> <span class="math display">\[
+DE(v,w)=m+n-2\times LC(v,w)
+\]</span> 还有一个距离叫<strong>汉明距离</strong>（hamming
+distance）：指两个字符串对应位置的不同字符的个数。没有编辑距离的插入缺失和替换的操作，有些时候汉明距离大的序列之间可能具有很高的相似度。</p>
+<p><strong>提问：相似性得分和编辑距离的区别与联系？</strong>
+<strong><em>区别:</em></strong>
+<strong>相似性得分</strong>是以某种计分规则计算两个序列相似性所得的分值，是为了使得最后打分值最大，在适当的位置插入空位使序列中相同字符对齐，来获得序列之间最大相似度；<strong>编辑距离</strong>是用来描述两个序列对应位置上差异字符的个数，是为了使得最后编辑次数最少，通过字符替换或插入删除空格将一个序列转变为另一个序列，来获得序列之间最大相似度。
+<strong><em>联系:</em></strong>
+相似性得分和编辑距离是一对相反的定量描述序列相似性的度量。</p>
+<hr />
+<h1 id="五序列比对算法">五、序列比对算法</h1>
+<p>Dotlet打点法：大致了解两条序列之间的相似程度，也可以研所某条序列自身可能存在的重复片段
+<strong>序列之间的打点</strong>比较相程度 <img
+src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230916105928.png" srcset="/img/loading.gif" lazyload
+alt="image.png|300" /></p>
+<p><strong>序列自身打点</strong>探索自身的重复片段 <img
+src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230916110006.png" srcset="/img/loading.gif" lazyload
+alt="image.png|300" /></p>
+<p>将两条序列进行横竖比较，比较的次数为两条序列长度之积，<strong>即序列m和序列n，比较m×n次</strong>
+- 连续的对角线和对角线的平行线代表两条序列的相同区域。 -
+打点法可以快捷的发现序列中的串联重复序列以及重复次数 -
+只需要将一条序列自身横竖比较 - 首先必然会有一条主对角线完全匹配 -
+然后通过主对角线一侧且与之平行的片段就是重复区域，长度最小的就是重复序列单元，通过等距平行线的个数可得重复的次数N，（因此，串联重复序列有N+1条，含本身）
+-
+短的重复序列具有高度多态性，且遵循孟德尔共线性遗传规律，所以快速查找某些特定的短的串联重复序列的重复次数可以用于法医学的个体识别或亲子鉴定</p>
+<hr />
+<h1 id="六一致度相似度和同源性">六、一致度、相似度和同源性</h1>
+<p>^3ba492</p>
+<p><strong>Identity</strong>：两条序列在同一位点上的核苷酸或氨基酸残基完全相同
+<span
+class="math display">\[Identity=\frac{相同的碱基或氨基酸}{序列长度}\]</span>
+<strong>Similarity
+(positive)</strong>：两条序列在同一位点上的氨基酸残基的化学性质相似包括相同（计分矩阵中分值&gt;0）
+<span
+class="math display">\[Similarity=\frac{相同的氨基酸+性质相似的氨基酸}{序列长度}\]</span>
+<strong>Homology</strong>可以说A与B的相似性是80%，但不能说A与B有80%同源，因为“同源”是性质，不能量化。</p>
+<p><strong>注意！！！</strong>
+在进行一致度和相似度的计算时，无论两条序列长度是否相同，都需要先做全局比对，然后根据比对结果及比对长度再计算一致度和相似度</p>
+<hr />
+<h1 id="七blast">七、BLAST</h1>
+<p><strong>原理</strong>： -
+对于待比对或检索的序列，建立词列表或哈希表（word, K-tupple, K-mer） -
+确定搜索目标数据库中所有包含与上述词列表中词完全一样的序列（hit） -
+对第二步中得到的每一条序列，在匹配区域（hit）向两端以动态规划算法向外延伸，扩展比对区域；得到高得分联配对(HSP)，根据设定的临界比对打分值或E值，列出所有HSP</p>
+<p><strong>应用</strong>： - 序列比对，例如两序列比对，序列数据库检索 -
+推断未知序列功能 - 寻找某个物种同一家族的蛋白质序列 -
+寻找物种之间的同源基因/蛋白</p>
+<p>基于BLAST算法的工具 <img
+src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230824093122.png" srcset="/img/loading.gif" lazyload
+alt="image.png|400" /> <img
+src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230824093533.png" srcset="/img/loading.gif" lazyload
+alt="image.png|550" /></p>
+<p>参考：<a
+target="_blank" rel="noopener" href="https://ftp.ncbi.nlm.nih.gov/pub/factsheets/HowTo_BLASTGuide.pdf">HowTo_BLASTGuide.pdf
+(nih.gov)</a></p>
+<p><strong>提问</strong>
+<strong>1.为什么在blastx中要对需要查询的核酸序列按照6种开放阅读框翻译？</strong>
+答：因为在无法得知翻译起始位点的情况下，核酸翻译的起始位点可能是第1个位点、第2个位点或第3个位点，还有可能在核酸的互补链翻译，这样就有<span
+class="math inline">\(2\times 3=6\)</span>种可能的ORF</p>
+<p><strong>2.为什么核酸数据库本来就已有注释的信息，在tblastn中还要对核酸数据库进行翻译？</strong>
+答：因为核酸数据库中的注释信息并非完全，对于数据库中的核酸序列可能还存在一些未被注释的gene。有些时候，正是这些没有被注释的gene的蛋白质产物与需要查询的蛋白质序列具有相似性</p>
+<p>对于蛋白质序列blast，使用的程序有blastp、PSI-BLAST、DELTA-BLAST
+对于核酸序列blast，使用的程序有megablast、blastn</p>
+<h2 id="psi-blast">1.PSI-BLAST</h2>
+<p>利用blastp在蛋白质数据库中循环搜索查询蛋白质，所有前一次被psi-blast发现的统计显著蛋白质序列将整合成新记分矩阵（PSSM,
+Position-Specific Scoring
+Matrix），通过多次迭代比对，直到不再发现统计显著的新蛋白质。能够寻找到蛋白质家族保守序列，最大限度的找到和查询序列具有同源性的序列（虽然序列相似度很低，但有潜在的同源蛋白质序列）</p>
+<h2 id="phi-blast">2.PHI-BLAST</h2>
+<p>PSI-BLAST属于撒大网搜索，而PHI-BLAST就是精准搜索
+PHI-BLAST通过正则表达式的特定模式来进行搜索
+例如<code>N&#123;P&#125;[ST]&#123;P&#125;</code>就是查找以N天冬酰胺开头，连接一个不是P脯氨酸的氨基酸，再连接S丝氨酸或T苏氨酸中任意一个，最后再连接一个不是P脯氨酸的氨基酸
+正则表达式中 - <code>&#123;&#125;</code>表示除什么以外 -
+<code>[]</code>表示其中之一 - <code>x</code>表示任意字符 -
+<code>(3,7)</code>表示3到7个某字符</p>
+<p>总结：如何选择合适的blast工具
+当想要查找亲缘关系较近的序列时，直接使用balstp；
+当想要查找亲缘关系较远的序列时，选择PSI-BLAST；
+当想要查找符合某一精确模式的序列时，选择PHI-BLAST</p>
+<h2 id="blast数据库选取">3.BLAST数据库选取</h2>
+<p><strong>核酸数据库</strong>， <strong>1.
+默认default</strong>的是<strong>Nucleotide
+collection(nt)</strong>，包含所有来自GeneBank+EMBL+DDBJ+PDB序列，但是排除PAT+EST+STS+WGS+TSA以及phase
+0, 1 or 2 HTGS sequences （人类基因组计划(Human Genome
+Project)早期阶段的未完成和未注释的基因组序列）。是非冗余的，将一致性序列归为一个entry。
+<strong>2.
+refseq_rna</strong>，包含RefSeq数据库中经过人工审查和校正（NM_, NR_）+
+基因组中预测（XM_,XR）的序列[[3-生物信息学数据库#^969454|NM, NR, XM,
+XR解释]]</p>
+<p><strong>蛋白质数据库</strong> <strong>1.
+默认default</strong>的是<strong>Nucleotide
+collection(nr)</strong>，包含非冗余的GeneBank
+CDS翻译的蛋白质序列+RefSeq+PDB+SwissProt+PIR+PRF，不包括PAT，TSA和env_nr（来自环境样本中未知的微生物序列）序列。
+<strong>2. refseq_protein</strong>，包含来自Refseq数据库的蛋白质序列。
+<img
+src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230824095201.png" srcset="/img/loading.gif" lazyload
+alt="image.png|550" /> ^5c3b9e</p>
+<p>对于BLAST搜索结果 1. 从Graphic
+Summary图形化搜索部分，可以知道balst搜索到了多少个hit（注意，<strong>hit不是搜索到的数据库序列，而是高联配得分片段</strong>，可能是全长序列也就是全局联配、也可能是某条序列的一部分也就是局部联配）
+2.
+从Descriptions详细信息列表，可以知道每个高联配得分所在的序列信息，按照E值排序，其中得分值与E值成反比，而一致性与E值无明确的相关性（因为
+blast并没有做双序列全局比对，因此一致度是通过搜索到的每条序列与查询序列进行双序列比对得到的）
+3.
+blast对于亲缘关系较近的序列搜索效果好，但对于亲源关系较远的序列则可能会漏去
+<img
+src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230916124531.png" srcset="/img/loading.gif" lazyload
+alt="image.png|525" /></p>
+<p>blast搜索结果分为三大板块 1. blast任务信息：包括Job
+Title（任务标题）、RID（blast请求ID）、Program（使用的程序）、Database（查询的数据库）、Query
+ID（查询ID）、Description（通常是fasta文件的&gt;部分）、Molecule
+type（分子类型）、Query Length（查询序列长度）、Other
+report（其他报告，如结果的距离树、多序列比对可视化） 2.
+结果筛选：包括Organism物种的筛选（可筛选出包含或排除的物种）、Percent
+Identity（一致性的百分比）、E value（E值）、Query
+Coverage（数据库中序列与查询序列的覆盖范围） 3. 结果详细信息：包括Max
+Score（最大得分）、Total Score(总得分）、Query Cover（覆盖度）、E
+value（E值）、Per. Ident（一致性百分比）、Acc.
+Len（该高联配得分对应的数据库中序列的长度）、Accession（序列登录号）</p>
+<h2 id="其他双序列比对算法">4.其他双序列比对算法</h2>
+<h3 id="blat">(1) BLAT</h3>
+<p>BLAT相比于BLAST的优势： -
+速度快。BLAT是将庞大的目标数据库索引化，并写入内存可以反复高速调用，时间和空间的数据相关性高，且查询数量越大，BLAT的优势越大
+-
+可以发现包含内含子的基因位置信息。BLAT不像BLAST将每个同源区域作为单独的比对结果返回，而是将比对结果缝合在一起形成大的联配结果，同时BLAT通过自身算法可以从大联配结果中给出正确的剪切位点，即外显子和内含子的基因位置信息。
+### (2) HMMER
+基于隐马尔可夫模型的概型的同源蛋白或核苷酸序列比对和搜索工具。不同于其他的搜索工具，其是以一个HMM概型作为递交序列。例如多序列联配结果可构建HMM概型，单条序列也可通过自身状态和基于标准的氨基酸替换矩阵构建HMM概型</p>
+<hr />
+<h1 id="八双序列比对工具">八、双序列比对工具</h1>
+<h2 id="embl全局双序列比对工具psa">EMBL全局双序列比对工具PSA</h2>
+<p>工具介绍：首页包含三个选择，分别是全局比对、局部比对和基因组比对
+使用方法（全局比对蛋白质序列）： 1. 输入需要比对的两条序列 2. More
+Option设置比对参数，比如可以选择替换矩阵、空位罚分、输出格式 3.
+提交Submit 4. 比对结果
+<code>|</code>表示上下一致、<code>:</code>表示上下相似、<code>.</code>表示上下不相似</p>
+<hr />
+<h1 id="九比对的统计学显著性">九、比对的统计学显著性</h1>
+<h2 id="典型方法">1.典型方法</h2>
+<p>将两条待比较的序列分别随机打乱，再使用相同的程序与打分函数（或打分矩阵）进行比对，计算这些随机序列的相似性得分。重复这一过程，用<span
+class="math inline">\(\mu\)</span>和<span
+class="math inline">\(\delta\)</span>分别表示其平均值与标准差。
+然后对于原序列比对的得分x，计算<span
+class="math inline">\(z=(x-\mu)/\delta\)</span>，z值越小越显著。</p>
+<h2 id="karlin-altschul">2.Karlin-Altschul</h2>
+<p><strong>Karlin-Altschul</strong>的计算公式 <span
+class="math display">\[
+E=kmne^{-\lambda S}
+\]</span> 其中，k为搜索空间，m、n为两条序列的长度，<span
+class="math inline">\(\lambda\)</span>为计分系统的特征数，S为设定的联配值
+-
+E值的含义：E值表示不小于比值为S的HSP个数的期望值，反映了在给定数据库大小下,随机得到比对高级别分值至少为S的可能性。
+- 序列长度加倍，E值加倍 - E随S变化而显著变化，S增大，E急剧减少 -
+搜索不到比值<span class="math inline">\(\ge S\)</span>的HSP的概率为<span
+class="math inline">\(e^{-E}\)</span>，则至少发现一个HSP的概率为<span
+class="math inline">\(p=1-e^{-E}\)</span> - 在可能搜索到三个HSP比值<span
+class="math inline">\(\ge
+S\)</span>的情况下，至少发现一个HSP的概率p为0.95（<span
+class="math inline">\(E=3,p=1-e^{-3}=0.95\)</span>）</p>
+<h2 id="经验方法">3.经验方法</h2>
+<ol type="1">
 <li>如果两个序列的长度都大于100，在适当地加入空位之后，它们配对的相同率达到25%以上，则两个序列相关；</li>
 <li>如果配对的相同率小于15%，则不管两个序列的长度如何，它们都不可能相关；</li>
 <li>如果两个序列的相同率在15%~25%之间，它们可能是相关的。</li>
 </ol>
-<hr>
-<h1 id="十、多序列比对"><a href="#十、多序列比对" class="headerlink" title="十、多序列比对"></a>十、多序列比对</h1><p>多序列比对联配分为全局联配和局部联配</p>
+<hr />
+<h1 id="十多序列比对">十、多序列比对</h1>
+<p>多序列比对联配分为全局联配和局部联配 - 多序列全局联配——启发式算法 -
+渐进式全局联配-Clustal, T-Coffee, MUSCLE - 迭代法 - 基于统计模型的方法 -
+多序列局部联配——用于分析序列之间的保守性位点，寻找motif - 哈希 -
+基于统计的模式识别-最大期望法、吉布斯抽样、HMM ## 1.Clustal系列
+<strong>第一版Clustal</strong>： -
+通过计算所有两两序列比对的相似性打分； - 进行UPGMA聚类分析，构建聚类树；
+- 从最接近的一对序列出发，逐步归并形成比对的聚类，直到所有序列处理完</p>
+<p><strong>Clustal W</strong>：相比于第一版Clustal的改进 -
+序列权重值：下调近似重复或非常相似的序列的权重，反之，上调差异较大的序列
+- 根据序列差异的程度，在比对不同阶段使用不同的氨基酸替换矩阵（e.g:
+PAM100 -&gt; PAM250） - 空位罚分的处理 -
+考虑到不同分支分化速率的差异，使用 NJ树，代替UPGMA，结果更稳定</p>
+<h2 id="t-coffee">2.T-Coffee</h2>
+<p>T-coffee与Clustal都属于渐进式比对算法，但T-coffee整合了全局比对Clustal和局部比对Lalign的结果，相比于Clustal有更高的精确度。
+T-coffee主要根据序列比对相似性，定义每一对比对上碱基或氨基酸的比对权重，构建初始比对库；合并全局比对与局部比对的权重库；线条越粗，则权重越大，联配的准确度更高，接近多序列联配的最优解。
+T-COFFEE有多种变形 - Expresso：给序列加入了结构信息的多序列比对 -
+M-coffee：把多个比对结果整合成一个 -
+TM-coffee：专门为穿模蛋白打造的多序列比对 -
+PSI-coffee：专为远远序列打造的多序列比对 -
+R-coffee：给RNA序列加入了预测的二级结构信息的多序列比对 -
+SARA-coffee：给RNA序列加入了三级结构信息的比对</p>
+<h2 id="muscle">3.MUSCLE</h2>
+<p>先通过Kmer距离构建距离矩阵，使用UPGMA构建发育树并进行渐进式比对MSA1；将渐进式比对的结果基于Kimura距离再构建一次距离矩阵，并使用UPGMA构建发育树并进行渐进式比对MSA2；通过对第二次发育树进行剪枝计算子树的概型并重新联配得到新的多序列比对结果；基于SP得分高低，来判断是否需要保留或删除，并不断迭代优化直至得到最优联配结果</p>
+<h2
+id="clustalt-coffee和muscle三者的区别">4.Clustal、T-coffee和MUSCLE三者的区别</h2>
+<ol type="1">
+<li>使用的算法思路不同
 <ul>
-<li>多序列全局联配——启发式算法<ul>
-<li>渐进式全局联配-Clustal, T-Coffee, MUSCLE</li>
-<li>迭代法</li>
-<li>基于统计模型的方法</li>
-</ul>
-</li>
-<li>多序列局部联配——用于分析序列之间的保守性位点，寻找motif<ul>
-<li>哈希</li>
-<li>基于统计的模式识别-最大期望法、吉布斯抽样、HMM</li>
-</ul>
-</li>
-</ul>
-<h2 id="1-Clustal系列"><a href="#1-Clustal系列" class="headerlink" title="1.Clustal系列"></a>1.Clustal系列</h2><p><strong>第一版Clustal</strong>：</p>
-<ul>
-<li>通过计算所有两两序列比对的相似性打分；</li>
-<li>进行UPGMA聚类分析，构建聚类树；</li>
-<li>从最接近的一对序列出发，逐步归并形成比对的聚类，直到所有序列处理完</li>
-</ul>
-<p><strong>Clustal W</strong>：相比于第一版Clustal的改进</p>
-<ul>
-<li>序列权重值：下调近似重复或非常相似的序列的权重，反之，上调差异较大的序列</li>
-<li>根据序列差异的程度，在比对不同阶段使用不同的氨基酸替换矩阵（e.g: PAM100 -&gt; PAM250）</li>
-<li>空位罚分的处理</li>
-<li>考虑到不同分支分化速率的差异，使用 NJ树，代替UPGMA，结果更稳定</li>
-</ul>
-<h2 id="2-T-Coffee"><a href="#2-T-Coffee" class="headerlink" title="2.T-Coffee"></a>2.T-Coffee</h2><p>T-coffee与Clustal都属于渐进式比对算法，但T-coffee整合了全局比对Clustal和局部比对Lalign的结果，相比于Clustal有更高的精确度。<br>T-coffee主要根据序列比对相似性，定义每一对比对上碱基或氨基酸的比对权重，构建初始比对库；合并全局比对与局部比对的权重库；线条越粗，则权重越大，联配的准确度更高，接近多序列联配的最优解。<br>T-COFFEE有多种变形</p>
-<ul>
-<li>Expresso：给序列加入了结构信息的多序列比对</li>
-<li>M-coffee：把多个比对结果整合成一个</li>
-<li>TM-coffee：专门为穿模蛋白打造的多序列比对</li>
-<li>PSI-coffee：专为远远序列打造的多序列比对</li>
-<li>R-coffee：给RNA序列加入了预测的二级结构信息的多序列比对</li>
-<li>SARA-coffee：给RNA序列加入了三级结构信息的比对</li>
-</ul>
-<h2 id="3-MUSCLE"><a href="#3-MUSCLE" class="headerlink" title="3.MUSCLE"></a>3.MUSCLE</h2><p>先通过Kmer距离构建距离矩阵，使用UPGMA构建发育树并进行渐进式比对MSA1；将渐进式比对的结果基于Kimura距离再构建一次距离矩阵，并使用UPGMA构建发育树并进行渐进式比对MSA2；通过对第二次发育树进行剪枝计算子树的概型并重新联配得到新的多序列比对结果；基于SP得分高低，来判断是否需要保留或删除，并不断迭代优化直至得到最优联配结果</p>
-<h2 id="4-Clustal、T-coffee和MUSCLE三者的区别"><a href="#4-Clustal、T-coffee和MUSCLE三者的区别" class="headerlink" title="4.Clustal、T-coffee和MUSCLE三者的区别"></a>4.Clustal、T-coffee和MUSCLE三者的区别</h2><ol>
-<li>使用的算法思路不同<ul>
 <li>ClustalW使用的是进化距离矩阵进行序列加权的传统算法。</li>
 <li>T-coffee使用的是通过局部和全局比对获得权重评分矩阵的算法。</li>
 <li>MUSCLE使用的是迭代精炼的距离约束树建立算法。</li>
-</ul>
-</li>
-<li>比对速度不同<ul>
+</ul></li>
+<li>比对速度不同
+<ul>
 <li>ClustalW速度较慢。</li>
 <li>T-coffee比ClustalW快,但仍然较慢。</li>
 <li>MUSCLE是目前最快的多序列比对算法之一。</li>
-</ul>
-</li>
-<li>比对准确度不同 <ul>
+</ul></li>
+<li>比对准确度不同
+<ul>
 <li>ClustalW准确度较低。</li>
 <li>T-coffee通过引入局部比对信息,准确度较高。</li>
 <li>MUSCLE准确度也比较高。</li>
-</ul>
-</li>
-<li>处理序列数能力不同<ul>
+</ul></li>
+<li>处理序列数能力不同
+<ul>
 <li>ClustalW处理几十个序列已经非常慢。</li>
 <li>T-coffee可处理上百个序列。</li>
 <li>MUSCLE可处理上千个序列。</li>
-</ul>
-</li>
+</ul></li>
 </ol>
 <p>总体来说,MUSCLE兼顾了速度和准确度,是目前最好的选择。T-coffee如果追求准确度则较好。而ClustalW已较少被使用。</p>
-<h2 id="5-EM法在MSA中的应用"><a href="#5-EM法在MSA中的应用" class="headerlink" title="5.EM法在MSA中的应用"></a>5.EM法在MSA中的应用</h2><p>将多条序列随机排列成一个多序列联配结果——对于联配结果选择一个联配宽度——在这个联配宽度中构建初始PSSM矩阵——利用PSSM对每条序列进行扫描——得到每个位点的匹配概率——由匹配概率得到每个位点的匹配定位概率——由各序列的匹配定位概率生成每个位点碱基数量期望值的新表格——最后期望值最大化——不断重复直到PSSM碱基频率不发生改变</p>
-<h3 id="MEME"><a href="#MEME" class="headerlink" title="MEME"></a>MEME</h3><p>MEME就是使用EM进行基序查找的工具，可以对多条核苷酸序列或蛋白质序列进行基序的从头预测<br>使用方法：</p>
-<ul>
-<li>上传需要分析的序列，且无需提前多序列比对</li>
-<li>可以设置MEME寻找的motif数量</li>
-<li>在结果中可以显示按得分高低排名的motif，以及每条序列上motif的所在位置</li>
-<li>使用FIMO还可以提交基序给其他软件，针对该基序进行相似性搜索</li>
-</ul>
-<hr>
-<h1 id="十一、功能域的描述模型"><a href="#十一、功能域的描述模型" class="headerlink" title="十一、功能域的描述模型"></a>十一、功能域的描述模型</h1><p>4种功能域描述模型<br>一致性序列、正则表达式、概型和HMM模型</p>
-<p><strong>1. 一致性序列</strong><br>定义：多序列联配结果中每一列出现最多的碱基或氨基酸构成的序列，它是一条单一序列</p>
-<p><strong>2. 正则表达式</strong><br>定义：把每一列出现的碱基或氨基酸都列出来，形成一个正则表达式<br>例如一组正则表达式<code>[FY]-[LF]-X-[VL]-X-D-D-[VI]-W</code>，’-‘表示氨基酸之间的间隔、’[]‘表示位点可能存在的氨基酸类型、单一字母就表示位点只含这一种氨基酸。<br>可见：只包含位点可能出现的氨基酸种类，但无法得知氨基酸之间的比例</p>
-<p><strong>3. 概型</strong><br>定义：profile是一个类似于PSSM的矩阵，可以包含匹配、错配、插入和缺失等情况。</p>
-<p>在PROSITE数据库中，用正则表达式来表示pattern，用概型来表示profile。</p>
-<ul>
-<li>pattern是用来找到短的保守序列即motif区域，通常不超过4到5个残基，由于pattern不会考虑具有相同或相似理化性质的残基，因此找到的序列motif具有高度相似性</li>
-<li>profile则是通常不局限于具有高序列相似性的小区域。相反，profile试图在整个长度上表征蛋白质家族或结构域。</li>
-<li>profile被认为比pattern更敏感、更稳健。因为profile不仅为在基序的给定位置上已经发现的残基提供了区别权重，而且还为尚未发现的残基提供了区别权重。</li>
-</ul>
-<p><strong>4. HMM概型</strong><br>定义：通过构建多序列联配的隐马尔科夫概率模型进行功能域描述。对于 HMM 模型，将一个功能域视为一个从左开始到右结束各个状态（残基匹配或错配、插入和删除）之间的转换。该模型各个“态”之间转换有一个概率，每个“态”所处的具体状态存在一个概率分布，具体状态是未知的。</p>
-<hr>
-<h1 id="十二、熵与信息量"><a href="#十二、熵与信息量" class="headerlink" title="十二、熵与信息量"></a>十二、熵与信息量</h1><p>熵的计算：<br>$$<br>H&#x3D;-\sum P_{i}log_{2}P_{i}<br>$$<br>信息量的计算：<br>$$<br>IC&#x3D;log_{2}(20)-H<br>$$<br>20指的是20种氨基酸，如果是计算核酸序列多序列比对的信息量，则是$IC&#x3D;log_{2}4-H&#x3D;2-H$</p>
+<h2 id="em法在msa中的应用">5.EM法在MSA中的应用</h2>
+<p>将多条序列随机排列成一个多序列联配结果——对于联配结果选择一个联配宽度——在这个联配宽度中构建初始PSSM矩阵——利用PSSM对每条序列进行扫描——得到每个位点的匹配概率——由匹配概率得到每个位点的匹配定位概率——由各序列的匹配定位概率生成每个位点碱基数量期望值的新表格——最后期望值最大化——不断重复直到PSSM碱基频率不发生改变
+### MEME
+MEME就是使用EM进行基序查找的工具，可以对多条核苷酸序列或蛋白质序列进行基序的从头预测
+使用方法： - 上传需要分析的序列，且无需提前多序列比对 -
+可以设置MEME寻找的motif数量 -
+在结果中可以显示按得分高低排名的motif，以及每条序列上motif的所在位置 -
+使用FIMO还可以提交基序给其他软件，针对该基序进行相似性搜索</p>
+<hr />
+<h1 id="十一功能域的描述模型">十一、功能域的描述模型</h1>
+<p>4种功能域描述模型 一致性序列、正则表达式、概型和HMM模型</p>
+<p><strong>1. 一致性序列</strong>
+定义：多序列联配结果中每一列出现最多的碱基或氨基酸构成的序列，它是一条单一序列</p>
+<p><strong>2. 正则表达式</strong>
+定义：把每一列出现的碱基或氨基酸都列出来，形成一个正则表达式
+例如一组正则表达式<code>[FY]-[LF]-X-[VL]-X-D-D-[VI]-W</code>，'-'表示氨基酸之间的间隔、'[]'表示位点可能存在的氨基酸类型、单一字母就表示位点只含这一种氨基酸。
+可见：只包含位点可能出现的氨基酸种类，但无法得知氨基酸之间的比例</p>
+<p><strong>3. 概型</strong>
+定义：profile是一个类似于PSSM的矩阵，可以包含匹配、错配、插入和缺失等情况。</p>
+<p>在PROSITE数据库中，用正则表达式来表示pattern，用概型来表示profile。 -
+pattern是用来找到短的保守序列即motif区域，通常不超过4到5个残基，由于pattern不会考虑具有相同或相似理化性质的残基，因此找到的序列motif具有高度相似性
+-
+profile则是通常不局限于具有高序列相似性的小区域。相反，profile试图在整个长度上表征蛋白质家族或结构域。
+-
+profile被认为比pattern更敏感、更稳健。因为profile不仅为在基序的给定位置上已经发现的残基提供了区别权重，而且还为尚未发现的残基提供了区别权重。</p>
+<p><strong>4. HMM概型</strong>
+定义：通过构建多序列联配的隐马尔科夫概率模型进行功能域描述。对于 HMM
+模型，将一个功能域视为一个从左开始到右结束各个状态（残基匹配或错配、插入和删除）之间的转换。该模型各个“态”之间转换有一个概率，每个“态”所处的具体状态存在一个概率分布，具体状态是未知的。</p>
+<hr />
+<h1 id="十二熵与信息量">十二、熵与信息量</h1>
+<p>熵的计算： <span class="math display">\[
+H=-\sum P_{i}log_{2}P_{i}
+\]</span> 信息量的计算： <span class="math display">\[
+IC=log_{2}(20)-H
+\]</span>
+20指的是20种氨基酸，如果是计算核酸序列多序列比对的信息量，则是<span
+class="math inline">\(IC=log_{2}4-H=2-H\)</span></p>
 <ul>
 <li>PSSM矩阵中熵表示矩阵中每列各个氨基酸或碱基不确定性之和，常用H来表示。</li>
 <li>信息量表示该矩阵用于序列搜索或保守区段的搜索效果，常用IC来表示。</li>
-<li>PSSM矩阵的熵越大，不确定性越大，PSMM矩阵的信息量就越小，对于序列搜索或保守区段的搜索效果越不好。</li>
-</ul>
-<h2 id="序列标识-sequence-logo"><a href="#序列标识-sequence-logo" class="headerlink" title="序列标识 sequence logo"></a>序列标识 sequence logo</h2><ul>
+<li>PSSM矩阵的熵越大，不确定性越大，PSMM矩阵的信息量就越小，对于序列搜索或保守区段的搜索效果越不好。
+## 序列标识 sequence logo</li>
 <li>是一种描述功能域等保守性信息量的可视化图形方式</li>
 <li>每一列的字母高度和它在某一列中出现的频率成正比，但不等同于频率。因此每一列的高度是不一样的，</li>
 <li><strong>总结</strong>：位置越<strong>保守</strong>，熵越<strong>小</strong>，信息量越<strong>大</strong>，logo高度越<strong>高</strong></li>
 </ul>
-<hr>
-<h1 id="十三、PRINTS-指纹图谱数据库"><a href="#十三、PRINTS-指纹图谱数据库" class="headerlink" title="十三、PRINTS 指纹图谱数据库"></a>十三、PRINTS 指纹图谱数据库</h1><p>蛋白质的指纹：一组保守的序列基序，用于刻画蛋白质家族的特定。<br>这些基序由多序列比对结果获得，且他们在氨基酸序列上并不相邻，但是在三维结构中可能紧密地结合在一起<br>使用方法：</p>
-<ul>
-<li>输入数据库编号、关键词等查找以及指纹图谱</li>
-<li>会显示指纹图谱的基本信息；构建指纹图谱所使用的蛋白质序列；指纹图谱中每一个基序的具体信息</li>
-<li>View alignment还能创建指纹图谱所使用的多序列比对</li>
-<li>View structure可以查看蛋白质的三维结构，并高亮显示基序空间位置</li>
-<li>PRINT 还提供指纹匹配服务，通过 FPScan，输入纯序列（无 <code>&gt;</code>），可以找到匹配的指纹图谱</li>
-</ul>
-<hr>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p><strong>1. 氨基酸序列打分矩阵 PAM 和 BLOSUM 中序号有什么意义？它们各自的规律是什么？</strong></p>
-<ol>
-<li>序号的意义：<ul>
-<li>在 PAM 矩阵中序号表示进化的变异单位，PAM 1 表示每 100 个残基中有 1 个可以接受单点突变，而 PAMn 代表由 PAM 1 矩阵自乘 n 次得到的矩阵。</li>
-<li>在 BLOSUM 矩阵中序号表示是由多少相似度残基的序列组成的序列模式产生的 BLOSUM 矩阵，如 BLOSUM 80 表示由相似度不小于 80%的序列局部比对产生的，BLOSUM 62 表示由相似度不小于 62%的序列局部比对产生的。</li>
-</ul>
-</li>
-<li>各自的规律：<ul>
-<li>PAM-n 矩阵中 n 值越小表示变异的可能性越小，残基差异越小，进化距离越小，相似的序列应该使用 n 值较小的 PAM 矩阵，不相似的序列应该使用 n 值较大的 PAM 矩阵，如 PAM 250 适合用于相似度只有 20% 的序列；</li>
-<li>BLOSUM-n 矩阵中 n 值越小，表示序列的相似的可能性越小，对于亲缘序列之间的比对使用 n 值较大的，对于远缘序列之间的比对使用 n 值较小的。</li>
-</ul>
-</li>
-</ol>
-<p><strong>2. 动态规划算法的时间和空间复杂度是多少？</strong><br>动态规划算法中有4个循环，前2个做初始化，分别消耗时间 $O(n)$ 和 $O(m)$，后2个循环是嵌套的，填写动态规划表s和表b的元素，时间复杂度为 $O(mn)$。由于表s和表b是主要的数据结构，算法的空间复杂度也是 $O(mn)$。如果两条序列等长，则时间和空间复杂度都是 $O(n^2)$</p>
+<hr />
+<h1 id="十三prints-指纹图谱数据库">十三、PRINTS 指纹图谱数据库</h1>
+<p>蛋白质的指纹：一组保守的序列基序，用于刻画蛋白质家族的特定。
+这些基序由多序列比对结果获得，且他们在氨基酸序列上并不相邻，但是在三维结构中可能紧密地结合在一起
+使用方法： - 输入数据库编号、关键词等查找以及指纹图谱 -
+会显示指纹图谱的基本信息；构建指纹图谱所使用的蛋白质序列；指纹图谱中每一个基序的具体信息
+- View alignment还能创建指纹图谱所使用的多序列比对 - View
+structure可以查看蛋白质的三维结构，并高亮显示基序空间位置 - PRINT
+还提供指纹匹配服务，通过 FPScan，输入纯序列（无
+<code>&gt;</code>），可以找到匹配的指纹图谱</p>
+<hr />
+<h1 id="问题">问题</h1>
+<p><strong>1. 氨基酸序列打分矩阵 PAM 和 BLOSUM
+中序号有什么意义？它们各自的规律是什么？</strong> 1. 序号的意义： - 在
+PAM 矩阵中序号表示进化的变异单位，PAM 1 表示每 100 个残基中有 1
+个可以接受单点突变，而 PAMn 代表由 PAM 1 矩阵自乘 n 次得到的矩阵。 - 在
+BLOSUM 矩阵中序号表示是由多少相似度残基的序列组成的序列模式产生的 BLOSUM
+矩阵，如 BLOSUM 80 表示由相似度不小于 80%的序列局部比对产生的，BLOSUM 62
+表示由相似度不小于 62%的序列局部比对产生的。 2. 各自的规律： - PAM-n
+矩阵中 n
+值越小表示变异的可能性越小，残基差异越小，进化距离越小，相似的序列应该使用
+n 值较小的 PAM 矩阵，不相似的序列应该使用 n 值较大的 PAM 矩阵，如 PAM
+250 适合用于相似度只有 20% 的序列； - BLOSUM-n 矩阵中 n
+值越小，表示序列的相似的可能性越小，对于亲缘序列之间的比对使用 n
+值较大的，对于远缘序列之间的比对使用 n 值较小的。</p>
+<p><strong>2. 动态规划算法的时间和空间复杂度是多少？</strong>
+动态规划算法中有4个循环，前2个做初始化，分别消耗时间 <span
+class="math inline">\(O(n)\)</span> 和 <span
+class="math inline">\(O(m)\)</span>，后2个循环是嵌套的，填写动态规划表s和表b的元素，时间复杂度为
+<span
+class="math inline">\(O(mn)\)</span>。由于表s和表b是主要的数据结构，算法的空间复杂度也是
+<span
+class="math inline">\(O(mn)\)</span>。如果两条序列等长，则时间和空间复杂度都是
+<span class="math inline">\(O(n^2)\)</span></p>
 
                 
               </div>
@@ -706,9 +823,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog/5-%E5%88%86%E5%AD%90%E8%BF%9B%E5%8C%96/" title="分子进化">
+                      <a href="/blog/6-%E7%BB%84%E5%AD%A6%E6%95%B0%E6%8D%AE%E7%BB%84%E8%A3%85/" title="组学数据组装">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">分子进化</span>
+                        <span class="hidden-mobile">组学数据组装</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -983,5 +1100,20 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

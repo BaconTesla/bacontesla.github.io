@@ -19,12 +19,12 @@
   <meta name="author" content="Bacon Tesla">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、策略 从头注释(de novo prediction)：通过已有的概率模型来预测基因结构，不需要利用外部的证据来鉴定基因及判断该基因的外显子-内含子结构，能够在基因数量层次预测较好，但在预测剪切位点和UTR区准确性较低 同源预测(homology-based prediction)：有一些基因蛋白在相近物种间的保守性高，所以可以使用已有的高质量近缘物种注释信息通过序列联配的方式确定外显子边界和">
+    <meta name="description" content="一、策略  从头注释(de novo prediction)：通过已有的概率模型来预测基因结构，不需要利用外部的证据来鉴定基因及判断该基因的外显子-内含子结构，能够在基因数量层次预测较好，但在预测剪切位点和UTR区准确性较低 同源预测(homology-based prediction)：有一些基因蛋白在相近物种间的保守性高，所以可以使用已有的高质量近缘物种注释信息通过序列联配的方式确定外显子边界">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基因组注释">
 <meta property="og:url" content="https://bacontesla.github.io/blog/7-%E5%9F%BA%E5%9B%A0%E7%BB%84%E6%B3%A8%E9%87%8A/index.html">
 <meta property="og:site_name" content="Meditation">
-<meta property="og:description" content="一、策略 从头注释(de novo prediction)：通过已有的概率模型来预测基因结构，不需要利用外部的证据来鉴定基因及判断该基因的外显子-内含子结构，能够在基因数量层次预测较好，但在预测剪切位点和UTR区准确性较低 同源预测(homology-based prediction)：有一些基因蛋白在相近物种间的保守性高，所以可以使用已有的高质量近缘物种注释信息通过序列联配的方式确定外显子边界和">
+<meta property="og:description" content="一、策略  从头注释(de novo prediction)：通过已有的概率模型来预测基因结构，不需要利用外部的证据来鉴定基因及判断该基因的外显子-内含子结构，能够在基因数量层次预测较好，但在预测剪切位点和UTR区准确性较低 同源预测(homology-based prediction)：有一些基因蛋白在相近物种间的保守性高，所以可以使用已有的高质量近缘物种注释信息通过序列联配的方式确定外显子边界">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-29T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-11-13T06:09:48.497Z">
@@ -278,53 +278,88 @@
             
               <div class="markdown-body">
                 
-                <h1 id="一、策略"><a href="#一、策略" class="headerlink" title="一、策略"></a>一、策略</h1><ul>
-<li>从头注释(<em>de novo</em> prediction)：通过已有的概率模型来预测基因结构，不需要利用外部的证据来鉴定基因及判断该基因的外显子-内含子结构，能够在基因数量层次预测较好，但在预测剪切位点和UTR区准确性较低</li>
-<li>同源预测(homology-based prediction)：有一些基因蛋白在相近物种间的保守性高，所以可以使用已有的高质量近缘物种注释信息通过序列联配的方式确定外显子边界和剪切位点</li>
-<li>基于转录组预测(transcriptome-based prediction)：通过物种的RNA-seq数据辅助注释，能够较为准确的确定剪切位点和外显子区域。</li>
+                <h1 id="一策略">一、策略</h1>
+<ul>
+<li>从头注释(<em>de novo</em>
+prediction)：通过已有的概率模型来预测基因结构，不需要利用外部的证据来鉴定基因及判断该基因的外显子-内含子结构，能够在基因数量层次预测较好，但在预测剪切位点和UTR区准确性较低</li>
+<li>同源预测(homology-based
+prediction)：有一些基因蛋白在相近物种间的保守性高，所以可以使用已有的高质量近缘物种注释信息通过序列联配的方式确定外显子边界和剪切位点</li>
+<li>基于转录组预测(transcriptome-based
+prediction)：通过物种的RNA-seq数据辅助注释，能够较为准确的确定剪切位点和外显子区域。</li>
 </ul>
-<p>每一种方法都有自己的优缺点，所以最后需要用EvidenceModeler(EVM)和GLEAN工具进行整合，合并成完整的基因结构。基于可靠的基因结构，后续可才是功能注释，蛋白功能域注释，基因本体论注释，通路注释等。<br>参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/931e9821c45a">如何对基因组序列进行注释 - 简书 (jianshu.com)</a></p>
-<h1 id="二、基因组结构注释流程"><a href="#二、基因组结构注释流程" class="headerlink" title="二、基因组结构注释流程"></a>二、基因组结构注释流程</h1><ul>
+<p>每一种方法都有自己的优缺点，所以最后需要用EvidenceModeler(EVM)和GLEAN工具进行整合，合并成完整的基因结构。基于可靠的基因结构，后续可才是功能注释，蛋白功能域注释，基因本体论注释，通路注释等。
+参考：<a
+target="_blank" rel="noopener" href="https://www.jianshu.com/p/931e9821c45a">如何对基因组序列进行注释 -
+简书 (jianshu.com)</a></p>
+<h1 id="二基因组结构注释流程">二、基因组结构注释流程</h1>
+<ul>
 <li>必要的基因组重复序列屏蔽</li>
-<li>从头寻找基因, 可用工具为: GeneMarkHMM, FGENESH, Augustus, SNAP, GlimmerHMM, Genscan</li>
+<li>从头寻找基因, 可用工具为: GeneMarkHMM, FGENESH, Augustus, SNAP,
+GlimmerHMM, Genscan</li>
 <li>同源蛋白预测, 内含子分析: GeneWise, Exonerate, GenomeThreader</li>
-<li>将EST序列，全长cDNA序列和Trinity&#x2F;Cufflinks&#x2F;Stringtie组装的转录组和基因组联配</li>
+<li>将EST序列，全长cDNA序列和Trinity/Cufflinks/Stringtie组装的转录组和基因组联配</li>
 <li>如果第4步用到了多个数据来源，使用PASA基于重叠情况进行联配</li>
 <li>使用EvidenceModler根据上述结果进行整合</li>
 <li>使用PASA更新EVM的一致性预测，增加UTR注释和可变剪切注释</li>
 <li>必要的人工检查</li>
 </ul>
-<h2 id="1-重复序列的屏蔽"><a href="#1-重复序列的屏蔽" class="headerlink" title="1. 重复序列的屏蔽"></a>1. 重复序列的屏蔽</h2><blockquote>
-<p><strong>重复屏蔽</strong>：真核生物的基因组存在大量的重复序列，植物基因组的重复序列甚至可以高达80%。尽管重复序列对维持染色体的空间结构、基因的表达调控、遗传重组等都具有重要作用，但是却会导致BLAST的结果出现大量假阳性，增加基因结构的预测的计算压力甚至影响注释正确性。基因组中的重复按照序列特征可以分为两类：串联重复(tandem repeats)和散在重复(interspersed repeats).<br>参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/931e9821c45a">如何对基因组序列进行注释 - 简书 (jianshu.com)</a></p>
+<h2 id="重复序列的屏蔽">1. 重复序列的屏蔽</h2>
+<blockquote>
+<p><strong>重复屏蔽</strong>：真核生物的基因组存在大量的重复序列，植物基因组的重复序列甚至可以高达80%。尽管重复序列对维持染色体的空间结构、基因的表达调控、遗传重组等都具有重要作用，但是却会导致BLAST的结果出现大量假阳性，增加基因结构的预测的计算压力甚至影响注释正确性。基因组中的重复按照序列特征可以分为两类：串联重复(tandem
+repeats)和散在重复(interspersed repeats). 参考：<a
+target="_blank" rel="noopener" href="https://www.jianshu.com/p/931e9821c45a">如何对基因组序列进行注释 -
+简书 (jianshu.com)</a></p>
 </blockquote>
-<p>鉴定基因组重复区域的方法有两种：一种基于文库(library)的同源(homology)方法，该文库收集了其他物种的某一种重复的一致性序列，通过相似性来鉴定重复；另一种是从头预测(<em>de novo</em>)，将序列和自己比较或者是高频K-mer来鉴定重复。<br>目前重复序列注释主要软件就是RepeatMasker和RepeatModel</p>
-<h2 id="2-从头预测"><a href="#2-从头预测" class="headerlink" title="2. 从头预测"></a>2. 从头预测</h2><blockquote>
-<p>基于已有模型或无监督训练<br>目前的从头预测软件大多是基于HMM(隐马尔科夫链)和贝叶斯理论，通过已有物种的注释信息对软件进行训练，从训练结果中去推断一段基因序列中可能的结构，在这方面做的最好的工具是<strong>AUGUSTUS</strong> 它可以仅使用序列信息进行预测，也可以整合EST, cDNA, RNA-seq数据作为先验模型进行预测。</p>
+<p>鉴定基因组重复区域的方法有两种：一种基于文库(library)的同源(homology)方法，该文库收集了其他物种的某一种重复的一致性序列，通过相似性来鉴定重复；另一种是从头预测(<em>de
+novo</em>)，将序列和自己比较或者是高频K-mer来鉴定重复。
+目前重复序列注释主要软件就是RepeatMasker和RepeatModel</p>
+<h2 id="从头预测">2. 从头预测</h2>
+<blockquote>
+<p>基于已有模型或无监督训练
+目前的从头预测软件大多是基于HMM(隐马尔科夫链)和贝叶斯理论，通过已有物种的注释信息对软件进行训练，从训练结果中去推断一段基因序列中可能的结构，在这方面做的最好的工具是<strong>AUGUSTUS</strong>
+它可以仅使用序列信息进行预测，也可以整合EST, cDNA,
+RNA-seq数据作为先验模型进行预测。</p>
 </blockquote>
-<p><strong>AUGUSTUS</strong>依赖于已有的模型，而<strong>GeneMark-ES&#x2F;ET</strong>则是唯一一款支持无监督训练模型，之后再识别真核基因组蛋白编码区的工具。</p>
-<p>根据已有的模型或者自训练可以正确预测很大一部分的基因，但如果需要提高预测的正确性，还需要额外的信息。在过去就需要提供物种本身的cDNA, EST，而现在更多的是基于转录组序列进行训练。尽管RNA-seq数据在基因组上的比对情况能够推测出内含子位置，根据覆盖度可以推测出外显子和非编码区的边界，但是仅仅依赖于RNA-seq的覆盖不能可信地推测出蛋白编码区(Hoff K.J. Stanke M. 2015).</p>
+<p><strong>AUGUSTUS</strong>依赖于已有的模型，而<strong>GeneMark-ES/ET</strong>则是唯一一款支持无监督训练模型，之后再识别真核基因组蛋白编码区的工具。</p>
+<p>根据已有的模型或者自训练可以正确预测很大一部分的基因，但如果需要提高预测的正确性，还需要额外的信息。在过去就需要提供物种本身的cDNA,
+EST，而现在更多的是基于转录组序列进行训练。尽管RNA-seq数据在基因组上的比对情况能够推测出内含子位置，根据覆盖度可以推测出外显子和非编码区的边界，但是仅仅依赖于RNA-seq的覆盖不能可信地推测出蛋白编码区(Hoff
+K.J. Stanke M. 2015).</p>
 <p>AUGUSTUS可以利用转录组比对数据中的位置信息来训练模型，GeneMark-ET可以利用RNA-seq得到的内含子位点信息自我训练HMM参数，进行基因预测。BRAKER2将两者进行整合，使用GeneMark-ET根据RNA-seq无监督训练模型寻找基因，然后用AUGUSTUS进行模型训练，最后完成基因预测</p>
-<h2 id="3-同源预测"><a href="#3-同源预测" class="headerlink" title="3. 同源预测"></a>3. 同源预测</h2><p>目前使用率没有从头预测的策略高。但是在以前，RNA-seq没有普及的时候，只有少部分物种有EST和cDNA序列，使用同源预测的确是一个不错的选择<br>目前进行同源预测的工具是基于<strong>TBLASTn + GeneWise</strong>完成<br>GeneWise：主要用于将蛋白质序列和DNA序列进行比对，从而对DNA序列上的编码区进行预测</p>
-<h2 id="4-转录本数据预测"><a href="#4-转录本数据预测" class="headerlink" title="4. 转录本数据预测"></a>4. 转录本数据预测</h2><p>有两种策略</p>
+<h2 id="同源预测">3. 同源预测</h2>
+<p>目前使用率没有从头预测的策略高。但是在以前，RNA-seq没有普及的时候，只有少部分物种有EST和cDNA序列，使用同源预测的确是一个不错的选择
+目前进行同源预测的工具是基于<strong>TBLASTn + GeneWise</strong>完成
+GeneWise：主要用于将蛋白质序列和DNA序列进行比对，从而对DNA序列上的编码区进行预测</p>
+<h2 id="转录本数据预测">4. 转录本数据预测</h2>
+<p>有两种策略 - 一种是使用HISAT2 + StringTie先比对再组装, -
+一种是从头组装，然后使用PASA将转录本比对到基因组上</p>
+<p>基于HISAT2 + StringTie： 使用HISAT2将目标序列比对到参考基因组上；
+再使用StringTie进行转录本预测</p>
+<p>基于PASA： 使用Trinity进行从头组装；
+再使用PASA将组装好的序列比对到参考基因组上</p>
+<h1 id="三基因组功能注释流程">三、基因组功能注释流程</h1>
+<p>主要包括：预测基因中的功能域、功能分类以及所在的生物学通路 ## 1.
+基于已知基因和功能域数据 ###
+（1）利用NR、Uniprot/Swiss-prot数据库进行注释
+基因功能的注释依赖于上一步的基因结构预测，根据预测结果从基因组上提取翻译后的
+<em>蛋白序列</em>
+和主流的数据库进行比对，完成功能注释。常用数据库一共有以几种：</p>
 <ul>
-<li>一种是使用HISAT2 + StringTie先比对再组装, </li>
-<li>一种是从头组装，然后使用PASA将转录本比对到基因组上</li>
-</ul>
-<p>基于HISAT2 + StringTie：<br>使用HISAT2将目标序列比对到参考基因组上；<br>再使用StringTie进行转录本预测</p>
-<p>基于PASA：<br>使用Trinity进行从头组装；<br>再使用PASA将组装好的序列比对到参考基因组上</p>
-<h1 id="三、基因组功能注释流程"><a href="#三、基因组功能注释流程" class="headerlink" title="三、基因组功能注释流程"></a>三、基因组功能注释流程</h1><p>主要包括：预测基因中的功能域、功能分类以及所在的生物学通路</p>
-<h2 id="1-基于已知基因和功能域数据"><a href="#1-基于已知基因和功能域数据" class="headerlink" title="1. 基于已知基因和功能域数据"></a>1. 基于已知基因和功能域数据</h2><h3 id="（1）利用NR、Uniprot-Swiss-prot数据库进行注释"><a href="#（1）利用NR、Uniprot-Swiss-prot数据库进行注释" class="headerlink" title="（1）利用NR、Uniprot&#x2F;Swiss-prot数据库进行注释"></a>（1）利用NR、Uniprot&#x2F;Swiss-prot数据库进行注释</h3><p>基因功能的注释依赖于上一步的基因结构预测，根据预测结果从基因组上提取翻译后的 <em>蛋白序列</em> 和主流的数据库进行比对，完成功能注释。常用数据库一共有以几种：</p>
-<ul>
-<li>Nr：NCBI官方非冗余蛋白数据库，包括PDB, Swiss-Prot, PIR, PRF; 如果要用DNA序列，就是nt库</li>
+<li>Nr：NCBI官方非冗余蛋白数据库，包括PDB, Swiss-Prot, PIR, PRF;
+如果要用DNA序列，就是nt库</li>
 <li>Pfam: 蛋白结构域注释的分类系统</li>
 <li>Swiss-Prot: 高质量的蛋白数据库，蛋白序列得到实验的验证</li>
 <li>KEGG: 代谢通路注释数据库</li>
 <li>GO: 基因本体论注释数据库</li>
 </ul>
 <blockquote>
-<p>注意：数据库本身不具有注释的功能，只是你使用blastp进行序列相似性搜索后，返回的结果被认为是注释信息<br>参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/931e9821c45a">如何对基因组序列进行注释 - 简书 (jianshu.com)</a></p>
+<p>注意：数据库本身不具有注释的功能，只是你使用blastp进行序列相似性搜索后，返回的结果被认为是注释信息
+参考：<a
+target="_blank" rel="noopener" href="https://www.jianshu.com/p/931e9821c45a">如何对基因组序列进行注释 -
+简书 (jianshu.com)</a></p>
 </blockquote>
-<h3 id="（2）利用InterPro功能域数据库进行注释"><a href="#（2）利用InterPro功能域数据库进行注释" class="headerlink" title="（2）利用InterPro功能域数据库进行注释"></a>（2）利用InterPro功能域数据库进行注释</h3><p>参考<em>xuzhougeng</em>学长的表述</p>
+<h3
+id="利用interpro功能域数据库进行注释">（2）利用InterPro功能域数据库进行注释</h3>
+<p>参考<em>xuzhougeng</em>学长的表述</p>
 <ul>
 <li>InterPro注释</li>
 <li>Pfam数据库注释(可以通过hmmscan搜索pfam数据库完成)</li>
@@ -332,64 +367,64 @@
 <li>Reactome通路注释，不同于KEGG</li>
 </ul>
 <blockquote>
-<p>补充：整合了PROSITE Pfam PRINTS SMART TIGRFAMs等功能数据库和一些其他的数据库（PIRSF SUPERFAMILY CATH-Gene3D）<br>在线版为InterProscan，仅支持单条序列查询</p>
+<p>补充：整合了PROSITE Pfam PRINTS SMART
+TIGRFAMs等功能数据库和一些其他的数据库（PIRSF SUPERFAMILY CATH-Gene3D）
+在线版为InterProscan，仅支持单条序列查询 ## 2. 基于功能分类和代谢途径
+### （1）利用GO定义基因功能 GO（Gene
+Ontology）将功能分为三类：细胞组分（cell
+component）、分子功能（molecular function）、生物学过程（biological
+process）</p>
 </blockquote>
-<h2 id="2-基于功能分类和代谢途径"><a href="#2-基于功能分类和代谢途径" class="headerlink" title="2. 基于功能分类和代谢途径"></a>2. 基于功能分类和代谢途径</h2><h3 id="（1）利用GO定义基因功能"><a href="#（1）利用GO定义基因功能" class="headerlink" title="（1）利用GO定义基因功能"></a>（1）利用GO定义基因功能</h3><p>GO（Gene Ontology）将功能分为三类：细胞组分（cell component）、分子功能（molecular function）、生物学过程（biological process）</p>
 <blockquote>
 <p>直接从上述的InterProscan中获取，再通过WEGO进行统计和可视化，也可使用AgriGO进行后续的GO分析</p>
 </blockquote>
-<h3 id="（2）利用KEGG等数据库生物学代谢通路信息"><a href="#（2）利用KEGG等数据库生物学代谢通路信息" class="headerlink" title="（2）利用KEGG等数据库生物学代谢通路信息"></a>（2）利用KEGG等数据库生物学代谢通路信息</h3><p>常使用KASS，获得KO(KEGG Orthology)代号、KEGG代谢通路及各个代谢通路对应的图谱</p>
-<hr>
-<h1 id="四、重复序列的注释流程"><a href="#四、重复序列的注释流程" class="headerlink" title="四、重复序列的注释流程"></a>四、重复序列的注释流程</h1><p>在第一步基因组结构注释中，将重复序列给屏蔽，但在重复序列中存在一类分散重复序列，该分散重复大部分是转座元件</p>
+<h3
+id="利用kegg等数据库生物学代谢通路信息">（2）利用KEGG等数据库生物学代谢通路信息</h3>
+<p>常使用KASS，获得KO(KEGG
+Orthology)代号、KEGG代谢通路及各个代谢通路对应的图谱</p>
+<hr />
+<h1 id="四重复序列的注释流程">四、重复序列的注释流程</h1>
+<p>在第一步基因组结构注释中，将重复序列给屏蔽，但在重复序列中存在一类分散重复序列，该分散重复大部分是转座元件</p>
 <blockquote>
 <p>转座元件：转座元件（TE）可以在宿主基因组上自主移动的DNA序列。它们的长度通常在100bp-10000bp之间。和病毒类似，TE也是非常错综复杂并且自私的元件。TE通常能够编码具有多种生化功能的蛋白，或者还含有非编码的调控序列，这些蛋白和调控序列对TE的转座有非常重要的作用。</p>
 </blockquote>
 <p>因此对重复序列中转座元件的注释也十分重要</p>
-<p>转座元件的鉴定方法：</p>
-<ol>
-<li>基于相似性，通过比对输入序列与已知TE的相似性，对输入序列进行TE识别</li>
-<li>从头开始，依据基因组序列内部自身重复性，重构出转座元件的祖先序列</li>
-</ol>
+<p>转座元件的鉴定方法： 1.
+基于相似性，通过比对输入序列与已知TE的相似性，对输入序列进行TE识别 2.
+从头开始，依据基因组序列内部自身重复性，重构出转座元件的祖先序列</p>
 <blockquote>
-<p>各自的优缺点：<br>相似性的方法有先验知识，更有可能发现真正的TE家族，但无法检验分化程度很大，亲缘关系较远的TE家族；<br>从头预测的方法比较适合新测序的基因组，对于未知TE的预测很重要。</p>
+<p>各自的优缺点：
+相似性的方法有先验知识，更有可能发现真正的TE家族，但无法检验分化程度很大，亲缘关系较远的TE家族；
+从头预测的方法比较适合新测序的基因组，对于未知TE的预测很重要。</p>
 </blockquote>
-<p>重复序列具体注释流程：</p>
-<ul>
-<li>对于新测序的基因组：<ul>
-<li>使用<em>de novo</em>软件预测：<ul>
-<li>ReAS，基于Sanger测序片段，重构更为古老的复杂序列的祖先序列</li>
-<li>PILER、RepeatScout，以基于已拼接的基因组序列预测TE</li>
-<li>LTR_FINDER，预测LTR反转座子</li>
-</ul>
-</li>
-<li>初步筛选出TE后，需要过滤掉污染和冗余</li>
-<li>对构建的基因组TEs库进行分类识别<ul>
-<li>与<strong>Swiss-Prot</strong>数据库进行<strong>BLASTn</strong>比对，高匹配得分-&gt;假基因或重复基因，向下输出低匹配得分</li>
-<li>与<strong>Repbase</strong>数据库进行<strong>BLASTn</strong>比对，将高匹配得分-&gt;识别出的<em>de novo</em> TE</li>
-<li>与<strong>TE蛋白质</strong>数据库进行<strong>BLASTx</strong>比对，高匹配得分-&gt;识别出的<em>de novo</em> TE</li>
-<li>与<strong>Repbase TE</strong>数据库进行<strong>tBLASTx</strong>比对，高匹配得分-&gt;识别出的<em>de novo</em> TE</li>
-</ul>
-</li>
-<li>转座元件注释<ul>
-<li>DNA水平上，使用RepeatMasker将识别出的<em>de novo</em> TE与Repbase数据库（动物）、TIGR（植物）进行比对注释</li>
-<li>蛋白质水平，则使用RepeatProteinMasker子程序</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="五、假基因的注释流程"><a href="#五、假基因的注释流程" class="headerlink" title="五、假基因的注释流程"></a>五、假基因的注释流程</h1><p><strong>假基因</strong><br>定义：基因组中与真基因序列相似但缺乏功能的DNA序列。按照形成机制的不同，假基因可以分为非加工假基因和加工假基因。非加工假基因又称为复制型假基因，是通过基因组DNA复制或不平衡交换形成的，多位于其同源功能基因附近；加工假基因又称反转座假基因，是成熟的mRNA反转录形成的cDNA，然后整合到基因组中。加工假基因因为缺少内含子，两末端有短的定向重复序列，3’端有多聚腺嘌呤尾，而被视为一种特殊的反转录转座子。</p>
-<p><strong>假基因的注释流程</strong></p>
-<ul>
-<li>获得去除重复序列的基因组序列和蛋白质序列</li>
-<li>利用BLAST在基因组序列中搜索与蛋白质相似的序列，去除与已知基因高度重叠的序列</li>
-<li>去除冗余和重叠的BLAST匹配片段</li>
-<li>合并相邻序列</li>
-<li>确定假基因的母基因重新进行比对</li>
-<li>对剩余的序列利用FASTA与基因组序列重新进行比对</li>
-<li>与以前通过实验获得的已知假基因合并</li>
-<li>根据两种假基因的特征对假基因进行筛选和分类（与编码蛋白质的序列高度相似、PloyA尾巴等）</li>
-</ul>
+<p>重复序列具体注释流程： - 对于新测序的基因组： - 使用<em>de
+novo</em>软件预测： -
+ReAS，基于Sanger测序片段，重构更为古老的复杂序列的祖先序列 -
+PILER、RepeatScout，以基于已拼接的基因组序列预测TE -
+LTR_FINDER，预测LTR反转座子 - 初步筛选出TE后，需要过滤掉污染和冗余 -
+对构建的基因组TEs库进行分类识别 -
+与<strong>Swiss-Prot</strong>数据库进行<strong>BLASTn</strong>比对，高匹配得分-&gt;假基因或重复基因，向下输出低匹配得分
+-
+与<strong>Repbase</strong>数据库进行<strong>BLASTn</strong>比对，将高匹配得分-&gt;识别出的<em>de
+novo</em> TE -
+与<strong>TE蛋白质</strong>数据库进行<strong>BLASTx</strong>比对，高匹配得分-&gt;识别出的<em>de
+novo</em> TE - 与<strong>Repbase
+TE</strong>数据库进行<strong>tBLASTx</strong>比对，高匹配得分-&gt;识别出的<em>de
+novo</em> TE - 转座元件注释 -
+DNA水平上，使用RepeatMasker将识别出的<em>de novo</em>
+TE与Repbase数据库（动物）、TIGR（植物）进行比对注释 -
+蛋白质水平，则使用RepeatProteinMasker子程序</p>
+<h1 id="五假基因的注释流程">五、假基因的注释流程</h1>
+<p><strong>假基因</strong>
+定义：基因组中与真基因序列相似但缺乏功能的DNA序列。按照形成机制的不同，假基因可以分为非加工假基因和加工假基因。非加工假基因又称为复制型假基因，是通过基因组DNA复制或不平衡交换形成的，多位于其同源功能基因附近；加工假基因又称反转座假基因，是成熟的mRNA反转录形成的cDNA，然后整合到基因组中。加工假基因因为缺少内含子，两末端有短的定向重复序列，3'端有多聚腺嘌呤尾，而被视为一种特殊的反转录转座子。</p>
+<p><strong>假基因的注释流程</strong> -
+获得去除重复序列的基因组序列和蛋白质序列 -
+利用BLAST在基因组序列中搜索与蛋白质相似的序列，去除与已知基因高度重叠的序列
+- 去除冗余和重叠的BLAST匹配片段 - 合并相邻序列 -
+确定假基因的母基因重新进行比对 -
+对剩余的序列利用FASTA与基因组序列重新进行比对 -
+与以前通过实验获得的已知假基因合并 -
+根据两种假基因的特征对假基因进行筛选和分类（与编码蛋白质的序列高度相似、PloyA尾巴等）</p>
 
                 
               </div>
@@ -761,5 +796,20 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

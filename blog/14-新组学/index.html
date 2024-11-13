@@ -19,12 +19,12 @@
   <meta name="author" content="Bacon Tesla">
   <meta name="keywords" content="">
   
-    <meta name="description" content="三维基因组学3C 技术定义：染色质结构捕获（chromosome conformation capture），最早成熟的染色质结构捕获技术，能够检测同一染色体或不同染色体之间的两个遗传位点之间的接触次数。随着技术的进步，从 3C 的“一对一”发展为 4C 的“一对多&#x2F;全”（可同时检测一个特定遗传位点和多个遗传位点或全基因组范围的遗传位点的接触次数）、5C 的“多对多”、Capture-C">
+    <meta name="description" content="三维基因组学 3C 技术 定义：染色质结构捕获（chromosome conformation capture），最早成熟的染色质结构捕获技术，能够检测同一染色体或不同染色体之间的两个遗传位点之间的接触次数。随着技术的进步，从 3C 的“一对一”发展为 4C 的“一对多&#x2F;全”（可同时检测一个特定遗传位点和多个遗传位点或全基因组范围的遗传位点的接触次数）、5C 的“多对多”、Capture-C 的“">
 <meta property="og:type" content="article">
 <meta property="og:title" content="生物信息数据结构">
 <meta property="og:url" content="https://bacontesla.github.io/blog/14-%E6%96%B0%E7%BB%84%E5%AD%A6/index.html">
 <meta property="og:site_name" content="Meditation">
-<meta property="og:description" content="三维基因组学3C 技术定义：染色质结构捕获（chromosome conformation capture），最早成熟的染色质结构捕获技术，能够检测同一染色体或不同染色体之间的两个遗传位点之间的接触次数。随着技术的进步，从 3C 的“一对一”发展为 4C 的“一对多&#x2F;全”（可同时检测一个特定遗传位点和多个遗传位点或全基因组范围的遗传位点的接触次数）、5C 的“多对多”、Capture-C">
+<meta property="og:description" content="三维基因组学 3C 技术 定义：染色质结构捕获（chromosome conformation capture），最早成熟的染色质结构捕获技术，能够检测同一染色体或不同染色体之间的两个遗传位点之间的接触次数。随着技术的进步，从 3C 的“一对一”发展为 4C 的“一对多&#x2F;全”（可同时检测一个特定遗传位点和多个遗传位点或全基因组范围的遗传位点的接触次数）、5C 的“多对多”、Capture-C 的“">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-17T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-11-13T06:09:22.950Z">
@@ -226,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          877 字
+          879 字
         
       </span>
     
@@ -279,22 +279,39 @@
             
               <div class="markdown-body">
                 
-                <h1 id="三维基因组学"><a href="#三维基因组学" class="headerlink" title="三维基因组学"></a>三维基因组学</h1><p><strong>3C 技术</strong><br>定义：<strong>染色质结构捕获</strong>（chromosome conformation capture），最早成熟的染色质结构捕获技术，能够检测同一染色体或不同染色体之间的两个遗传位点之间的接触次数。随着技术的进步，从 3C 的“一对一”发展为 4C 的“一对多&#x2F;全”（可同时检测一个特定遗传位点和多个遗传位点或全基因组范围的遗传位点的接触次数）、5C 的“多对多”、Capture-C 的“多对全”以及 Hi-C 的“全对全”<br>3C 技术，将两条可能发生互作的序列交联，再使用限制性核酸内切酶消化，用标记物如生物素对序列末端进行标记，利用 DNA 连接酶将两条片段连接，用识别标记物抗体捕获互作位点 DNA，设计相应引物进行扩增，如果能够扩增则表明两条序列之间存在互作。</p>
-<p>Hi-C 技术同样也是先交联 DNA，使用限制性核酸内切酶进行消化切割，与 3C 不同的是 Hi-C 在所有序列末端都加上生物素标记，再连接成环，通过另一种酶将含有生物素的序列切下并使用链霉青霉素结合生物素，这样捕获的 DNA 包含所有位点之间的互作。</p>
-<p><strong>Hi-C 技术</strong><br>Hi-C 全称为<strong>高通量染色体构象捕获技术</strong>（高通量染色体构象捕获技术），其主要是以整个细胞核为研究对象，利用高通量测序技术，结合生物信息分析方法，研究全基因组范围内整个染色质在空间位置上的关系，获得高分辨率的染色质调控元件相互作用图谱，更加全面阐述染色质三维结构。同样，Hi-C 可以与 RNA-Seq、ChIP-Seq 等多组学数据进行联合分析，进而从基因调控网络和表观遗传网络来阐述生物体性状形成的相关机制。</p>
-<h1 id="单细胞组学"><a href="#单细胞组学" class="headerlink" title="单细胞组学"></a>单细胞组学</h1><p><strong>单细胞组学相比于传统组学有什么不同？</strong><br>传统的组学在样品制备时通常以一群细胞为一个样本，分析结果仍是所研究效应的均值。但实际上，生物体中没有两个细胞完全相同，每种细胞类型都有不同的谱系和独特的功能，对组织和器官生物学产生影响，并最终定义机体整体的生物学功能。所以单细胞组学解决了传统组学面临的<strong>细胞异质性</strong>问题。</p>
+                <h1 id="三维基因组学">三维基因组学</h1>
+<p><strong>3C 技术</strong>
+定义：<strong>染色质结构捕获</strong>（chromosome conformation
+capture），最早成熟的染色质结构捕获技术，能够检测同一染色体或不同染色体之间的两个遗传位点之间的接触次数。随着技术的进步，从
+3C 的“一对一”发展为 4C
+的“一对多/全”（可同时检测一个特定遗传位点和多个遗传位点或全基因组范围的遗传位点的接触次数）、5C
+的“多对多”、Capture-C 的“多对全”以及 Hi-C 的“全对全” 3C
+技术，将两条可能发生互作的序列交联，再使用限制性核酸内切酶消化，用标记物如生物素对序列末端进行标记，利用
+DNA 连接酶将两条片段连接，用识别标记物抗体捕获互作位点
+DNA，设计相应引物进行扩增，如果能够扩增则表明两条序列之间存在互作。</p>
+<p>Hi-C 技术同样也是先交联 DNA，使用限制性核酸内切酶进行消化切割，与 3C
+不同的是 Hi-C
+在所有序列末端都加上生物素标记，再连接成环，通过另一种酶将含有生物素的序列切下并使用链霉青霉素结合生物素，这样捕获的
+DNA 包含所有位点之间的互作。</p>
+<p><strong>Hi-C 技术</strong> Hi-C
+全称为<strong>高通量染色体构象捕获技术</strong>（高通量染色体构象捕获技术），其主要是以整个细胞核为研究对象，利用高通量测序技术，结合生物信息分析方法，研究全基因组范围内整个染色质在空间位置上的关系，获得高分辨率的染色质调控元件相互作用图谱，更加全面阐述染色质三维结构。同样，Hi-C
+可以与 RNA-Seq、ChIP-Seq
+等多组学数据进行联合分析，进而从基因调控网络和表观遗传网络来阐述生物体性状形成的相关机制。</p>
+<h1 id="单细胞组学">单细胞组学</h1>
+<p><strong>单细胞组学相比于传统组学有什么不同？</strong>
+传统的组学在样品制备时通常以一群细胞为一个样本，分析结果仍是所研究效应的均值。但实际上，生物体中没有两个细胞完全相同，每种细胞类型都有不同的谱系和独特的功能，对组织和器官生物学产生影响，并最终定义机体整体的生物学功能。所以单细胞组学解决了传统组学面临的<strong>细胞异质性</strong>问题。</p>
 <p><strong>拟时序 (pseudotime)分析</strong></p>
-<h1 id="ChIP-seq-技术"><a href="#ChIP-seq-技术" class="headerlink" title="ChIP-seq 技术"></a>ChIP-seq 技术</h1><p>研究方向：</p>
-<ol>
-<li>转录因子、染色质重塑因子对靶点的结合，富集信息进一步分析转录因子结合的motif位点</li>
-<li>核小体的定位，确定在哪些区域核小体结合紧密，哪些部位结合松散</li>
-<li>各种表观修饰分布，如组蛋白修饰、DNA甲基化</li>
-</ol>
-<p>ChIP 所富集的 DNA 有两种研究类型：<strong>ChIP-chip</strong> 和 <strong>ChIP-seq</strong> </p>
-<ul>
-<li>ChIP-chip 是染色体免疫共沉淀-基因芯片技术，可以将 ChIP 所富集的 DNA 杂交到基因芯片上，就可以得知序列在基因组中的位置及信号强弱</li>
-<li>ChIP-seq 则是将富集的 DNA 连上接头并进行高通量测序，就可以得知转录因子或组蛋白修饰在基因组中的位置</li>
-</ul>
+<h1 id="chip-seq-技术">ChIP-seq 技术</h1>
+<p>研究方向： 1.
+转录因子、染色质重塑因子对靶点的结合，富集信息进一步分析转录因子结合的motif位点
+2. 核小体的定位，确定在哪些区域核小体结合紧密，哪些部位结合松散 3.
+各种表观修饰分布，如组蛋白修饰、DNA甲基化</p>
+<p>ChIP 所富集的 DNA 有两种研究类型：<strong>ChIP-chip</strong> 和
+<strong>ChIP-seq</strong> - ChIP-chip
+是染色体免疫共沉淀-基因芯片技术，可以将 ChIP 所富集的 DNA
+杂交到基因芯片上，就可以得知序列在基因组中的位置及信号强弱 - ChIP-seq
+则是将富集的 DNA
+连上接头并进行高通量测序，就可以得知转录因子或组蛋白修饰在基因组中的位置</p>
 
                 
               </div>
@@ -668,5 +685,20 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

@@ -19,22 +19,13 @@
   <meta name="author" content="Bacon Tesla">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、基因组测序基本方法主要有两种全基因组测序的方法（1）逐步克隆法：传统基因组测序策略，在高通量测序技术之前完成测序的基因组就是基于此策略。利用分子标记和遗传图谱，构建大片段克隆物理图谱，然后进行克隆序列拼接获得克隆全长测序，基于所有克隆序列机器连接关系拼接出基因组序列 使用了遗传图谱、物理图谱和BAC文库构建  ChatGPT4.0：物理图谱和遗传图谱的区别和联系   建立方法： 物理图谱：它基">
+    <meta name="description" content="一、基因组测序基本方法 主要有两种全基因组测序的方法 （1）逐步克隆法：传统基因组测序策略，在高通量测序技术之前完成测序的基因组就是基于此策略。利用分子标记和遗传图谱，构建大片段克隆物理图谱，然后进行克隆序列拼接获得克隆全长测序，基于所有克隆序列机器连接关系拼接出基因组序列 使用了遗传图谱、物理图谱和BAC文库构建 &gt;ChatGPT4.0：物理图谱和遗传图谱的区别和联系 1. 建立方法： -">
 <meta property="og:type" content="article">
 <meta property="og:title" content="组学数据组装">
 <meta property="og:url" content="https://bacontesla.github.io/blog/6-%E7%BB%84%E5%AD%A6%E6%95%B0%E6%8D%AE%E7%BB%84%E8%A3%85/index.html">
 <meta property="og:site_name" content="Meditation">
-<meta property="og:description" content="一、基因组测序基本方法主要有两种全基因组测序的方法（1）逐步克隆法：传统基因组测序策略，在高通量测序技术之前完成测序的基因组就是基于此策略。利用分子标记和遗传图谱，构建大片段克隆物理图谱，然后进行克隆序列拼接获得克隆全长测序，基于所有克隆序列机器连接关系拼接出基因组序列 使用了遗传图谱、物理图谱和BAC文库构建  ChatGPT4.0：物理图谱和遗传图谱的区别和联系   建立方法： 物理图谱：它基">
+<meta property="og:description" content="一、基因组测序基本方法 主要有两种全基因组测序的方法 （1）逐步克隆法：传统基因组测序策略，在高通量测序技术之前完成测序的基因组就是基于此策略。利用分子标记和遗传图谱，构建大片段克隆物理图谱，然后进行克隆序列拼接获得克隆全长测序，基于所有克隆序列机器连接关系拼接出基因组序列 使用了遗传图谱、物理图谱和BAC文库构建 &gt;ChatGPT4.0：物理图谱和遗传图谱的区别和联系 1. 建立方法： -">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230806092436.png">
-<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230807101549.png">
-<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230806120018.png">
-<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230807111549.png">
-<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230807112016.png">
-<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230807112119.png">
-<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230807113244.png">
-<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230807114303.png">
-<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230825094657.png">
 <meta property="article:published_time" content="2023-08-27T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-11-13T06:09:52.018Z">
 <meta property="article:author" content="Bacon Tesla">
@@ -42,7 +33,6 @@
 <meta property="article:tag" content="基础知识">
 <meta property="article:tag" content="考研">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230806092436.png">
   
   
   
@@ -288,206 +278,313 @@
             
               <div class="markdown-body">
                 
-                <h1 id="一、基因组测序基本方法"><a href="#一、基因组测序基本方法" class="headerlink" title="一、基因组测序基本方法"></a>一、基因组测序基本方法</h1><p>主要有两种全基因组测序的方法<br><strong>（1）逐步克隆法</strong>：传统基因组测序策略，在高通量测序技术之前完成测序的基因组就是基于此策略。利用分子标记和遗传图谱，构建大片段克隆物理图谱，然后进行克隆序列拼接获得克隆全长测序，基于所有克隆序列机器连接关系拼接出基因组序列</p>
-<p>使用了遗传图谱、物理图谱和BAC文库构建</p>
-<blockquote>
-<p>ChatGPT4.0：物理图谱和遗传图谱的区别和联系</p>
-</blockquote>
-<ol>
-<li><strong>建立方法</strong>：<ul>
-<li><strong>物理图谱</strong>：它基于DNA分子的实际物理位置建立。通常使用某种方法（如克隆或高通量测序）来确定基因或其他标记在染色体上的确切位置。</li>
-<li><strong>遗传图谱</strong>：它基于基因之间的遗传连锁信息建立。通过观察不同标记或基因在遗传过程中一起遗传的频率，可以估算它们之间的距离。</li>
-</ul>
-</li>
-<li><strong>表示的信息</strong>：<ul>
-<li><strong>物理图谱</strong>：表示基因或DNA标记在染色体上的物理位置，通常以碱基对（bp）为单位。</li>
-<li><strong>遗传图谱</strong>：表示基因或DNA标记在染色体上的相对位置，单位通常为厘摩cM或百分率（表示两个标记连锁不平衡的概率）。</li>
-</ul>
-</li>
-<li><strong>使用场合</strong>：<ul>
-<li><strong>物理图谱</strong>：常用于基因定位、基因组测序、结构变异分析等。</li>
-<li><strong>遗传图谱</strong>：常用于定位与特定性状关联的基因或标记、研究基因之间的连锁关系等。</li>
-</ul>
-</li>
-<li><strong>精确度</strong>：<ul>
-<li><strong>物理图谱</strong>：通常比遗传图谱更精确，因为它是基于DNA的实际物理位置。</li>
-<li><strong>遗传图谱</strong>：可能受到多种因素的影响，如基因重组频率的不均匀性，因此不如物理图谱精确。</li>
-</ul>
-</li>
-<li><strong>技术发展</strong>：<ul>
-<li>随着测序技术的进步，物理图谱已经成为许多基因组研究的首选，因为它提供了更精确和详细的信息。遗传图谱在早期的基因组研究中更为常见，但现在在某些特定的研究领域仍然有其价值。</li>
-</ul>
-</li>
-</ol>
-<p><strong>1. 遗传图谱构建</strong></p>
-<blockquote>
-<p>遗传图谱是指利用了DNA重组的原理，找到基因和多态性DNA路标的相对关系。最常用的图谱叫做序列标签位点（sequence tagged site，STS）图谱。一般来说，每个STS序列在基因组上都是唯一的，每隔100kb左右设立一个STS，可以是随机取的，也可以是表达序列。[[3-生物信息学数据库#^cd97c7|STS定义]]<br> ^4f56a2</p>
-</blockquote>
-<p><strong>2. 物理图谱和BAC构建</strong></p>
-<blockquote>
-<p>构建大片段的插入基因组文库（BAC文库）。将物种的所有基因打断成为大概200kb左右的大片段DNA，再与载体连接，转化克隆菌株。每一个菌落都带有相同的大片段DNA。将每个菌落在STS- PCR反应池中检验。检测不同的片段和STS的连锁情况。再进行测序得到它们之间的物理距离，通过STS进行拼接成为不同的contig。但是由于STS通常不能覆盖整个基因组，需要后续的延伸形成将不同的contig连接起来。<br>参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8e39e983ed61">2021-09-25 全基因组测序 - 简书 (jianshu.com)</a></p>
-</blockquote>
-<p><strong>3. 构建完大片段克隆文库后，用物理方法将BAC DNA打碎成多个DNA片段（2-5kb)，构建Subclone测序文库</strong></p>
-<blockquote>
-<p>为什么叫subclone文库，因为前面的大片段DNA large chunks插入到细菌质粒上时就已经构建了一个文库即BAC文库，换句话说先有大片段DNA文库，再对每个chunks构建小片段DNA文库，sub的体现</p>
-</blockquote>
-<p><strong>4.  对DNA片段进行测序，对于有空缺的序列进行补缺最后组装得到BAC序列</strong></p>
+                <h1 id="一基因组测序基本方法">一、基因组测序基本方法</h1>
+<p>主要有两种全基因组测序的方法
+<strong>（1）逐步克隆法</strong>：传统基因组测序策略，在高通量测序技术之前完成测序的基因组就是基于此策略。利用分子标记和遗传图谱，构建大片段克隆物理图谱，然后进行克隆序列拼接获得克隆全长测序，基于所有克隆序列机器连接关系拼接出基因组序列</p>
+<p>使用了遗传图谱、物理图谱和BAC文库构建
+&gt;ChatGPT4.0：物理图谱和遗传图谱的区别和联系 1.
+<strong>建立方法</strong>： -
+<strong>物理图谱</strong>：它基于DNA分子的实际物理位置建立。通常使用某种方法（如克隆或高通量测序）来确定基因或其他标记在染色体上的确切位置。
+-
+<strong>遗传图谱</strong>：它基于基因之间的遗传连锁信息建立。通过观察不同标记或基因在遗传过程中一起遗传的频率，可以估算它们之间的距离。
+2. <strong>表示的信息</strong>： -
+<strong>物理图谱</strong>：表示基因或DNA标记在染色体上的物理位置，通常以碱基对（bp）为单位。
+-
+<strong>遗传图谱</strong>：表示基因或DNA标记在染色体上的相对位置，单位通常为厘摩cM或百分率（表示两个标记连锁不平衡的概率）。
+3. <strong>使用场合</strong>： -
+<strong>物理图谱</strong>：常用于基因定位、基因组测序、结构变异分析等。
+-
+<strong>遗传图谱</strong>：常用于定位与特定性状关联的基因或标记、研究基因之间的连锁关系等。
+4. <strong>精确度</strong>： -
+<strong>物理图谱</strong>：通常比遗传图谱更精确，因为它是基于DNA的实际物理位置。
+-
+<strong>遗传图谱</strong>：可能受到多种因素的影响，如基因重组频率的不均匀性，因此不如物理图谱精确。
+5. <strong>技术发展</strong>： -
+随着测序技术的进步，物理图谱已经成为许多基因组研究的首选，因为它提供了更精确和详细的信息。遗传图谱在早期的基因组研究中更为常见，但现在在某些特定的研究领域仍然有其价值。</p>
+<p><strong>1. 遗传图谱构建</strong>
+&gt;遗传图谱是指利用了DNA重组的原理，找到基因和多态性DNA路标的相对关系。最常用的图谱叫做序列标签位点（sequence
+tagged
+site，STS）图谱。一般来说，每个STS序列在基因组上都是唯一的，每隔100kb左右设立一个STS，可以是随机取的，也可以是表达序列。[[3-生物信息学数据库#^cd97c7|STS定义]]
+^4f56a2</p>
+<p><strong>2. 物理图谱和BAC构建</strong>
+&gt;构建大片段的插入基因组文库（BAC文库）。将物种的所有基因打断成为大概200kb左右的大片段DNA，再与载体连接，转化克隆菌株。每一个菌落都带有相同的大片段DNA。将每个菌落在STS-
+PCR反应池中检验。检测不同的片段和STS的连锁情况。再进行测序得到它们之间的物理距离，通过STS进行拼接成为不同的contig。但是由于STS通常不能覆盖整个基因组，需要后续的延伸形成将不同的contig连接起来。
+&gt;参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8e39e983ed61">2021-09-25
+全基因组测序 - 简书 (jianshu.com)</a></p>
+<p><strong>3. 构建完大片段克隆文库后，用物理方法将BAC
+DNA打碎成多个DNA片段（2-5kb)，构建Subclone测序文库</strong>
+&gt;为什么叫subclone文库，因为前面的大片段DNA large
+chunks插入到细菌质粒上时就已经构建了一个文库即BAC文库，换句话说先有大片段DNA文库，再对每个chunks构建小片段DNA文库，sub的体现</p>
+<p><strong>4.
+对DNA片段进行测序，对于有空缺的序列进行补缺最后组装得到BAC序列</strong></p>
 <ul>
 <li><strong>优点</strong>：获得的基因组序列质量很高，对序列拼接没有特别要求，基于克隆序列之间的重叠部分就可以获得基因组序列；对于计算机的要求比较低，需要具备一定的遗传知识。可以应用于人，线虫等物种。</li>
 <li><strong>缺点</strong>：构建遗传和物理图谱比较繁琐，使许多物种无法企及；耗时且烧钱；染色体上着丝粒部分由于存在大量的重复序列难以将DNA切下来而导致无法测序</li>
 </ul>
-<p><strong>（2）全基因组鸟枪法测序</strong>：不经过作图步骤，将基因组打断测序，由重叠序列进行拼接，这是高通量测序出现以后的主要测序策略。但是它对于拼接算法的要求很高，拼接质量也不如逐步克隆法好，但是胜在速度快。可以应用于果蝇，拟南芥，水稻等物种。<br>该方法一般需要经历以下的步骤：</p>
-<ol>
-<li>基因组特征预测，包括基因组大小、杂合度、倍性等；</li>
-<li>全基因组测序，利用Illumina、PacBio、Nanopore等测序技术；</li>
-<li>原始序列矫正和质量控制（去处低质量读序或碱基，及测序时引入的接头序列）；</li>
-<li>基因组拼装（二代测序拼装一般基于DBG 德布鲁因图算法，三代测序拼装以OLC算法为主）；</li>
-<li>基因组组装质量估计；</li>
-</ol>
-<p>优缺点也可想而知：<br>优点：速度快，无需构建遗传和物理图谱，可应用于任何物种；<br>缺点：对组装算法要求很高</p>
-<p><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230806092436.png" srcset="/img/loading.gif" lazyload alt="image.png|400"></p>
-<hr>
-<h1 id="二、基因组组装流程"><a href="#二、基因组组装流程" class="headerlink" title="二、基因组组装流程"></a>二、基因组组装流程</h1><p><strong>大致流程</strong>：</p>
-<ol>
-<li>评估基因组复杂度，确定测序方案（从基因组大小、重复序列大小、杂合程度、短读长或长读长、测序深度）</li>
-<li>从头组装，得到contig序列（算法有OLC、DBG、重复图拼接算法）</li>
-<li>连接contig，得到scaffold（PE关系、BAC-end、Hi-C等）</li>
-<li>scaffold挂载，得到染色体序列（遗传图谱、Hi-C、linked-read）</li>
-<li>评估基因组组装的质量（连续性、完整性）</li>
-</ol>
+<p><strong>（2）全基因组鸟枪法测序</strong>：不经过作图步骤，将基因组打断测序，由重叠序列进行拼接，这是高通量测序出现以后的主要测序策略。但是它对于拼接算法的要求很高，拼接质量也不如逐步克隆法好，但是胜在速度快。可以应用于果蝇，拟南芥，水稻等物种。
+该方法一般需要经历以下的步骤： 1.
+基因组特征预测，包括基因组大小、杂合度、倍性等； 2.
+全基因组测序，利用Illumina、PacBio、Nanopore等测序技术； 3.
+原始序列矫正和质量控制（去处低质量读序或碱基，及测序时引入的接头序列）；
+4. 基因组拼装（二代测序拼装一般基于DBG
+德布鲁因图算法，三代测序拼装以OLC算法为主）； 5.
+基因组组装质量估计；</p>
+<p>优缺点也可想而知：
+优点：速度快，无需构建遗传和物理图谱，可应用于任何物种；
+缺点：对组装算法要求很高</p>
+<figure>
+<img
+src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230806092436.png" srcset="/img/loading.gif" lazyload
+alt="image.png|400" />
+<figcaption aria-hidden="true">image.png|400</figcaption>
+</figure>
+<hr />
+<h1 id="二基因组组装流程">二、基因组组装流程</h1>
+<p><strong>大致流程</strong>： 1.
+评估基因组复杂度，确定测序方案（从基因组大小、重复序列大小、杂合程度、短读长或长读长、测序深度）
+2. 从头组装，得到contig序列（算法有OLC、DBG、重复图拼接算法） 3.
+连接contig，得到scaffold（PE关系、BAC-end、Hi-C等） 4.
+scaffold挂载，得到染色体序列（遗传图谱、Hi-C、linked-read） 5.
+评估基因组组装的质量（连续性、完整性）</p>
 <blockquote>
-<p><strong>第3步中，如何根据PE读序将contig连接为scaffold</strong><br>在得到contig之后，我们再用reads比对到contig上，如果双端测序的reads能够比对到不同的contig上，那么就可以认为这两个contig来自同一个染色体，那我们把contig连起来，根据插入片段的长度，填上gap（也就是N）。<br>如果双端测序的R1匹配到contig1，R2匹配到contig2，且R1是正向，R2是反向，则contig1和2的顺序是contig1-&gt;contig2，由于R1和R2之间可能存在未能测序的插入片段（这是由Illumina测序程序导致的，例如有一条插入DNA片段是320bp，但R1和R2均只测了两端的150bp，那么中间的20bp没有被测到，也就可能成为连接contig之间的gap），所以contig1和2之间是可能存在间隙的，也就是上文提到的gap</p>
+<p><strong>第3步中，如何根据PE读序将contig连接为scaffold</strong>
+在得到contig之后，我们再用reads比对到contig上，如果双端测序的reads能够比对到不同的contig上，那么就可以认为这两个contig来自同一个染色体，那我们把contig连起来，根据插入片段的长度，填上gap（也就是N）。
+如果双端测序的R1匹配到contig1，R2匹配到contig2，且R1是正向，R2是反向，则contig1和2的顺序是contig1-&gt;contig2，由于R1和R2之间可能存在未能测序的插入片段（这是由Illumina测序程序导致的，例如有一条插入DNA片段是320bp，但R1和R2均只测了两端的150bp，那么中间的20bp没有被测到，也就可能成为连接contig之间的gap），所以contig1和2之间是可能存在间隙的，也就是上文提到的gap</p>
 </blockquote>
-<p><strong>基因组拼接算法</strong>：基因组从头拼接的基础算法有两种：OLC（overlap-layout-consensus）和德布鲁因图DBG（de Bruijn graph）；</p>
-<ul>
-<li>OLC算法：主要用于一代、三代测序的拼接，DBG主要用于二代测序的拼接。OLC的算法分三步：<ul>
-<li>寻找读序可能的重叠区域；</li>
-<li>通过重叠区域拼接出序列片段；</li>
-<li>基于片段关系进行拼接；</li>
-</ul>
-</li>
-<li>DBG 算法：主要用于二代测序中的短序列拼接，德布鲁因图的大小取决于基因组大小和重复序列含量，与测序深度无关（冗余序列不会影响 kmer 的数量）；利用 K-mer 作为顶点，读序作为边，根据读序中 reads 可以获得各顶点间路径的多少关系，忽略较少 reads 的，而保留主干路径，由主干路径组装成 Contig。</li>
-<li>拼接图算法（repeat graph）：Pevzner实验室提出，解决了重复序列拼接的难题。核心内容包括“disjointig”序列的设计和重复路径的重构</li>
-</ul>
-<p><strong>提问：DBG 中点和边分别代表什么？</strong><br>点代表将 reads 分割成的 K mer<br>边代表两个点之间存在 K-1 mer 的重叠，从左 kmer 的第一个字符到右 Kmer 的最后一个字符走过的路径，就也就欧拉行走的路径。</p>
-<h2 id="SOAPdenovo组装流程"><a href="#SOAPdenovo组装流程" class="headerlink" title="SOAPdenovo组装流程"></a>SOAPdenovo组装流程</h2><p>华大基因基于二代测序数据的基因组拼接算法<br><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230807101549.png" srcset="/img/loading.gif" lazyload alt="image.png|500"><br>流程如图中右侧文字所示，随后对细节进行分析</p>
-<ol>
-<li>在构建DBG时，需要将序列K-mer化，K-mer的大小的选取就至关重要<ul>
-<li>K-mer过小，图会变得复杂，包含很多来自重复序列的边</li>
-<li>K-mer 过大，基因组测序深度较低的区域，其连接的边会少</li>
-</ul>
-</li>
-<li>在简化DBG时，需要去除错误连接<ul>
-<li>去掉测序错误导致的的错误连接，如bubble（小包）、tips（分叉）</li>
-<li>去掉较小的重复区域，低覆盖率连接和微小重复</li>
-</ul>
-</li>
-<li>对于大的重复序列，由于形成剪刀叉型图，无法确定两端连接方式，SOAPdenovo的做法是先去除这段重复序列，然后根据PE关系确定scaffold，最后再填充gap即可</li>
-</ol>
-<hr>
-<h1 id="三、基因组染色体水平的组装"><a href="#三、基因组染色体水平的组装" class="headerlink" title="三、基因组染色体水平的组装"></a>三、基因组染色体水平的组装</h1><p>传统技术——基于遗传图谱<br>新技术:<br><strong>1. Hi-C：基于染色体内相互作用远大于染色体间的相互作用</strong><br>基本原理</p>
-<ul>
-<li>在染色体上，源于同一染色体上contig之间相比于不同染色体上contig之间，存在更多的空间接触（有更多比对的读段）</li>
-<li>在顺序上，同一染色体上contig之间，更多的空间接触表明他们在基因组的线形距离更近。</li>
-<li>在方向上，根据不同方向摆放对应的交互接触数量（比对的读段 ）判断。</li>
-</ul>
-<p>相比于遗传图谱，Hi-C不需要构建专门的作图群体，只需要单个个体就可以实现序列染色体定位<br>使用Hi-C技术的软件有ALLHiC等</p>
-<p><strong>2. Chicago技术和Linked-reads技术</strong><br>和Hi-C一样，都是基于Illumina二代测序平台而进行的特大片段建库技术。<br>但Hi-C存在一定的缺点，即需要通过提取活细胞染色质构建大片段文库，会存在生物学信号干扰，影响基因组组装。<br>Chicago就克服了这一问题，以重组染色质为基础构建大片段文库，通过将DNA、纯化的组蛋白及染色质组装因子结合来重构染色质。但产出的片段跨度范围明显小于Hi-C，不能进行染色体水平的组装。</p>
-<p><strong>3. 光学图谱技术</strong><br>非测序系统技术，对尽可能长的DNA片段进行成像分析，制成可视基因组图谱。</p>
+<p><strong>基因组拼接算法</strong>：基因组从头拼接的基础算法有两种：OLC（overlap-layout-consensus）和德布鲁因图DBG（de
+Bruijn graph）； -
+OLC算法：主要用于一代、三代测序的拼接，DBG主要用于二代测序的拼接。OLC的算法分三步：
+- 寻找读序可能的重叠区域； - 通过重叠区域拼接出序列片段； -
+基于片段关系进行拼接； - DBG
+算法：主要用于二代测序中的短序列拼接，德布鲁因图的大小取决于基因组大小和重复序列含量，与测序深度无关（冗余序列不会影响
+kmer 的数量）；利用 K-mer 作为顶点，读序作为边，根据读序中 reads
+可以获得各顶点间路径的多少关系，忽略较少 reads
+的，而保留主干路径，由主干路径组装成 Contig。 - 拼接图算法（repeat
+graph）：Pevzner实验室提出，解决了重复序列拼接的难题。核心内容包括“disjointig”序列的设计和重复路径的重构</p>
+<p><strong>提问：DBG 中点和边分别代表什么？</strong> 点代表将 reads
+分割成的 K mer 边代表两个点之间存在 K-1 mer 的重叠，从左 kmer
+的第一个字符到右 Kmer
+的最后一个字符走过的路径，就也就欧拉行走的路径。</p>
+<h2 id="soapdenovo组装流程">SOAPdenovo组装流程</h2>
+<p>华大基因基于二代测序数据的基因组拼接算法 <img
+src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230807101549.png" srcset="/img/loading.gif" lazyload
+alt="image.png|500" /> 流程如图中右侧文字所示，随后对细节进行分析 1.
+在构建DBG时，需要将序列K-mer化，K-mer的大小的选取就至关重要 -
+K-mer过小，图会变得复杂，包含很多来自重复序列的边 - K-mer
+过大，基因组测序深度较低的区域，其连接的边会少 2.
+在简化DBG时，需要去除错误连接 -
+去掉测序错误导致的的错误连接，如bubble（小包）、tips（分叉） -
+去掉较小的重复区域，低覆盖率连接和微小重复 3.
+对于大的重复序列，由于形成剪刀叉型图，无法确定两端连接方式，SOAPdenovo的做法是先去除这段重复序列，然后根据PE关系确定scaffold，最后再填充gap即可</p>
+<hr />
+<h1 id="三基因组染色体水平的组装">三、基因组染色体水平的组装</h1>
+<p>传统技术——基于遗传图谱 新技术: <strong>1.
+Hi-C：基于染色体内相互作用远大于染色体间的相互作用</strong> 基本原理 -
+在染色体上，源于同一染色体上contig之间相比于不同染色体上contig之间，存在更多的空间接触（有更多比对的读段）
+-
+在顺序上，同一染色体上contig之间，更多的空间接触表明他们在基因组的线形距离更近。
+- 在方向上，根据不同方向摆放对应的交互接触数量（比对的读段 ）判断。</p>
+<p>相比于遗传图谱，Hi-C不需要构建专门的作图群体，只需要单个个体就可以实现序列染色体定位
+使用Hi-C技术的软件有ALLHiC等</p>
+<p><strong>2. Chicago技术和Linked-reads技术</strong>
+和Hi-C一样，都是基于Illumina二代测序平台而进行的特大片段建库技术。
+但Hi-C存在一定的缺点，即需要通过提取活细胞染色质构建大片段文库，会存在生物学信号干扰，影响基因组组装。
+Chicago就克服了这一问题，以重组染色质为基础构建大片段文库，通过将DNA、纯化的组蛋白及染色质组装因子结合来重构染色质。但产出的片段跨度范围明显小于Hi-C，不能进行染色体水平的组装。</p>
+<p><strong>3. 光学图谱技术</strong>
+非测序系统技术，对尽可能长的DNA片段进行成像分析，制成可视基因组图谱。</p>
 <p>在植物上，通常会将光学图谱技术、三代测序技术和Hi-C技术联合使用，共同解决植物基因组高重复、高杂合及多倍化特性，获得高质量的复杂植物参考基因组</p>
-<hr>
-<h1 id="四、组装质量评估"><a href="#四、组装质量评估" class="headerlink" title="四、组装质量评估"></a>四、组装质量评估</h1><h2 id="1-contig-N50和-scaffold-N50指标-连续性评估"><a href="#1-contig-N50和-scaffold-N50指标-连续性评估" class="headerlink" title="1. contig N50和 scaffold N50指标-连续性评估"></a>1. contig N50和 scaffold N50指标-连续性评估</h2><p><strong>contig</strong> 定义：依据大规模测序得到的短读段 read 之间存在重叠关系，而将不同的 reads 拼接组成的一致性序列<br><strong>scaffold</strong> 定义：多个 contigs 通过片段重叠,组成一个更长的 super contig；获得 contig 之后还需要构建 paired-end 或者 mate-pair 库，从而获得一定片段的两端序列，这些序列可以确定 contig 的顺序关系和位置关系，最后 contig 按照一定顺序和方向组成 scaffold，其中形成 scaffold 过程中还需要填补 contig 之间的空缺。</p>
-<p><strong>N50</strong>定义：Contig&#x2F;Scaffold N50&#x2F;L50 将组装获得的 contig&#x2F;scaffold 序列按长度从大到小依次累加，当累计长度超过 contig&#x2F;scaffold 总长度的50%时，此刻对应的那个 contig&#x2F;scaffold 的长度即为 N50值，此时被累加的 contig&#x2F;scaffold 数目即为 L50值。<br><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230806120018.png" srcset="/img/loading.gif" lazyload alt="image.png|400"><br>评估方法：</p>
+<hr />
+<h1 id="四组装质量评估">四、组装质量评估</h1>
+<h2 id="contig-n50和-scaffold-n50指标-连续性评估">1. contig N50和
+scaffold N50指标-连续性评估</h2>
+<p><strong>contig</strong> 定义：依据大规模测序得到的短读段 read
+之间存在重叠关系，而将不同的 reads 拼接组成的一致性序列
+<strong>scaffold</strong> 定义：多个 contigs 通过片段重叠,组成一个更长的
+super contig；获得 contig 之后还需要构建 paired-end 或者 mate-pair
+库，从而获得一定片段的两端序列，这些序列可以确定 contig
+的顺序关系和位置关系，最后 contig 按照一定顺序和方向组成
+scaffold，其中形成 scaffold 过程中还需要填补 contig 之间的空缺。</p>
+<p><strong>N50</strong>定义：Contig/Scaffold N50/L50 将组装获得的
+contig/scaffold 序列按长度从大到小依次累加，当累计长度超过
+contig/scaffold 总长度的50%时，此刻对应的那个 contig/scaffold 的长度即为
+N50值，此时被累加的 contig/scaffold 数目即为 L50值。 <img
+src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230806120018.png" srcset="/img/loading.gif" lazyload
+alt="image.png|400" /> 评估方法： - 类似地，可以定义Contig N90/L90,
+scaffold N90/L90 - 一般可以用N50/L50, N90/L90来描述组装的连续性 -
+同一物种的连续性N50/L50等，具有可比性，N50/N90越大，L50/L90越小，则组装连续性越高，预示组装质量越好</p>
+<h2 id="组装完整性评估">2. 组装完整性评估：</h2>
 <ul>
-<li>类似地，可以定义Contig N90&#x2F;L90, scaffold N90&#x2F;L90 </li>
-<li>一般可以用N50&#x2F;L50, N90&#x2F;L90来描述组装的连续性</li>
-<li>同一物种的连续性N50&#x2F;L50等，具有可比性，N50&#x2F;N90越大，L50&#x2F;L90越小，则组装连续性越高，预示组装质量越好</li>
-</ul>
-<h2 id="2-组装完整性评估："><a href="#2-组装完整性评估：" class="headerlink" title="2. 组装完整性评估："></a>2. 组装完整性评估：</h2><ul>
-<li><p>读段回帖（Reads remapping）</p>
+<li>读段回帖（Reads remapping）
 <ul>
 <li>即将组装的读段重新比对回基因组，理论上能比对上的读段的比例越高，则组装完整性越好</li>
-</ul>
-</li>
-<li><p>BUSCO</p>
+</ul></li>
+<li>BUSCO
 <ul>
 <li>将某些物种共有的保守基因，比对到或通过其它方法检索基因组，根据能检索出的基因数量，评估基因组组装的完整性</li>
-</ul>
-</li>
-<li><p>K-mer</p>
+</ul></li>
+<li>K-mer
 <ul>
 <li>通过比较用于组装的测序读段含有的K-mer集合，与组装好的序列含有的K-mer集合，评估基因组组装的完整性</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<hr>
-<h1 id="五、基因组重测序数据分析"><a href="#五、基因组重测序数据分析" class="headerlink" title="五、基因组重测序数据分析"></a>五、基因组重测序数据分析</h1><p>目的：对基因组序列已知物种的个体进行基因组测序，并进行差异信息分析，包括获取SNP、SV等。</p>
-<p><strong>基因组重测序的步骤如下（获取SNP）</strong>：</p>
-<ol>
-<li>将读序联配到参考基因组序列上，使用哈希算法（软件有MAQ、Novoalign、Stampy）和BWT算法（软件有BWA、Bowtie2、SOAP2），前者具有更好的联配准确性和敏感性，后者优势在于内存消耗小、处理时间短；</li>
-<li>对联配到插入缺失位点周围的序列进行重新联配，在缺失位点容易出错，产生很多<strong>假阳性</strong>（GATK中IndelRealigner完成）；</li>
-<li>过滤PCR实验过程中可能产生的重复序列，过量扩增的序列并非基因组自身固有的序列会对检测的准确性产生一定的影响（使用PICARD-TOOLS完成过滤）；</li>
-<li>碱基质量再矫正，消除测序仪器产生的系统误差（GATK中BaseRecalibrator完成）；</li>
-<li>单核苷酸多态性检测，查看参考基因组每个位点上的联配情况，检测联配上的读序在这个位点上是否存在不同的核苷酸信息，分为纯合变异位点和杂合变异位点（存在一定的缺陷，没有考虑错误的噪音，可通过概率统计的方法推测出位点最大概率基因型）；<br>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/586544580#:~:text=%E9%80%90%E6%AD%A5%E5%85%8B%E9%9A%86%E6%B3%95%EF%BC%9A%E6%98%AF%E4%BC%A0,%E6%8E%A5%E5%87%BA%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%BA%8F%E5%88%97%EF%BC%9B">简述基因组学 - 知乎 (zhihu.com)</a>和生物信息学（樊龙江，第二版）</li>
-</ol>
+<hr />
+<h1 id="五基因组重测序数据分析">五、基因组重测序数据分析</h1>
+<p>目的：对基因组序列已知物种的个体进行基因组测序，并进行差异信息分析，包括获取SNP、SV等。</p>
+<p><strong>基因组重测序的步骤如下（获取SNP）</strong>： 1.
+将读序联配到参考基因组序列上，使用哈希算法（软件有MAQ、Novoalign、Stampy）和BWT算法（软件有BWA、Bowtie2、SOAP2），前者具有更好的联配准确性和敏感性，后者优势在于内存消耗小、处理时间短；
+2.
+对联配到插入缺失位点周围的序列进行重新联配，在缺失位点容易出错，产生很多<strong>假阳性</strong>（GATK中IndelRealigner完成）；
+3.
+过滤PCR实验过程中可能产生的重复序列，过量扩增的序列并非基因组自身固有的序列会对检测的准确性产生一定的影响（使用PICARD-TOOLS完成过滤）；
+4.
+碱基质量再矫正，消除测序仪器产生的系统误差（GATK中BaseRecalibrator完成）；
+5.
+单核苷酸多态性检测，查看参考基因组每个位点上的联配情况，检测联配上的读序在这个位点上是否存在不同的核苷酸信息，分为纯合变异位点和杂合变异位点（存在一定的缺陷，没有考虑错误的噪音，可通过概率统计的方法推测出位点最大概率基因型）；
+参考：<a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/586544580#:~:text=%E9%80%90%E6%AD%A5%E5%85%8B%E9%9A%86%E6%B3%95%EF%BC%9A%E6%98%AF%E4%BC%A0,%E6%8E%A5%E5%87%BA%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%BA%8F%E5%88%97%EF%BC%9B">简述基因组学
+- 知乎 (zhihu.com)</a>和生物信息学（樊龙江，第二版）</p>
 <p>以上是对基因组上SNP位点的检测，突变还存在于结构上的变异，如删除、新片段插入、转座元件插入、倒位、穿插复制和串联复制</p>
-<p><strong>基因组结构变异的检测（SV）</strong></p>
+<p><strong>基因组结构变异的检测（SV）</strong> -
+双端读序联配法（pair-end
+method）：双端读序联配到基因组上，然后评价双端读序联配距离和方向是否与建库信息一致（又称 <strong>PE读序</strong>），但其检测删除或插入的准确性受到构建文库的插入片段长度标准限制（软件有<em>BreakDancer、PEMEer、VariationHunter</em>）；
+- 读序联配覆盖深度法（read-depth
+method）：检测读序联配到的基因组的覆盖深度是否符合泊松分布，如果覆盖深度显著高于或低于假设分布，则认为该基因组区段存在复制或删除，但只能检测缺失和复制（软件有<em>CNV-Seq</em>）；
+- 拆分读序法（split-read
+method），不仅可以更加准确的检测到双端读序联配发能够检测的变异，还可以检测<strong>移动原件插入</strong>等变异，但该方法会因为二代测序的读序长度较短而受限（软件有<em>Pindel</em>）
+-
+从头拼接法（sequenceassembly），目前来说最有效的方法，可以很好的检测大片段插入和复杂结构性变异，缺点也很明显，序列组装本身会直接影响检测结果，如基因组上存在的重复序列和序列杂合性严重影响组装质量，进而影响结构变异检测（软件有<em>Cortex</em>）</p>
+<p><strong>拷贝数变异(Copy number variation,
+CNV)</strong>，是由<strong>基因组发生重排</strong>而导致的,一般指长度1KB
+以上的基因组大片段的<strong>拷贝数增加或者减少</strong>,
+主要表现为亚显微水平的缺失和重复。是基因组结构变异(Structural variation,
+SV) 的重要组成部分。可以说是染色体病的另一种重要致病机制。</p>
+<p>总结：这四种方法在小范围内的变异及较长的序列删除检测上有较好的效果，而对于较长的插入片段及更复杂的结构只有从头组装能够解决，大部分方法解决不了。但在实际检测过程中，最合适的方案是结合不同的策略，整合多种结果以最大限度检测SV降低假阳性（软件有<em>HugeSeq
+pipeline</em>，整合BreakDancer、CNV-Seq、Pindel、BreakSeq和GATK）</p>
+<p><strong>泛基因组分析</strong>
+定义：一个物种全部DNA序列的集合，包括核心基因组和非必需基因组两部分。核心基因组一般定义为<strong>群体中所有个体</strong>均存在的基因组构成，而非必需基因组只是存在于<strong>一部分个体</strong>中的基因组构成</p>
 <ul>
-<li>双端读序联配法（pair-end method）：双端读序联配到基因组上，然后评价双端读序联配距离和方向是否与建库信息一致（又称 <strong>PE读序</strong>），但其检测删除或插入的准确性受到构建文库的插入片段长度标准限制（软件有<em>BreakDancer、PEMEer、VariationHunter</em>）；</li>
-<li>读序联配覆盖深度法（read-depth method）：检测读序联配到的基因组的覆盖深度是否符合泊松分布，如果覆盖深度显著高于或低于假设分布，则认为该基因组区段存在复制或删除，但只能检测缺失和复制（软件有<em>CNV-Seq</em>）；</li>
-<li>拆分读序法（split-read method），不仅可以更加准确的检测到双端读序联配发能够检测的变异，还可以检测<strong>移动原件插入</strong>等变异，但该方法会因为二代测序的读序长度较短而受限（软件有<em>Pindel</em>）</li>
-<li>从头拼接法（sequenceassembly），目前来说最有效的方法，可以很好的检测大片段插入和复杂结构性变异，缺点也很明显，序列组装本身会直接影响检测结果，如基因组上存在的重复序列和序列杂合性严重影响组装质量，进而影响结构变异检测（软件有<em>Cortex</em>）</li>
-</ul>
-<p><strong>拷贝数变异(Copy number variation, CNV)<strong>，是由</strong>基因组发生重排</strong>而导致的,一般指长度1KB 以上的基因组大片段的<strong>拷贝数增加或者减少</strong>, 主要表现为亚显微水平的缺失和重复。是基因组结构变异(Structural variation, SV) 的重要组成部分。可以说是染色体病的另一种重要致病机制。</p>
-<p>总结：这四种方法在小范围内的变异及较长的序列删除检测上有较好的效果，而对于较长的插入片段及更复杂的结构只有从头组装能够解决，大部分方法解决不了。但在实际检测过程中，最合适的方案是结合不同的策略，整合多种结果以最大限度检测SV降低假阳性（软件有<em>HugeSeq pipeline</em>，整合BreakDancer、CNV-Seq、Pindel、BreakSeq和GATK）</p>
-<p><strong>泛基因组分析</strong><br>定义：一个物种全部DNA序列的集合，包括核心基因组和非必需基因组两部分。核心基因组一般定义为<strong>群体中所有个体</strong>均存在的基因组构成，而非必需基因组只是存在于<strong>一部分个体</strong>中的基因组构成</p>
+<li>泛基因组的组装有迭代组装、从头组装和泛基因组图
 <ul>
-<li>泛基因组的组装有迭代组装、从头组装和泛基因组图<ul>
-<li>迭代组装，以一个参考基因组为基础，把其他个体的序列联配到参考基因组，提取未联配序列，将未联配的序列逐步加到参考基因组上，现有<em>contig水平</em> 和<em>读序水平</em> 两种迭代组装</li>
-<li>从头组装，将研究中各个体的基因组<em>独立拼接、组装</em> 成相对完整的基因组，然后通过将组装得到的基因组与参考基因组进行<em>全基因组共线性比较</em>来进行基因组变异的检测，最终以参考基因组为基础进行泛基因组构建</li>
+<li>迭代组装，以一个参考基因组为基础，把其他个体的序列联配到参考基因组，提取未联配序列，将未联配的序列逐步加到参考基因组上，现有<em>contig水平</em>
+和<em>读序水平</em> 两种迭代组装</li>
+<li>从头组装，将研究中各个体的基因组<em>独立拼接、组装</em>
+成相对完整的基因组，然后通过将组装得到的基因组与参考基因组进行<em>全基因组共线性比较</em>来进行基因组变异的检测，最终以参考基因组为基础进行泛基因组构建</li>
 <li>图基因组，上述两种在序列水平上都是线性的，很难完整呈现一个群体中所有的基因组变异，而图基因组利用<em>图论</em>中节点和边的概念，可以完整呈现群体所有基因组变异。</li>
-</ul>
-</li>
+</ul></li>
 <li>基因组变异分析，基于迭代组装的泛基因组，采用与群体重测序相同的方式进行SNP、Indel等变异检测；基于从头组装的泛基因组，基于全基因组共线性分析的结果展开</li>
-<li>泛基因组常用于测定核心基因组（core genome）和非必需基因组（dispendable genome）<ul>
-<li>利用从头预测、同源比对的方法对编码基因进行注释，再进行基因家族聚类分析，如果一个基因家族中的基因分布在所有个体中则为核心基因，反之为非必需基因</li>
-</ul>
-</li>
-<li>PAV（presence&#x2F;absence variation）分析，包括编码基因的PAV分析（个体基因层面）和基因组变异的PAV分析（个体基因组层面）。</li>
-</ul>
-<hr>
-<h1 id="六、组装策略和算法的选取"><a href="#六、组装策略和算法的选取" class="headerlink" title="六、组装策略和算法的选取"></a>六、组装策略和算法的选取</h1><p>对于不同的测序数据，应当选用不同的组装算法<br><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230807111549.png" srcset="/img/loading.gif" lazyload alt="image.png|400"></p>
-<h2 id="1-OLC算法-Celera-Assembler"><a href="#1-OLC算法-Celera-Assembler" class="headerlink" title="1. OLC算法-Celera Assembler"></a>1. OLC算法-Celera Assembler</h2><p>基本流程如下图<br><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230807112016.png" srcset="/img/loading.gif" lazyload alt="image.png|400"><br>最主要的是第三步和第四步</p>
+<li>泛基因组常用于测定核心基因组（core
+genome）和非必需基因组（dispendable genome）
 <ul>
-<li>第三步：识别读段之间的重叠区域，是基于overlap的长度、两两读段之间overlap region的一致性和overhang的最大长度来识别的<br><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230807112119.png" srcset="/img/loading.gif" lazyload alt="image.png|400"></li>
-<li>第四步：根据序列之间的重叠情况，识别错误Kmer（出现频率相对较低，“少数服从多数”），并根据其它重叠读段的碱基进行“纠正”（重新计算两者重叠区域的相似度等）</li>
+<li>利用从头预测、同源比对的方法对编码基因进行注释，再进行基因家族聚类分析，如果一个基因家族中的基因分布在所有个体中则为核心基因，反之为非必需基因</li>
+</ul></li>
+<li>PAV（presence/absence
+variation）分析，包括编码基因的PAV分析（个体基因层面）和基因组变异的PAV分析（个体基因组层面）。</li>
 </ul>
-<h2 id="2-基于三代长片段测序技术的基因组组装"><a href="#2-基于三代长片段测序技术的基因组组装" class="headerlink" title="2. 基于三代长片段测序技术的基因组组装"></a>2. 基于三代长片段测序技术的基因组组装</h2><p><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230807113244.png" srcset="/img/loading.gif" lazyload alt="image.png|400"><br><strong>Canu</strong>工具流程：</p>
-<ol>
-<li><strong>Correct</strong>: 读段纠错，提高测序读段的准确性，主要采用<em>MinHash比对算法</em>（用于寻找哪些读段存在重叠）和 <em>多序列比对算法</em>（用于确定正确的碱基，纠正测序错误的碱基）</li>
-<li><strong>Trim</strong>: 读段截断,保留读段高质量的部分，主要采取<em>Overlap-based trimming (OBT)</em> 算法</li>
-<li><strong>Assemble</strong>: 读段组装，生成contig序列，利用纠错和截断后的读段，基于它们的重叠关系构建BOG重叠图，生成初始contig序列，采用<em>CABOG</em>算法；再根据读段比对回contig的结果，采用<em>pbdagcon</em>算法，生成较高质量的组装序列contig</li>
-</ol>
+<hr />
+<h1 id="六组装策略和算法的选取">六、组装策略和算法的选取</h1>
+<p>对于不同的测序数据，应当选用不同的组装算法 <img
+src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230807111549.png" srcset="/img/loading.gif" lazyload
+alt="image.png|400" /> ## 1. OLC算法-Celera Assembler 基本流程如下图
+<img
+src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230807112016.png" srcset="/img/loading.gif" lazyload
+alt="image.png|400" /> 最主要的是第三步和第四步 -
+第三步：识别读段之间的重叠区域，是基于overlap的长度、两两读段之间overlap
+region的一致性和overhang的最大长度来识别的 <img
+src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230807112119.png" srcset="/img/loading.gif" lazyload
+alt="image.png|400" /> -
+第四步：根据序列之间的重叠情况，识别错误Kmer（出现频率相对较低，“少数服从多数”），并根据其它重叠读段的碱基进行“纠正”（重新计算两者重叠区域的相似度等）</p>
+<h2 id="基于三代长片段测序技术的基因组组装">2.
+基于三代长片段测序技术的基因组组装</h2>
+<p><img
+src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230807113244.png" srcset="/img/loading.gif" lazyload
+alt="image.png|400" /> <strong>Canu</strong>工具流程： 1.
+<strong>Correct</strong>:
+读段纠错，提高测序读段的准确性，主要采用<em>MinHash比对算法</em>（用于寻找哪些读段存在重叠）和
+<em>多序列比对算法</em>（用于确定正确的碱基，纠正测序错误的碱基） 2.
+<strong>Trim</strong>:
+读段截断,保留读段高质量的部分，主要采取<em>Overlap-based trimming
+(OBT)</em> 算法 3. <strong>Assemble</strong>:
+读段组装，生成contig序列，利用纠错和截断后的读段，基于它们的重叠关系构建BOG重叠图，生成初始contig序列，采用<em>CABOG</em>算法；再根据读段比对回contig的结果，采用<em>pbdagcon</em>算法，生成较高质量的组装序列contig</p>
 <blockquote>
-<p>对于Canu的具体使用<br>参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c1aeeae77cb5">「三代组装」使用Canu对三代测序进行基因组组装 - 简书 (jianshu.com)</a></p>
+<p>对于Canu的具体使用 参考：<a
+target="_blank" rel="noopener" href="https://www.jianshu.com/p/c1aeeae77cb5">「三代组装」使用Canu对三代测序进行基因组组装
+- 简书 (jianshu.com)</a></p>
 </blockquote>
-<p><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230807114303.png" srcset="/img/loading.gif" lazyload alt="image.png|400"><br><strong>Hifiasm</strong>工具流程</p>
-<blockquote>
-<p>hifiasm大概是目前为止支持PacBio HiFi数据组装的所有软件中表现最优异的软件了。它不但能输出primary assembly result，还能分别组装出单倍体(haplotype)基因组的组装结果。</p>
-</blockquote>
-<h1 id="七、K-mer"><a href="#七、K-mer" class="headerlink" title="七、K-mer"></a>七、K-mer</h1><h2 id="碱基覆盖深度问题"><a href="#碱基覆盖深度问题" class="headerlink" title="碱基覆盖深度问题"></a>碱基覆盖深度问题</h2><p>设基因组大小为G；读序长度为L；读序的数目为N</p>
-<p>某个读序覆盖某个碱基的概率为$\frac{L}{G}$<br>某个读序不覆盖某个碱基的概率为$1-\frac{L}{G}$<br>某个碱基不被任何读序覆盖的概率：此时应该考虑泊松分布，$\lambda&#x3D;N\frac{L}{G}&#x3D;c$，c为碱基的平均覆盖深度<br>则概率为$P(K&#x3D;0)&#x3D;\frac{\lambda^{k}e^{-\lambda}}{k!}&#x3D;e^{-\lambda}&#x3D;e^{-c}$<br>同理，某一碱基至少被一个读序覆盖的概率为$1-P(K&#x3D;0)&#x3D;1-e^{-c}$</p>
-<h2 id="1-评估基因组大小"><a href="#1-评估基因组大小" class="headerlink" title="1. 评估基因组大小"></a>1. 评估基因组大小</h2><p>基因组大小G可由K-mer的总数$K_{num}$，和K-mer的期望测序深度$K_{depth}$<br>$$<br>G&#x3D;\frac{K_{num}}{K_{depth}}\ \ \ \ (1)<br>$$<br>对于基因组大小为G的基因组，测得N条读序，每条读序的长度的L，假设每条K-mer是特异的，那么就会得到G个不同的K-mer，K-mer总数由此计算<br>$$<br>K_{num}&#x3D;(L-K+1)\times N\ \ \ \ (2)<br>$$<br>由于单条读序覆盖某个K-mer的概率为 $(L-K+1)&#x2F;G$，概率很小，因此符合泊松分布（概率小，数量大），因此该泊松分布的期望值($E(X)&#x3D;np$)就是每条读序覆盖K-mer的数量，即K-mer的期望测序深度<br>$$<br>K_{depth}&#x3D;\frac{(L-K+1)\times N}{G}\ \ \ \ (3)<br>$$</p>
+<p><img
+src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230807114303.png" srcset="/img/loading.gif" lazyload
+alt="image.png|400" /> <strong>Hifiasm</strong>工具流程
+&gt;hifiasm大概是目前为止支持PacBio
+HiFi数据组装的所有软件中表现最优异的软件了。它不但能输出primary assembly
+result，还能分别组装出单倍体(haplotype)基因组的组装结果。</p>
+<h1 id="七k-mer">七、K-mer</h1>
+<h2 id="碱基覆盖深度问题">碱基覆盖深度问题</h2>
+<p>设基因组大小为G；读序长度为L；读序的数目为N</p>
+<p>某个读序覆盖某个碱基的概率为<span
+class="math inline">\(\frac{L}{G}\)</span>
+某个读序不覆盖某个碱基的概率为<span
+class="math inline">\(1-\frac{L}{G}\)</span>
+某个碱基不被任何读序覆盖的概率：此时应该考虑泊松分布，<span
+class="math inline">\(\lambda=N\frac{L}{G}=c\)</span>，c为碱基的平均覆盖深度
+则概率为<span
+class="math inline">\(P(K=0)=\frac{\lambda^{k}e^{-\lambda}}{k!}=e^{-\lambda}=e^{-c}\)</span>
+同理，某一碱基至少被一个读序覆盖的概率为<span
+class="math inline">\(1-P(K=0)=1-e^{-c}\)</span></p>
+<h2 id="评估基因组大小">1. 评估基因组大小</h2>
+<p>基因组大小G可由K-mer的总数<span
+class="math inline">\(K_{num}\)</span>，和K-mer的期望测序深度<span
+class="math inline">\(K_{depth}\)</span> <span class="math display">\[
+G=\frac{K_{num}}{K_{depth}}\ \ \ \ (1)
+\]</span>
+对于基因组大小为G的基因组，测得N条读序，每条读序的长度的L，假设每条K-mer是特异的，那么就会得到G个不同的K-mer，K-mer总数由此计算
+<span class="math display">\[
+K_{num}=(L-K+1)\times N\ \ \ \ (2)
+\]</span> 由于单条读序覆盖某个K-mer的概率为 <span
+class="math inline">\((L-K+1)/G\)</span>，概率很小，因此符合泊松分布（概率小，数量大），因此该泊松分布的期望值(<span
+class="math inline">\(E(X)=np\)</span>)就是每条读序覆盖K-mer的数量，即K-mer的期望测序深度
+<span class="math display">\[
+K_{depth}=\frac{(L-K+1)\times N}{G}\ \ \ \ (3)
+\]</span></p>
 <p>由(2)和(3)式可以反推回(1)。因此只需要从kmer的频率分布图中找到纯合主峰对应的kmer频数即为平均覆盖深度，此时就可以估计基因组G的大小</p>
-<p>问题：<br><strong>为什么不用短 reads 直接 overlap 拼接？</strong><br>这个主要是由于测序错误的影响，为了去除测序错误同时又想充分利用数据，所以就采取了将 reads 切割成 kmer 的方法。如果测序 reads 中没有测序错误，那么直接用 reads 进行 overlap 就行了。</p>
-<p><strong>如何选择 kmer 的大小？</strong><br>假设测序数据中没有测序错误。那么 kmer 大小就取 reads 长度大小的奇数就行，其实无需去切割 reads 成 kmer 了。如果测序数据有很多错误，如果取大 kmer，包含测序错误的大 kmer，直接就丢掉了。那么取 kmer 值越小，可以利用的数据就越多。所以，测序错误率是影响 kmer 大小非常重要的因素。<strong>测序准确率越高，选择大 kmer 越好，测序错误率越低，选择小 kmer 越好。</strong> 但实际上还需要综合考虑基因组本身特点，重复率，测序深度等因素，都会对 kmer 取值造成一定影响。</p>
-<p><strong>为什么 kmer 只能是奇数？</strong><br>kmer 不能取偶数主要是由于回文序列的影响。因为在取 kmer 的时候，我们不仅要正常取一遍 kmer，还要从它的反向互补序列再取一次 kmer。如果是回文序列，在使用偶数的 kmer 值的时候就会有问题。如 4mer 的 ATAT，如果取其反向互补的 4mer 仍然是 ATAT，这样便会出现正反链混淆。相反，3mer 的 ATA，其反向互补为 TAT。</p>
-<h2 id="2-评估基因组复杂度"><a href="#2-评估基因组复杂度" class="headerlink" title="2. 评估基因组复杂度"></a>2. 评估基因组复杂度</h2><p><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230825094657.png" srcset="/img/loading.gif" lazyload alt="image.png|400"></p>
+<p>问题： <strong>为什么不用短 reads 直接 overlap 拼接？</strong>
+这个主要是由于测序错误的影响，为了去除测序错误同时又想充分利用数据，所以就采取了将
+reads 切割成 kmer 的方法。如果测序 reads 中没有测序错误，那么直接用
+reads 进行 overlap 就行了。</p>
+<p><strong>如何选择 kmer 的大小？</strong>
+假设测序数据中没有测序错误。那么 kmer 大小就取 reads
+长度大小的奇数就行，其实无需去切割 reads 成 kmer
+了。如果测序数据有很多错误，如果取大 kmer，包含测序错误的大
+kmer，直接就丢掉了。那么取 kmer
+值越小，可以利用的数据就越多。所以，测序错误率是影响 kmer
+大小非常重要的因素。<strong>测序准确率越高，选择大 kmer
+越好，测序错误率越低，选择小 kmer 越好。</strong>
+但实际上还需要综合考虑基因组本身特点，重复率，测序深度等因素，都会对
+kmer 取值造成一定影响。</p>
+<p><strong>为什么 kmer 只能是奇数？</strong> kmer
+不能取偶数主要是由于回文序列的影响。因为在取 kmer
+的时候，我们不仅要正常取一遍 kmer，还要从它的反向互补序列再取一次
+kmer。如果是回文序列，在使用偶数的 kmer 值的时候就会有问题。如 4mer 的
+ATAT，如果取其反向互补的 4mer 仍然是
+ATAT，这样便会出现正反链混淆。相反，3mer 的 ATA，其反向互补为 TAT。</p>
+<h2 id="评估基因组复杂度">2. 评估基因组复杂度</h2>
+<figure>
+<img
+src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230825094657.png" srcset="/img/loading.gif" lazyload
+alt="image.png|400" />
+<figcaption aria-hidden="true">image.png|400</figcaption>
+</figure>
 <p>重点关注：测序错误峰、杂合峰，纯合主峰，测序拖尾</p>
-<p><strong>1. 杂合峰</strong>：反应了测序数据的杂合情况。<br>什么导致了杂合峰的出现，为什么会出现在c&#x2F;2处？<br>例如，对某一基因组进行2X测序，来自基因组的一个17-mer片段，在没有杂合性等理想情况下，其测序深度就是2；如果有一个杂合位点，则这个片段就会有2个17-mer，同等测序量情况下，2个17-mer的测序深度均为1。<br>因此目标基因组有一定的杂合性，会在K-mer深度分布曲线主峰(c)的1&#x2F;2处(c&#x2F;2)出现一个小峰。<br>随着杂合程度的增加，杂合峰会不断升高、变窄，而纯合主峰会不断降低、变宽。</p>
-<p><strong>2. 倍性峰</strong>：反应了基因组的倍性情况。<br>由同源多倍体或相近物种杂交形成的多倍体，两个或多个基因组序列高度同源，那么在同等测序量下，相应区域的K-mer数量成倍增加<br>例如，四倍体基因组，在主峰的2倍处存在一个峰值；六倍体基因组，在主峰的2倍和3倍处存在2个峰值。</p>
-<p><strong>3. 重复序列尾巴</strong>：基因组重复序列很高，导致高深度的K-mer数量增加，其K-mer深度频率分布右端会出现明显的拖尾（甚至可以将大于2c的k-mer比例作为基因组重复序列的估计值）</p>
-<p><strong>4. 测序错误峰</strong>：读序质量不高，出现大量碱基测序错误，使低测序深度[(1~2)X]的K-mer数量增加。</p>
+<p><strong>1. 杂合峰</strong>：反应了测序数据的杂合情况。
+什么导致了杂合峰的出现，为什么会出现在c/2处？
+例如，对某一基因组进行2X测序，来自基因组的一个17-mer片段，在没有杂合性等理想情况下，其测序深度就是2；如果有一个杂合位点，则这个片段就会有2个17-mer，同等测序量情况下，2个17-mer的测序深度均为1。
+因此目标基因组有一定的杂合性，会在K-mer深度分布曲线主峰(c)的1/2处(c/2)出现一个小峰。
+随着杂合程度的增加，杂合峰会不断升高、变窄，而纯合主峰会不断降低、变宽。</p>
+<p><strong>2. 倍性峰</strong>：反应了基因组的倍性情况。
+由同源多倍体或相近物种杂交形成的多倍体，两个或多个基因组序列高度同源，那么在同等测序量下，相应区域的K-mer数量成倍增加
+例如，四倍体基因组，在主峰的2倍处存在一个峰值；六倍体基因组，在主峰的2倍和3倍处存在2个峰值。</p>
+<p><strong>3.
+重复序列尾巴</strong>：基因组重复序列很高，导致高深度的K-mer数量增加，其K-mer深度频率分布右端会出现明显的拖尾（甚至可以将大于2c的k-mer比例作为基因组重复序列的估计值）</p>
+<p><strong>4.
+测序错误峰</strong>：读序质量不高，出现大量碱基测序错误，使低测序深度[(1~2)X]的K-mer数量增加。</p>
 
                 
               </div>
@@ -592,8 +689,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/blog/5-%E5%88%86%E5%AD%90%E8%BF%9B%E5%8C%96/" title="分子进化">
-                        <span class="hidden-mobile">分子进化</span>
+                      <a href="/blog/4-%E5%BA%8F%E5%88%97%E6%AF%94%E5%AF%B9/" title="序列比对">
+                        <span class="hidden-mobile">序列比对</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -859,5 +956,20 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
