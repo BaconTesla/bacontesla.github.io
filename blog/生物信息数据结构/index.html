@@ -1,0 +1,985 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bacon.png">
+  <link rel="icon" href="/img/bacon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Bacon Tesla">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="FASTA格式 因为要便于存储生物序列信息，比如ACGT组成的DNA序列、蛋白质序列，生物信息学家们便基于 txt 文本格式定义了有一定规范的FASTA和FASTQ格式。  定义：  FASTA格式又称Pearson格式，是一种最简单的序列文件格式。最初由Pearson与Lipman一起于1988年首次提出，用于序列数据快速处理和存储。 FASTA最后一个字母A表示联配(alignment)。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="生物信息数据结构">
+<meta property="og:url" content="https://bacontesla.github.io/blog/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:site_name" content="Meditation">
+<meta property="og:description" content="FASTA格式 因为要便于存储生物序列信息，比如ACGT组成的DNA序列、蛋白质序列，生物信息学家们便基于 txt 文本格式定义了有一定规范的FASTA和FASTQ格式。  定义：  FASTA格式又称Pearson格式，是一种最简单的序列文件格式。最初由Pearson与Lipman一起于1988年首次提出，用于序列数据快速处理和存储。 FASTA最后一个字母A表示联配(alignment)。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230814084241.png">
+<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230720200750.png">
+<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230814085001.png">
+<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/%E6%8B%BC%E5%9B%BE_20230720_203946_1%20442.jpg">
+<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/%E6%8F%8F%E8%BF%B0%E9%83%A8%E5%88%86%E5%8C%85%E6%8B%AC%E4%BA%86%E6%95%B4%E4%B8%AA%E8%AE%B0%E5%BD%95%E7%9A%84%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF.jpg">
+<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230720211119.png">
+<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230720211807.png">
+<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230816113857.png">
+<meta property="og:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230816113813.png">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-4740580ba34951ab5fcd5baf7147b50c_720w.webp">
+<meta property="article:published_time" content="2023-07-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-11-13T05:37:53.522Z">
+<meta property="article:author" content="Bacon Tesla">
+<meta property="article:tag" content="生物信息学原理">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230814084241.png">
+  
+  
+  
+  <title>生物信息数据结构 - Meditation</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"bacontesla.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Bacon Tesla</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="生物信息数据结构"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-07-20 00:00" pubdate>
+          2023年7月20日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          49 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">生物信息数据结构</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="FASTA格式"><a href="#FASTA格式" class="headerlink" title="FASTA格式"></a>FASTA格式</h1><blockquote>
+<p>因为要<strong>便于存储生物序列信息</strong>，比如ACGT组成的DNA序列、蛋白质序列，生物信息学家们便基于 txt 文本格式定义了有一定规范的FASTA和FASTQ格式。</p>
+</blockquote>
+<p>定义：</p>
+<ul>
+<li>FASTA格式又称Pearson格式，是一种最简单的序列文件格式。最初由Pearson与Lipman一起于1988年首次提出，用于序列数据快速处理和存储。</li>
+<li>FASTA最后一个字母A表示联配(alignment)。</li>
+</ul>
+<p>格式：</p>
+<ul>
+<li>第一行为<code>&gt;</code>开头的标题行，包含序列的名称或唯一标识符信息</li>
+<li>标题行和注释后，则是一行或多行构成的蛋白质或核酸序列数据，每行的字符串长度短于<strong>80</strong>个字符<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">&gt;gi|31563518|ref|NP_852610.1| microtubule-associated proteins 1A/1B light chain 3A isoform b [Homo sapiens]<br>MKMRFFSSPCGKAAVDPADRCKEVQQIRDQHPSKIPVIIERYKGEKQLPVLDKTKFLVPDHVNMSELVKI<br>IRRRLQLNPTQAFFLLVNQHSMVSVSTPIADIYEQEKDEDGFLYMVYASQETFGFIRENE<br></code></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h1 id="FASTQ格式"><a href="#FASTQ格式" class="headerlink" title="FASTQ格式"></a>FASTQ格式</h1><p>定义：一种用于存储生物序列（通常是核苷酸序列）及相应测序信息质量得分的文本文件。FASTQ格式与FASTA格式类似，但比FASTA格式多了序列的质量信息，序列字母和质量得分都用单个ASCII字符表示。</p>
+<h2 id="1-FASTQ文件命名规则："><a href="#1-FASTQ文件命名规则：" class="headerlink" title="1. FASTQ文件命名规则："></a>1. FASTQ文件命名规则：</h2><p>Illumina测序仪下机FASTQ命名为（NextSeq CN500下机数据为bcl格式，经过bcl2fastq转化后名称类似），例如：<br>Samplexx_S53_L002_R1_001.fastq.gz</p>
+<blockquote>
+<p>Samplexx：样本名，与上机时在sampleSheet中填写的一致； S53：S后跟的数字与样本在sampleSheet中的顺序一致，从1开始； L002：L00<em>，lane编号； R1：R</em>，R1表示read1，R2表示read2。R1和R2为paired end reads。同一个样本的配对的FASTQ，只有这个地方不同； 001：001，通常为001；</p>
+</blockquote>
+<p>Undetermined_S0_L001_R1_001.fastq.gz：存储index不匹配的reads</p>
+<h2 id="2-FASTQ文件格式"><a href="#2-FASTQ文件格式" class="headerlink" title="2. FASTQ文件格式"></a>2. FASTQ文件格式</h2><p>总共四列如下：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">@SIM:1:FCX:1:15:6329:1045:GATTACT+GTCTTAAC 1:N:0:ATCCGA<br>TCGCACTCAACGCCCTGCATATGACAAGACAGAATC<br>+<br>&lt;&gt;;##=&gt;&lt;9=AAAAAAAAAA9#:&lt;#&lt;;&lt;&lt;&lt;????#=<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>第一行</strong>，Sequence identifier</li>
+</ul>
+<p>序列标识以及相关的描述信息，例如:<br>@SIM:1:FCX:1:15:6329:1045:GATTACT+GTCTTAAC 1:N:0:ATCCGA</p>
+<p>官网给的格式解释如下：<br><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230814084241.png" srcset="/img/loading.gif" lazyload alt="image.png|400"></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs text">@SIM，测序仪的ID号<br>1，run number，一张flowcell是一个run<br>FCX，flow cell的ID号<br>1，lane号<br>15，tile号（tile为flow cell上最小单位，测序时每测一个碱基，照相一次）<br>6329，flow cell中簇位置的X坐标<br>1045，flow cell中簇位置的Y坐标<br>GATTACT+GTCTTAAC 1，当sampleSheet存在UMI(Unique Molecular indentifier，用于提高测序的准确性)时该项存在；为Read1的UMI序列+Read2的UMI序列信息，下图为文库中UMI的位置<br>1，1 表示 single read  2 表示 paired end<br>N，是否过滤，Y表示被过滤，否则为N<br>0，0表示十进制？否则是一个偶数<br>ATCCGA，index序列<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>第二行</strong>，Sequence<ul>
+<li>序列信息，例如TCGCACTCAACGCCCTGCATATGACAAGACAGAATC</li>
+</ul>
+</li>
+<li><strong>第三行</strong>，Quality score identifier line (consisting only of a +)<ul>
+<li>以“+”开头，为节省存储空间什么也不加，以前会重复第一行信息</li>
+</ul>
+</li>
+<li><strong>第四行</strong>，Quality score 测序质量值<ul>
+<li>长度与序列信息相同，且一一对应。</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-FASTQ质量值计算"><a href="#3-FASTQ质量值计算" class="headerlink" title="3. FASTQ质量值计算"></a>3. FASTQ质量值计算</h2><p>Fastq格式中第四行的质量得分与碱基错误率的关系<br>（1）ASCII与碱基质量的关系</p>
+<p>$$<br>ASCII&#x3D;序列质量+33<br>$$</p>
+<p>（2）碱基质量$Q_{phred}$和碱基错误率$e$的关系</p>
+<p>$$<br>Q_{phred}&#x3D;-10lge<br>$$</p>
+<ul>
+<li>关系：ASCII值<strong>越大</strong>，序列质量<strong>越好</strong>，碱基错误率<strong>越低</strong></li>
+<li>其中图片中最左侧的符号<code>!</code>的ASCII值为33，而最右侧的符号<code>~</code>的ASCII为126。这也就确定了<code>!</code>对应的碱基错误率为$100%$，而<code>~</code>对应的碱基错误率为$10^{-9.3}$。（已经是极小的碱基错误率，相当于完全正确）</li>
+<li>规律：需要记住的大致比较ASCII：数字&lt;大写字母&lt;小写字母（小写字母ASCII &#x3D; 大写字母ASCII + 32）</li>
+<li>质量体系值<em>phred</em>的标准，在Solexa，Illumina（版本1.8及以上）采用Phred33；早期版本（&lt;1.3）采用phred64</li>
+</ul>
+<p><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230720200750.png" srcset="/img/loading.gif" lazyload alt="image.png|500"></p>
+<p><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230814085001.png" srcset="/img/loading.gif" lazyload alt="测序平台版本对应质量值标准"></p>
+<hr>
+<h1 id="BED格式"><a href="#BED格式" class="headerlink" title="BED格式"></a>BED格式</h1><p>BED (Browser Extensible Data)是一种灵活的储存数据的格式，主要用来<strong>储存基因组特征</strong>或<strong>注释信息</strong>。包括3列必选信息（chrom、chromStart 和 ChromEnd）和9列备选信息。BED 文件可用于 UCSC 的 Genome Browser 可视化工具。</p>
+<p><strong>BED格式有3列信息必选：</strong></p>
+<ul>
+<li><strong>1. chrom</strong> - 染色体名称 (e.g. chr3, chrY, chr2_random) 或 scaffold (e.g. scaffold10671).</li>
+<li><strong>2. chromStart</strong> - 染色体或scaffold起始位点. <strong>注意！是从0开始计数！</strong></li>
+<li><strong>3. chromEnd</strong> - 染色体或scaffold终止位点. 注意！结束位点的碱基不包含在内。比如 <em>chromStart&#x3D;0, chromEnd&#x3D;100</em>, 那么实际上表示为0-99.</li>
+</ul>
+<p><strong>还有9列备选信息</strong></p>
+<ul>
+<li><strong>4. name</strong> - BED的名称.</li>
+<li><strong>5. score</strong> - 分数为0到1000。颜色越深，分数越高。</li>
+<li><strong>6. strand</strong> - 链方向. “.” (&#x3D;no strand) 或”+” 或 “-“.</li>
+<li><strong>7. thickStart</strong> - 绘制特征的起始位置（例如起始密码子）。当没有thick部分时，thickStart和thickEnd通常设置为chromStart位置。</li>
+<li><strong>8. thickEnd</strong> - 绘制特征的终止位置（例如终止密码子）。</li>
+<li><strong>9. itemRgb</strong> - RGB值 (e.g. 255,0,0). 如果track 行 <em>itemRgb</em> 参数设置为 “On”, RBG值会决定BED文件中该行数据的颜色.</li>
+<li><strong>10. blockCount</strong> - blocks (exons)在BED line的数量.</li>
+<li><strong>11. blockSizes</strong> - 用逗号分隔的列表，用来表示block的的大小。列表中数字的数目应和_blockCount_ 一致。</li>
+<li><strong>12. blockStarts</strong> - 用逗号分隔的列表，用来表示block的起始。 所有_blockStart_ 的位点应该和_chromStart_ 相关。 列表中数字的数目应和_blockCount_ 一致。</li>
+</ul>
+<p><strong>BEDn</strong>文件的后缀n表示有几列信息，最少为<strong>BED3</strong>，最长为<strong>BED12</strong></p>
+<p>对于BED文件的处理，可以使用bedtools对储存了基因组特征信息的BED文件进行比较、注释、转化等操作。</p>
+<hr>
+<h1 id="GFF格式"><a href="#GFF格式" class="headerlink" title="GFF格式"></a>GFF格式</h1><p>定义：<br>GFF（General Feature Format）格式是 Sanger 研究所定义的一种简单方便的数据格式，对 DNA 、RNA 及蛋白质序列的特征进行描述。GFF 格式由纯文本的9列信息按照制表符进行分割。其在 GMOD 中经常用于数据交换和基因组数据的表示。<br>General Feature Format (GFF)格式，和BED格式一样，也可用于储存基因组或蛋白质特征，主要用来注释基因组。</p>
+<p><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/%E6%8B%BC%E5%9B%BE_20230720_203946_1%20442.jpg" srcset="/img/loading.gif" lazyload alt="樊龙江. 生物信息学(第2版).[M].浙江.科学出版社.2021:447."></p>
+<hr>
+<h1 id="GTF格式"><a href="#GTF格式" class="headerlink" title="GTF格式"></a>GTF格式</h1><p>Gene Transfer Format (GTF)，是一种基因组学中用于标记基因在基因组中位置并同时提供一些基本注释信息的文件，和GFF类似，都有9列数据并用制表符分隔。<br><strong>Ensembl</strong>、<strong>GENCODE</strong>，以及<strong>UCSC基因组浏览器</strong>等项目都提供常见模式生物基因组的GTF注释文件。<br>但GTF格式主要是用来对基因进行注释，目前广泛使用的是第二版GTF2。</p>
+<p><strong>GFF和GTF格式的区别：</strong></p>
+<blockquote>
+<p>1.第3列feature&#x2F;type不同；GFF可以为任意名称，而GTF则必须注明<br>2.第9列attribures不同；GFF键和值是以等号&#x3D;隔开，GTF则是以空格隔开<br>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/67402565">[生信资料 3] 生物信息学常见数据格式，汇总！ - 知乎 (zhihu.com)</a></p>
+</blockquote>
+<blockquote>
+<p>GFF第3列是type常见类型有：gene、exon、intron等；GTF第3列是feature，常见类型有：gene、transcript、CDS、5’UTR、start_codon、exon、stop_codon、3’UTR。<br>GTF第9列的attributes必须有gene_id和transcript_id这两个属性，GFF则不需要。</p>
+</blockquote>
+<p><strong>可以使用cufflinks中的gffread转换GFF和GTF：</strong></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">#gff2gtf<br>gffread file1.gff3 -T -o file1.gtf<br><br>#gtf2gff<br>gffread file2.gtf -o file2.gff3<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="GBFF格式，GeneBank格式"><a href="#GBFF格式，GeneBank格式" class="headerlink" title="GBFF格式，GeneBank格式"></a>GBFF格式，GeneBank格式</h1><p>GBFF格式为GeneBank数据库使用的记录格式。GBFF格式整体分为三部分，分别为描述部分、注释部分和序列部分。<br><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/%E6%8F%8F%E8%BF%B0%E9%83%A8%E5%88%86%E5%8C%85%E6%8B%AC%E4%BA%86%E6%95%B4%E4%B8%AA%E8%AE%B0%E5%BD%95%E7%9A%84%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF.jpg" srcset="/img/loading.gif" lazyload alt="樊龙江. 生物信息学(第2版).[M].浙江.科学出版社.2021:447."></p>
+<p><strong>问题1：辨析描述部分中Locus和Accession、Version、GI</strong></p>
+<ul>
+<li><strong>Accession</strong>是在数据库中唯一确定且不变的，即使数据提交者改变了数据内容，也不改变。</li>
+<li><strong>Locus</strong>是一条特定序列的名字，不一定和 Accession 一致（如果研究人员在提交序列时没有给序列命名，则检索号和 Locus 是一样的）。<ul>
+<li>Locus 相当于是序列的名字，而 Accession 是序列的学号，在不同的数据库中，Locus 一致，但 Accession 不一样。</li>
+</ul>
+</li>
+<li><strong>Version</strong>是序列更新时，在检索号的后面加一个“.数字”，表示第几次修改</li>
+<li><strong>GI 号</strong>，在 version 号的后面，且序列更新就会被赋予一个新的 GI 号。<br>综上所述：Locus和Accession唯一且不变，但Locus和Accession不一定相同；Version和GI不唯一且随序列更新而改变。</li>
+</ul>
+<p><strong>问题2：浏览真核生物的mRNA序列，如何知道是什么类型的mRNA、编码的蛋白质产物、mRNA序列中信号肽的位置和真正编码蛋白质的位置</strong></p>
+<ul>
+<li>通过CDS中的note可以知道mRNA的类型</li>
+<li>通过sig_peptide可以知道mRNA中编码信号肽的位置</li>
+<li>通过mat_peptide可以知道编码成熟蛋白质的位置，其终止位置会比CDS的终止位置少三个碱基（终止密码子）</li>
+<li>有些时候还有misc_feature表示该位置的序列是推测的，并不是由实验证实的。</li>
+</ul>
+<p><strong>问题3：浏览真核生物的DNA序列，怎么知道被分为了几个片段、在染色体上的位置、Gene拼接方式、转录的成熟mRNA序列、是第几个外显子</strong></p>
+<ul>
+<li>通过第一部分中SEGMENT可以知道基因被分为了几个片段，且该序列属于第几个片段</li>
+<li>通过FEATURE中map可以知道序列在染色体上的位置</li>
+<li>通过GENE可以知道拼出完整基因所需的所有片段的检索号以及检索号之间的拼接方式（从哪个检索号的哪一部分片段到下一个检索号的哪一部分片段到…）</li>
+<li>通过mRNA部分可以知道该基因经过剪切成熟后的mRNA序列，其可能含有不止一条序列，比如可能有含有信号肽mRNA和不含信号肽的mRNA</li>
+<li>通过exon部分可以知道该序列中外显子的位置以及属于这个基因的第几个外显子。</li>
+</ul>
+<hr>
+<h1 id="SRA格式"><a href="#SRA格式" class="headerlink" title="SRA格式"></a>SRA格式</h1><p>定义：</p>
+<ul>
+<li>Sequence Read Archive (SRA) 数据库，由国家生物技术信息中心（NCBI）于2007年建立，旨在为RNA-Seq和ChIP-Seq研究以及包括人类微生物组计划和1000基因组计划在内的大规模研究产生的数据提供存储库。</li>
+<li>用于储存来自不同高通量测序平台的原始序列数据和比对信息。SRA为DNA测序数据提供公共存储库，特别是高通量测序生成的“短读长”，其长度通常小于1,000bp。</li>
+<li>SRA是国际核苷酸序列数据库协作（INSDC）的一部分，由NCBI、欧洲生物信息学研究所（EBI）和日本DNA数据库（DDBJ）合作运行。</li>
+<li>提交给SRA的文件的首选数据格式是BAM格式，它能够存储对齐和未对齐的读序。SRA内部依赖于NCBI SRA工具包，该工具包用于所有三个INSDC成员数据库，以提供灵活的数据压缩、API访问和转换为其他格式，如FASTQ。</li>
+</ul>
+<p><strong>SRA数据库用6种不同的前缀区分不同的数据：</strong></p>
+<ol>
+<li>SRA是提交数据时得到的数据号，包含下列5种前缀所组成的数据集。</li>
+<li>SRP表示 SRA Studies&#x2F;projects；研究课题或项目的元数据；一个Study（SRP）可能包含多个experiments。</li>
+<li>SRX 表示 Experiments；包含元数据及其建库方式、测序平台、处理方式。</li>
+<li>SRR 表示 Runs；包含真实的测序数据；一个Experiment（SRX）可能有多个Run。</li>
+<li>SRS 表示 Samples；描述进行测序的物理样本的元数据。</li>
+<li>SRZ 表示 Analysis；包含序列数据分析的BAM文件和描述序列分析的元数据。</li>
+</ol>
+<p>SRA中数据结构的层次关系为：Studies-&gt;Experiments-&gt;Samples-&gt;Runs。这样分类是以便更好的找到所需信息。</p>
+<hr>
+<h1 id="SAM格式"><a href="#SAM格式" class="headerlink" title="SAM格式"></a>SAM格式</h1><p>定义：</p>
+<ul>
+<li>SAM是一种用于保存映射到参考序列的短读序的比对信息同时也可能包含未映射序列信息的文件格式。</li>
+<li>它通常以标题部分开头，然后是每个读序的制表符分隔行的比对信息。</li>
+<li>SAM文件经过转化为二进制BAM文件后，可用于下游生物信息学分析，如基因差异性表达分析，调查生物多样性，分析DNA甲基化或调查DNA-蛋白质相互作用。</li>
+</ul>
+<p>SAM文件由<strong>header</strong>信息和<strong>mapping</strong>信息两部分组成</p>
+<ul>
+<li>头部区：以‘@’开始，体现了比对的一些总体信息。比如比对的SAM格式版本，参考基因组信息，比对的参考序列，比对使用的软件以及注释行等。 </li>
+<li>主体区：比对结果，每一个比对结果是一行，有11个主列和一个可选列。</li>
+</ul>
+<p><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230720211119.png" srcset="/img/loading.gif" lazyload alt="SAM文件格式"></p>
+<blockquote>
+<p>@HD，说明符合标准的版本、对比序列的排列顺序；<br>@SQ，参考序列说明；<br>@RG，比对上的序列（read）说明；<br>@PG，使用的程序说明；<br>@CO，任意的说明信息。</p>
+</blockquote>
+<p><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230720211807.png" srcset="/img/loading.gif" lazyload alt="举例：sam文件格式"></p>
+<p>对于mapping结果，主要看</p>
+<ul>
+<li>第二列，如果是<strong>0</strong>则是正常的，如果是<strong>4</strong>则是没有map上，<strong>16</strong>表示map到的反转链上的</li>
+<li>MD表示未匹配的碱基信息，如MD:Z:3C30T3，表示从左往右前三个碱基mapped，第四个碱基在参考基因组上是C而在此序列中为A，然后再有30个碱基mapped上，倒数第四个碱基在参考基因组上是T而在此序列中为G</li>
+<li>NM表示错配的数量。（可以先看NM来确定错配的数量，再看MD错配信息）</li>
+</ul>
+<hr>
+<h1 id="VCF格式"><a href="#VCF格式" class="headerlink" title="VCF格式"></a>VCF格式</h1><p>定义：<br>Variant Call Format,VCF是一种标准化的文本文件格式，用于表示SNP、indel和结构变异调用。VCF规范曾经由1000基因组计划维护，但其管理和进一步开发已由全球基因组学与健康联盟的基因组数据工具包团队接管。</p>
+<p>每列数据的说明：</p>
+<ul>
+<li>第一列 CHROM：染色体</li>
+<li>第二列 POS：基因组位置 </li>
+<li>第三列 ID：变异位点的rsID号，如果没有的话用”.”表示  </li>
+<li>第四列 REF：与参考基因组一样的位点  </li>
+<li>第五列 ALT：与参考基因组不一样的位点 </li>
+<li>第六列 QUAL：call出这个位点的质量。这个值等于-10log10(p)，p值是call错alt allele错误的概率。也就是QUAL越大出错概率越小  </li>
+<li>第七列 FILTER：对变异位点进行过滤，如果通过则为PASS，如果没有进行过滤就是”.”</li>
+<li>第八列 INFO：这一列是额外信息</li>
+<li>第九列 FORMAT：最后是比较让人注意的Genotype也就是基因型等的信息，比较重要的是GT，AD，DP，PL，GQ：</li>
+</ul>
+<p><strong>第八列</strong>：<br>AC，AF 和 AN：AC(Allele Count) 表示该Allele的数目；AF(Allele Frequency) 表示Allele的频率； AN(Allele Number) 表示Allele的总数目。<br>$$<br>AF&#x3D;\frac{AC}{AN}<br>$$<br><strong>DP</strong>：reads覆盖度。是一些reads被过滤掉后的覆盖度。</p>
+<p><strong>Dels</strong>：Fraction of Reads Containing Spanning Deletions。进行SNP和INDEL calling的结果中，有该TAG并且值为0表示该位点为SNP，没有则为INDEL。</p>
+<p><strong>FS</strong>：使用Fisher’s精确检验来检测strand bias而得到的Fhred格式的p值。该值越小越好。一般进行filter的时候，可以设置 FS &lt; 10～20。</p>
+<p><strong>第九列</strong>：<br><strong>GT</strong>，即genotype，表示为0&#x2F;1, 1&#x2F;1, 0&#x2F;0或者是0|1, 1|0, 0|0, 1|2等。其实</p>
+<ul>
+<li>0代表REF allele</li>
+<li>1代表第一个ALT allele</li>
+<li>2代表第二个ALT allele</li>
+</ul>
+<blockquote>
+<p>比如REF是A，ALT是C，T（有两个ALT）。某个人是A&#x2F;C，那么基因型就是0&#x2F;1，A&#x2F;T的话就是0&#x2F;2，C&#x2F;C就是1&#x2F;1，以此类推。此外还可能见到0|1或者1|1中间是竖线不是斜线的情况，这种是已经phased的genotype，也就是已经知道REF&#x2F;ALT allele是来自于父亲还是母亲了。比如有的数据库的phased的数据是|前的是父亲的allele，|后的是母亲的allele。比如REF是A，ALT是C，T；基因型为1|0，则父亲是第一个ALT也就是C，母亲是REF也就是A。不过对于有的phased数据而言第一个并不一定是父亲。<br>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/519356332">DNA 5. 基因组变异文件VCF格式详解 - 知乎 (zhihu.com)</a></p>
+</blockquote>
+<p><strong>AD</strong>: REF和ALT allele的深度，以逗号作为分隔，前面表示覆盖到ref上的reads数，后面则是覆盖到ALT allele的reads数</p>
+<p><strong>DP</strong>：这个位点的深度。</p>
+<p><strong>GQ</strong>：表示最可能的基因型的质量值。表示的意义同QUAL。Phred格式(Phred_scaled)的质量值，表示在该位点该基因型存在的可能性；该值越高，则Genotype的可能性越大；计算方法：$Phred值 &#x3D; -10 * log (1-p)$ ，p为基因型存在的概率。</p>
+<p><strong>PL</strong>：对应3个以逗号隔开的值，这三个值分别表示该位点基因型是0&#x2F;0，0&#x2F;1，1&#x2F;1的没经过先验的标准化Phred-scaled似然值（L）。这三种指定的基因型(0&#x2F;0,0&#x2F;1,1&#x2F;1)的概率总和为1。如果转换成支持该基因型概率（P）的话，由于$L&#x3D;-10lgP$，那么$P&#x3D;10^{(-L&#x2F;10)}$，因此，当L值为0时，$P&#x3D;10^0&#x3D;1$。因此，这个值越小，支持概率就越大，也就是说是这个基因型的可能性越大。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ruby">chr1    <span class="hljs-number">899282</span>  rs28548431  C   T   [<span class="hljs-variable constant_">CLIPPED</span>]  <span class="hljs-variable constant_">GT</span><span class="hljs-symbol">:AD</span><span class="hljs-symbol">:DP</span><span class="hljs-symbol">:GQ</span><span class="hljs-symbol">:PL</span>    <span class="hljs-number">0</span>/<span class="hljs-number">1</span><span class="hljs-symbol">:</span><span class="hljs-number">1</span>,<span class="hljs-number">3</span><span class="hljs-symbol">:</span><span class="hljs-number">4</span><span class="hljs-symbol">:</span><span class="hljs-number">25.92</span><span class="hljs-symbol">:</span><span class="hljs-number">103</span>,<span class="hljs-number">0</span>,<span class="hljs-number">26</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在这个位点，GT&#x3D;0&#x2F;1，也就是说这个位点的基因型是C&#x2F;T；GQ&#x3D;25.92，质量值并不算太高，可能是因为cover到这个位点的reads数太少，DP&#x3D;4，也就是说只有4条reads支持这个地方的变异；AD&#x3D;1,3，也就是说支持REF的read有一条，支持ALT的有3条；在PL里，这个位点基因型的不确定性就表现的更突出了，0&#x2F;1的PL值为0，虽然支持0&#x2F;1的概率很高；但是1&#x2F;1的PL值只有26，也就是说还有10^(-2.6)&#x3D;0.25%的可能性是1&#x2F;1；但几乎不可能是0&#x2F;0，因为支持0&#x2F;0的概率只有$10^{-10.3}&#x3D;5\times 10-11$。<br>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012150360/article/details/70666213">生物基因数据文件——vcf格式详解_vcf官方说明_vickyleexy的博客-CSDN博客</a></p>
+</blockquote>
+<p>总结：</p>
+<ul>
+<li><strong>AD</strong>前后相加&#x3D;<strong>DP</strong>；</li>
+<li><strong>DP</strong>越大，覆盖深度越大；</li>
+<li><strong>GQ</strong>就一个值，<strong>GQ</strong>越大，基因型质量越高；</li>
+<li><strong>PL</strong>有三个值，每个位置的<strong>PL</strong>越小，该位置基因型的可能性越大（前，中，后分别为0&#x2F;0,0&#x2F;1,1&#x2F;1）</li>
+</ul>
+<hr>
+<h1 id="PDB格式"><a href="#PDB格式" class="headerlink" title="PDB格式"></a>PDB格式</h1><p>定义：<br>The Protein Data Bank（PDB）文件格式是描述蛋白质数据库中保存的分子三维结构的文本文件格式。PDB格式提供了蛋白质和核酸结构的描述和注释，包括原子坐标、二级结构分配以及原子连通性。此外，实验元数据也被存储。PDB格式是蛋白质数据库的传统文件格式，它现在以较新的mmCIF文件格式保存生物大分子的数据。</p>
+<p>由6个部分组成</p>
+<ul>
+<li>第一部分：头信息<ul>
+<li>HEADER：蛋白质结构的基本信息描述，包括分子类别，存储日期，PDB ID</li>
+<li>TITLE：结构的标题</li>
+<li>COMPND：对结构中各个分子的描述。从这里可以看出 3H6X 这个结构是由三条链形成 的三聚体结构。</li>
+<li>SOURCE：结构中所包括的每一个分子的实验来源。</li>
+<li>KEYWDS：用于数据库搜索的关键词</li>
+<li><strong>EXPDTA</strong>：测定结构所采用的实验方法。PDB中绝大部分结构都是通过 X 射线衍射法测定的，少数是核磁共振法，极少数是使用包括电子显微镜在内的其他方法测定的。</li>
+<li>AUTHOR：作者信息</li>
+<li>REVDAT：历史上曾经对该数据库记录进行过的修改。</li>
+<li>JRNL：发表结构的文献信息。</li>
+<li>REMARK：无法归入其他部分的注释。</li>
+</ul>
+</li>
+<li>第二部分：一级结构信息<ul>
+<li>DBREF：该蛋白质在蛋白质序列数据库里的检索号等信息。</li>
+<li>SEQRES：氨基酸序列。</li>
+<li>MODRES：对标准残基上的修饰，比如第 56 号位置的蛋氨酸被硒代蛋氨酸所取代。</li>
+</ul>
+</li>
+<li>第三部分：非标准残基信息<ul>
+<li>HET：非标准残基及位置。</li>
+<li>HETNAM：非标准残基的化学名称。</li>
+<li>FORMUL：非标准残基的化学式。</li>
+</ul>
+</li>
+<li>第四部分：二级结构信息<ul>
+<li>HELIX：位于螺旋结构上的氨基酸所在位置及所属链。</li>
+<li>SHEET：位于折片结构上的氨基酸所在位置及所属链。</li>
+<li>TURN：位于转角结构上的氨基酸所在位置及所属链。</li>
+</ul>
+</li>
+<li>第五部分：实验参数信息<ul>
+<li>CRYST1：晶胞参数。</li>
+<li>ORIGXn：直角-PDB 坐标。</li>
+<li>SCALE*：直角部分结晶学坐标。</li>
+</ul>
+</li>
+<li>第六部分：3D坐标信息<ul>
+<li>ATOM：每个原子的3D坐标信息</li>
+<li>CONECT：原子间化学键连接信息。</li>
+<li>MASTER：版权拥有者信息。</li>
+<li>END：结束符。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230816113857.png" srcset="/img/loading.gif" lazyload alt="PDB格式1"></p>
+<p><img src="https://bacon-bioinfomatic.oss-cn-beijing.aliyuncs.com/20230816113813.png" srcset="/img/loading.gif" lazyload alt="PDB格式2"></p>
+<p>在人为浏览PDB文件的时候，重点关注其<strong>HEADER</strong>部分的分子类型；<strong>COMPND</strong>的有几条链；<strong>EXPDTA</strong>所描述的使用了哪种测定蛋白质结构的方法；<br>PDB文件中最重要的便是原子3D坐标信息<br>参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6beff2614f74">生物数据库之一级蛋白质数据库 - 简书 (jianshu.com)</a></p>
+<h1 id="UniprotKB"><a href="#UniprotKB" class="headerlink" title="UniprotKB"></a>UniprotKB</h1><p>UniprotKB下载蛋白质序列<br>下面以 <code>PO5F1_HUMAN</code> 为例，下载对应的fasta序列来看看：</p>
+<p><img src="https://pic1.zhimg.com/80/v2-4740580ba34951ab5fcd5baf7147b50c_720w.webp" srcset="/img/loading.gif" lazyload alt="UniprotKB"></p>
+<p>下载到的序列：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs FASTA">&gt;sp|Q01860|PO5F1_HUMAN POU domain, class 5, transcription factor 1 OS=Homo sapiens OX=9606 GN=POU5F1 PE=1 SV=1<br>MAGHLASDFAFSPPPGGGGDGPGGPEPGWVDPRTWLSFQGPPGGPGIGPGVGPGSEVWGI<br>PPCPPPYEFCGGMAYCGPQVGVGLVPQGGLETSQPEGEAGVGVESNSDGASPEPCTVTPG<br>AVKLEKEKLEQNPEESQDIKALQKELEQFAKLLKQKRITLGYTQADVGLTLGVLFGKVFS<br>QTTICRFEALQLSFKNMCKLRPLLQKWVEEADNNENLQEICKAETLVQARKRKRTSIENR<br>VRGNLENLFLQCPKPTLQQISHIAQQLGLEKDVVRVWFCNRRQKGKRSSSDYAQREDFEA<br>AGSPFSGGPVSFPLAPGPHFGTPGYGSPHFTALYSSVPFPEGEAFPPVSVTTLGSPMHSN<br></code></pre></td></tr></table></figure>
+
+<p>首先看 <code>&gt;</code> 后的注释信息</p>
+<ul>
+<li><strong>sp</strong>：Swiss-Prot数据库的简称，也就是上面说的验证后的蛋白数据库</li>
+<li><strong>Q01860</strong>：UniProt ID号</li>
+<li><strong>PO5F1_HUMAN</strong>：是UniProt 的登录名</li>
+<li><strong>POU domain, class 5, transcription factor 1</strong>：蛋白质名称</li>
+<li><strong>OS&#x3D;Homo sapiens</strong>：OS是Organism简称，Homo sapiens为人的拉丁文分类命名，也就是这是人的蛋白质</li>
+<li><strong>OX&#x3D;9606</strong>：Organism Taxonomy，也就是物种分类数据库Taxonomy ID</li>
+<li><strong>GN&#x3D;POU5F1</strong>：Gene name，基因名为POU5F1</li>
+<li><strong>PE&#x3D;1</strong>：Protein Existence，蛋白质可靠性，对应5个数字，数字越小越可靠：<ul>
+<li>1：Experimental evidence at protein level，蛋白质水平的实验证据</li>
+<li>2：Experimental evidence at tranlevel，转录水平的实验证据</li>
+<li>3：Protein inferred from homology，同源推测出的蛋白</li>
+<li>4：Protein predicted，预测的蛋白质</li>
+<li>5：Protein uncertain，未知的蛋白质</li>
+</ul>
+</li>
+<li><strong>SV&#x3D;1</strong>：Sequence Version，序列版本号</li>
+</ul>
+<p>对于UniprotKB数据库进行检索，可以知道一个基因对应的蛋白质。<br>其中Entry表示蛋白质学历的在UniprotKB数据库中的检索号，Entry_Name是检索名，二者都是对于一条蛋白质序列的唯一标识（区分，UPnirotKB中检索号为Entry，GeneBank中是Accession）<br>UniprotKB可以对序列进行比对、格式转换和存储<br>也可以查看蛋白质序列的注释信息</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Function</strong></td>
+<td>蛋白质的功能，生化反应方程式、代谢途径</td>
+</tr>
+<tr>
+<td><strong>Name&amp;Taxomomy</strong></td>
+<td>蛋白质的各种名字，所属物种和分类学谱系</td>
+</tr>
+<tr>
+<td><strong>Subcellular location</strong></td>
+<td>蛋白质的细胞定位，如果一个蛋白质存在两个异构体，则在亚细胞定位上就会存在两种定位类型</td>
+</tr>
+<tr>
+<td><strong>Pathology&amp;Biotechnology</strong></td>
+<td>蛋白质突变或缺失导致的疾病及表型信息</td>
+</tr>
+<tr>
+<td><strong>PTM&#x2F;Processing</strong></td>
+<td>蛋白质翻译后修饰或翻译后加工的信息</td>
+</tr>
+<tr>
+<td><strong>Expression</strong></td>
+<td>基因在mRNA水平的表达信息</td>
+</tr>
+<tr>
+<td><strong>Interaction</strong></td>
+<td>蛋白质之间的互作信息，包括互作蛋白的链接和在各种蛋白质互作网络数据库的记录链接</td>
+</tr>
+<tr>
+<td><strong>Structure</strong></td>
+<td>蛋白的二级和三级结构信息，注意🤔只有已通过实验验证并提交给PDB数据库的蛋白质才有结构注释</td>
+</tr>
+<tr>
+<td><strong>Family&amp;Domains</strong></td>
+<td>蛋白质家族及结构域信息</td>
+</tr>
+<tr>
+<td><strong>Sequence</strong></td>
+<td>蛋白质氨基酸序列信息</td>
+</tr>
+<tr>
+<td><strong>Cross-references</strong></td>
+<td>通往其他含有该蛋白质的数据库链接</td>
+</tr>
+<tr>
+<td><strong>Publications</strong></td>
+<td>关于这个蛋白质已发表的文献信息</td>
+</tr>
+<tr>
+<td><strong>Entry-information</strong></td>
+<td>这条数据库记录的录入信息</td>
+</tr>
+<tr>
+<td><strong>Miscellaneous</strong></td>
+<td>剩余杂项信息</td>
+</tr>
+<tr>
+<td><strong>Similar proteins</strong></td>
+<td>在UniRef数据库里找到与该蛋白质序列水平相似的其他蛋白质</td>
+</tr>
+</tbody></table>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E5%8E%9F%E7%90%86/" class="print-no-link">#生物信息学原理</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>生物信息数据结构</div>
+      <div>https://bacontesla.github.io/blog/生物信息数据结构/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Bacon Tesla</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年7月20日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/hello-world/" title="Hello World">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/DNA%E6%B5%8B%E5%BA%8F%E6%8A%80%E6%9C%AF/" title="DNA测序技术">
+                        <span class="hidden-mobile">DNA测序技术</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
