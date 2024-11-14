@@ -1,4 +1,5 @@
 .about-intro{
     font-family: "Times New Roman", Times, serif;
-  font-style: italic; /* 使用斜体 */
+    font-style: italic; /* 使用斜体 */
+    font-weight: bold;
 }
